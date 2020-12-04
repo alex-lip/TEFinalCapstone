@@ -54,6 +54,15 @@ const router = new Router({
       },
     },
     {
+      path: "/units",
+      name: "units",
+      component: () => import("../views/Units.vue"),
+      // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
       path: "*",
       redirect: "/",
     },
