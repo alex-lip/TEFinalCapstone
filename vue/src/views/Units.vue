@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import unitService from "../services/UnitService";
 import UnitCard from "../components/UnitCard.vue";
 
 export default {
@@ -20,6 +21,18 @@ export default {
   components: {
     UnitCard,
   },
+
+  data() {
+    return {
+      unit: {
+        // Idk the unit properties that I need yet.
+      },
+    };
+  },
+
+  methods: {
+      // Methods to create, read, update, and delete...
+  }
 };
 </script>
 
