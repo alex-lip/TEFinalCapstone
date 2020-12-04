@@ -46,4 +46,4 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','Yh
 ALTER TABLE units ADD FOREIGN KEY (pictures_unitnumber) REFERENCES pictures(picture_unitnumber)
 
 GO
-COMMIT TRANSACTION
+--COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
