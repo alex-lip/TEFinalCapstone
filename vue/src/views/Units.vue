@@ -1,5 +1,7 @@
 <template>
   <div class="units">
+    <!-- Create a dropdown selection in order to filter by location -->
+
     <!-- List all Units -->
     <UnitCard
       v-for="u in this.$store.state.units"
