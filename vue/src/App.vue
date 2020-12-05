@@ -10,6 +10,9 @@
         <!-- This is a font awesome icon -->
         Home
       </router-link>
+      <router-link class="nav-item" v-bind:to="{ name: 'units' }">
+        &nbsp;|&nbsp;Available Units
+      </router-link>
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'register' }"
