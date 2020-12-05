@@ -45,5 +45,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','Yh
 
 ALTER TABLE units ADD FOREIGN KEY (pictures_unitnumber) REFERENCES pictures(picture_unitnumber)
 
+INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '30 sqft', 4, 900);
+INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '50 sqft', 33, 1);
+
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
