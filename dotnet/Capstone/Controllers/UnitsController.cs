@@ -1,4 +1,5 @@
-﻿using Capstone.Models;
+﻿using Capstone.DAO;
+using Capstone.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,15 +8,22 @@ namespace Capstone.Controllers
     // "Route" & "ApiController" use AspNetCore.Mvc
     [Route("[controller]")]
     [ApiController]
-    public class UnitsController
+    public class UnitsController : ControllerBase
     {
         // PROPERTIES
-        private readonly 
+        private readonly IUnitDAO unitDAO;
+
+        // CONSTRUCTORS
+        public UnitsController(IUnitDAO unitDAO)
+        {
+            this.unitDAO = unitDAO;
+        }
+
         // CONTROLLER METHODS
         [HttpGet]
         public ActionResult<List<Unit>> GetAllUnits()
         {
-            return Ok()
+            return Ok(unitDAO.GetUnits());
         }
     }
 }

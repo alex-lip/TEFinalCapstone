@@ -5,6 +5,6 @@ namespace Capstone.DAO
 {
     public interface IUnitDAO
     {
-        List<Unit> GetUnit();
+        List<Unit> GetUnits();
     }
 }
