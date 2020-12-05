@@ -8,7 +8,7 @@
       v-bind:key="u.id"
       v-bind:unit="u"
     >
-    <div></div>
+    <div>{ u.highBid }</div>
     </UnitCard>
 
     <p>Segment to add unit (Part of the "Unit Information" Card)</p>
