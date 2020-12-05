@@ -8,6 +8,8 @@
       v-bind:key="u.id"
       v-bind:unit="u"
     />
+
+    <p>Segment to add unit (Part of the "Unit Information" Card)</p>
   </div>
 </template>
 
