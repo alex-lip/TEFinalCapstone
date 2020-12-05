@@ -7,10 +7,10 @@
       </div>
       <div class="form-group">
         <input
-          type="text"
+          type="email"
           id="username"
           class="form-control"
-          placeholder="Username"
+          placeholder="email@address.com"
           v-model="user.username"
           required
           autofocus />
