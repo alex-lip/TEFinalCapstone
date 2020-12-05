@@ -24,8 +24,26 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
 
+CREATE TABLE units(
+	unit_id INTEGER IDENTITY PRIMARY KEY,
+	location_name VARCHAR(200) NOT NULL,
+	unit_number INTEGER UNIQUE NOT NULL,
+	unit_size VARCHAR(200) NOT NULL,
+	pictures_unitnumber INTEGER,
+	high_bid MONEY NOT NULL,
+)
+
+CREATE TABLE pictures(
+	picture_id INTEGER IDENTITY PRIMARY KEY,
+	picture_unitnumber INTEGER,
+	picture_srclink VARCHAR(200) NOT NULL,
+)
+
 --populate default data: 'password'
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
+ALTER TABLE units ADD FOREIGN KEY (pictures_unitnumber) REFERENCES pictures(picture_unitnumber)
+
 GO
+--COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
