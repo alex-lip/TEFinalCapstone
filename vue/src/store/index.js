@@ -30,7 +30,7 @@ export default new Vuex.Store({
     user: currentUser || {}, // If a user is an admin, their user.role will be 'admin'
 
     // Currently holds available units. May need to refactor/rename for unavailable units.
-    units: [{}, {}, {}],
+    units: [],
   },
 
   mutations: {
@@ -50,5 +50,9 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+
+    SET_UNITS(state, data) {
+      state.units = data;
+    }
   },
 });
