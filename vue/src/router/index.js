@@ -5,10 +5,7 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
-import Units from '../views/Units.vue';
-import UnitDetails from '../views/UnitDetails.vue';
-import AddUnit from '../views/AddUnit.vue';
-import EditUnit from '../views/EditUnit.vue';
+
 
 Vue.use(Router);
 
