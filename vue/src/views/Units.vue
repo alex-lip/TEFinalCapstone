@@ -1,6 +1,31 @@
 <template>
   <div class="units">
-    <!-- Create a dropdown selection in order to filter by location -->
+    <!-- Create a dropdown selection in order to filter by location -->  
+
+    <!-- Added this commented out table here, wasn't sure if I should put it in, we never really came to a full agreement on the display for the selection of units
+    <div>
+    <h2 id = contents>
+    <table border="1" width="100%">
+	<col style="width:10%">
+	<col style="width:10%">
+	<col style="width:10%">
+  <col style="width:70%">
+	<thead>
+	<tr>
+		<th>Unit Location</th>
+		<th>Unit Number</th>
+		<th>Unit Size</th>
+    <th>Unit Details </th>
+	</tr>
+  <tr>
+		<th>{{ unit.locationName }}</th>
+		<th>{{ unit.unitNumber }}</th>
+		<th>{{ unit.unitSize }}</th>
+    <th>Inventory Pictures</th> Need to add link here to pull up the unit card so users can see unit pictures and current high bid
+	</tr>
+	</thead>  
+      </h2>
+  </div>-->
 
     <!-- List all Units -->
     <UnitCard
@@ -48,4 +73,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  font-family: system-ui;
+  background: #ff944d;
+  color: black;
+  text-align: left;
+}
+
+
+</style>
