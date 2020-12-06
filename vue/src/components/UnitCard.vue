@@ -1,6 +1,12 @@
 <template>
-  <div>
-    this is where the unit card information will go!
+  <div class="unit-card">
+    <div>Current Bid: {{ unit.highBid }}</div>
+    <div>Location: {{ unit.locationName }}</div>
+    <div>Picture ID: {{ unit.picturesUnitNumber }}</div>
+    <div>Unit ID: {{ unit.unitId }}</div>
+    <div>Unit Number: {{ unit.unitNumber }}</div>
+    <div>Size: {{ unit.unitSize }}</div>
+
     <p>Make each card clickable to go to specific unit page</p>
     <p>Edit and Delete buttons</p>
   </div>
@@ -14,4 +20,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.unit-card {
+  background-color: red;
+}
+</style>

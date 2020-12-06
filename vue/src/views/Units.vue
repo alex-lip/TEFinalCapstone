@@ -7,7 +7,8 @@
       v-for="u in this.$store.state.units"
       v-bind:key="u.id"
       v-bind:unit="u"
-    />
+    >
+    </UnitCard>
 
     <p>Segment to add unit (Part of the "Unit Information" Card)</p>
   </div>
@@ -33,8 +34,17 @@ export default {
   },
 
   methods: {
-      // Methods to create, read, update, and delete...
-  }
+    // Methods to create, read, update, and delete...
+    getUnits() {
+      unitService.getAllUnits().then((response) => {
+        this.$store.commit("SET_UNITS", response.data);
+      });
+    },
+  },
+
+  created() {
+    this.getUnits();
+  },
 };
 </script>
 
