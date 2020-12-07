@@ -1,7 +1,8 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 id = title>Storage Auctions</h1>
+      <h1 id="loginform" class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -40,6 +41,7 @@
       </div>
       <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
+    <img src="storageunits.jpg">
   </div>
 </template>
 
@@ -85,3 +87,30 @@ export default {
   },
 };
 </script>
+<style>
+body {
+  font-family: system-ui;
+  background: #ff944d;
+  color: black;
+  text-align: center;
+}
+
+#loginform{
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+#title{
+  display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  background-color: white;
+}
+
+img{
+  width: 100%;
+  height: 30%;
+  padding: 10px;
+}
+</style>

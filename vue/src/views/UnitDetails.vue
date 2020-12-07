@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h2>{{bookDetails.title}}</h2>
-      <img v-if="bookDetails.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + bookDetails.isbn + '-M.jpg'"/>
-      <h3>{{bookDetails.author}}</h3>
+      <h3>{{unitDetails.unitNumber}}</h3>
+      <h3>{{unitDetails.unitSize}}</h3>
+      <h3>{{unitDetails.locationName}}</h3>
   </div>
 </template>
 
