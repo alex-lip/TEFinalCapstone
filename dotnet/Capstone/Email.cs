@@ -13,10 +13,10 @@ namespace Capstone
         {
         }
 
-        public void EmailSend()
+        public void EmailSend(string toEmail)
         {
             var fromAddress = new MailAddress("dotnetmike12@gmail.com", "Self Storage Auctions");
-            var toAddress = new MailAddress("alex.lipinsky@gmail.com", "Alex Lipinsky");
+            var toAddress = new MailAddress(toEmail);
             const string fromPassword = "dotnetmike";
             const string subject = "Welcome to Self Storage Auction";
             const string body = "Test Body Message";

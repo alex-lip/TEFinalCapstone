@@ -101,7 +101,7 @@ namespace Capstone.Controllers
             IActionResult result;
 
             Email email = new Email();
-            email.EmailSend();
+            email.EmailSend(userParam.Username);
             
             User existingUser = userDAO.GetUser(userParam.Username);
             if (existingUser != null)
