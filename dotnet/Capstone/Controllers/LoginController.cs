@@ -3,6 +3,7 @@ using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
 using Microsoft.AspNetCore.Authorization;
+using System.Net.Mail;
 
 namespace Capstone.Controllers
 {
@@ -108,6 +109,7 @@ namespace Capstone.Controllers
             if (user != null)
             {
                 result = Created(user.Username, null); //values aren't read on client
+                
             }
             else
             {
