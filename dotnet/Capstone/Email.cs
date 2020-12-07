@@ -4,7 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Mail;
 
-namespace MyDailyText
+namespace Capstone
 {
     public class Email
     {

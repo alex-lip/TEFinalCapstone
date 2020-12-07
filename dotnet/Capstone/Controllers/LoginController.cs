@@ -14,6 +14,7 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDAO userDAO;
+        
 
         public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO)
         {
@@ -99,6 +100,9 @@ namespace Capstone.Controllers
         {
             IActionResult result;
 
+            Email email = new Email();
+            email.EmailSend();
+            
             User existingUser = userDAO.GetUser(userParam.Username);
             if (existingUser != null)
             {
