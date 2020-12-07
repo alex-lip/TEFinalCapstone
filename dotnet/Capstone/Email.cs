@@ -6,14 +6,14 @@ using System.Net.Mail;
 
 namespace MyDailyText
 {
-    class UserInterface
+    public class Email
     {
 
-        public UserInterface()
+        public Email()
         {
         }
 
-        public void Run()
+        public void EmailSend()
         {
             var fromAddress = new MailAddress("dotnetmike12@gmail.com", "Self Storage Auctions");
             var toAddress = new MailAddress("alex.lipinsky@gmail.com", "Alex Lipinsky");
