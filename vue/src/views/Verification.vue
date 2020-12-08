@@ -1,10 +1,10 @@
 <template>
-  <h1>Please Register</h1>
+  <h1>Please enter your code</h1>
 </template>
 
 <script>
 export default {
-    name: 'verification'
+    name: 'Verification'
 }
 </script>
 

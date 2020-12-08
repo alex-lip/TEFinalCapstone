@@ -57,7 +57,7 @@ const router = new Router({
     {
       path: "/verification",
       name: "verification",
-      component: Verification,
+      component: () => import("../views/Verification.vue"),
     },
     {
       path: "/units",

@@ -74,7 +74,7 @@ export default {
             if (response.status == 201) {
               this.$router.push({
                 name: 'verification',
-                query: { registration: 'success' },
+                //query: { registration: 'success' },
               });
             }
           })
