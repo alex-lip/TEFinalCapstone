@@ -4,6 +4,9 @@ using Capstone.Models;
 using Capstone.Security;
 using Microsoft.AspNetCore.Authorization;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
@@ -14,7 +17,21 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDAO userDAO;
-        
+
+        // Added for email confirmation
+        private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
+        private readonly ILogger<LoginController> logger;
+
+        //New Controller
+        //public LoginController(UserManager<User> userManager,
+        //    SignInManager<User> signInManager,
+        //    ILogger<LoginController> logger)
+        //{
+        //    this.userManager = userManager;
+        //    this.signInManager = signInManager;
+        //    this.logger = logger;
+        //}
 
         public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO)
         {
@@ -100,9 +117,13 @@ namespace Capstone.Controllers
         {
             IActionResult result;
 
+            //var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+
             Email email = new Email();
             email.EmailSend(userParam.Username);
-            
+
+            // Do not create user until email confirmation is clicked
+
             User existingUser = userDAO.GetUser(userParam.Username);
             if (existingUser != null)
             {
@@ -113,7 +134,12 @@ namespace Capstone.Controllers
             if (user != null)
             {
                 result = Created(user.Username, null); //values aren't read on client
-                
+
+                //var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                // var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                 //   new { userId = user.UserId, token = token }, Request.Scheme);
+
             }
             else
             {
@@ -122,5 +148,6 @@ namespace Capstone.Controllers
 
             return result;
         }
+
     }
 }

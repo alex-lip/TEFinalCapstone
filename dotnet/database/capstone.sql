@@ -37,8 +37,9 @@ CREATE TABLE units(
 
 CREATE TABLE pictures(
 	picture_id INTEGER IDENTITY PRIMARY KEY,
-	picture_unitnumber INTEGER,
+	unit_id INTEGER,
 	picture_srclink VARCHAR(200) NOT NULL,
+	FOREIGN KEY (unit_id) REFERENCES units(unit_id)
 )
 
 --populate default data: 'password'
@@ -48,8 +49,6 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin@admi
 
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '5x10', 4, 900);
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '10x10', 33, 1);
-
-ALTER TABLE units ADD FOREIGN KEY (pictures_unitnumber) REFERENCES pictures(picture_unitnumber)
 
 
 GO

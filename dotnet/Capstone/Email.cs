@@ -19,7 +19,7 @@ namespace Capstone
             var toAddress = new MailAddress(toEmail);
             const string fromPassword = "dotnetmike";
             const string subject = "Welcome to Self Storage Auction";
-            const string body = "Test Body Message";
+            const string body = "Click here to confirm your account";
 
             var smtp = new SmtpClient
             {
@@ -30,6 +30,8 @@ namespace Capstone
                 UseDefaultCredentials = true,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             };
+
+            
 
             using (var message = new MailMessage(fromAddress, toAddress)
             {
