@@ -1,5 +1,6 @@
 <template>
   <h1>Please enter your code</h1>
+  
 </template>
 
 <script>

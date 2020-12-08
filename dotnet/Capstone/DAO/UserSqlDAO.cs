@@ -13,6 +13,8 @@ namespace Capstone.DAO
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, user_role) VALUES " +
             "(@username, @password_hash, @salt, @user_role)";
+        // Insert code in DB
+        private string sqlAddVerificationCode = "INSERT INTO verification_code (user_id, code) VALUES (@user_id, @code); SELECT SCOPE_IDENTITY()";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -41,7 +43,7 @@ namespace Capstone.DAO
         }
 
 
-        public User AddUser(string username, string password, string role)
+        public User AddUser(string username, string password, string role, int verificationCode)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
@@ -60,6 +62,20 @@ namespace Capstone.DAO
             }
 
             return GetUser(username);
+        }
+
+        public void AddVerificationCode(User user, int verificationCode)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlAddVerificationCode, conn);
+                cmd.Parameters.AddWithValue("@user_id", user.UserId);
+                cmd.Parameters.AddWithValue("@code", verificationCode);
+                cmd.ExecuteNonQuery();
+            }
+
         }
 
         private User GetUserFromReader(SqlDataReader reader)

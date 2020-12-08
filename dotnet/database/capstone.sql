@@ -16,12 +16,19 @@ GO
 
 --create tables
 CREATE TABLE users (
-	user_id int IDENTITY(1,1) NOT NULL,
-	username varchar(50) NOT NULL,
-	password_hash varchar(200) NOT NULL,
-	salt varchar(200) NOT NULL,
-	user_role varchar(50) NOT NULL
+	user_id INT IDENTITY(1,1) NOT NULL,
+	username VARCHAR(50) NOT NULL,
+	password_hash VARCHAR(200) NOT NULL,
+	salt VARCHAR(200) NOT NULL,
+	user_role VARCHAR(50) NOT NULL,
+	verification_status BIT DEFAULT 0,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+)
+
+CREATE TABLE verification_code (
+	user_id INT NOT NULL,
+	code INT NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 )
 
 CREATE TABLE units(
@@ -43,8 +50,8 @@ CREATE TABLE pictures(
 )
 
 --populate default data: 'password'
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user@user.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('user@user.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
 
 
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '5x10', 4, 900);
@@ -53,3 +60,6 @@ INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, h
 
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
+
+
+

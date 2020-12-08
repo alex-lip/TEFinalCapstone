@@ -108,6 +108,7 @@ namespace Capstone.Controllers
             int sixDigitNumber = random.Next(100000, 999999);
             Email email = new Email();
             email.EmailSend(userParam.Username, sixDigitNumber);
+            
 
 
             User existingUser = userDAO.GetUser(userParam.Username);
@@ -116,10 +117,11 @@ namespace Capstone.Controllers
                 return Conflict(new { message = "Username already taken. Please choose a different username." });
             }
 
-            User user = userDAO.AddUser(userParam.Username, userParam.Password, userParam.Role);
+            User user = userDAO.AddUser(userParam.Username, userParam.Password, userParam.Role, sixDigitNumber);
             if (user != null)
             {
-                result = Created(user.Username, null); 
+                result = Created(user.Username, null);
+                userDAO.AddVerificationCode(user, sixDigitNumber);
 
             }
             else
