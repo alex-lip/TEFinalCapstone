@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h3>{{ unitDetails.unitNumber }}</h3>
-    <h3>{{ unitDetails.unitSize }}</h3>
-    <h3>{{ unitDetails.locationName }}</h3>
+    <UnitCard
+      v-for="u in this.$store.state.units"
+      v-bind:key="u.id"
+      v-bind:unit="u"
+    >
+    </UnitCard>
   </div>
 </template>
 
