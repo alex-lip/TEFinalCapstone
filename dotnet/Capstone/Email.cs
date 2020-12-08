@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Policy;
 
 namespace Capstone
 {
@@ -13,13 +14,19 @@ namespace Capstone
         {
         }
 
-        public void EmailSend(string toEmail)
+        
+
+        public void EmailSend(string toEmail, int verificationNumber)
         {
+            
             var fromAddress = new MailAddress("dotnetmike12@gmail.com", "Self Storage Auctions");
             var toAddress = new MailAddress(toEmail);
             const string fromPassword = "dotnetmike";
             const string subject = "Welcome to Self Storage Auction";
-            const string body = "Click here to confirm your account";
+            string body = "Click here to confirm your account " + verificationNumber;
+
+            
+
 
             var smtp = new SmtpClient
             {
@@ -40,5 +47,6 @@ namespace Capstone
             })
                 smtp.Send(message);
         }
+
     }
 }
