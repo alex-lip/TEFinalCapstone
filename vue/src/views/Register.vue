@@ -45,9 +45,11 @@
 
 <script>
 import authService from '../services/AuthService';
+import Verification from '../views/Verification.vue';
 
 export default {
   name: 'register',
+  components: { Verification },
   data() {
     return {
       user: {
@@ -71,7 +73,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                name: 'login',
+                name: 'verification',
                 query: { registration: 'success' },
               });
             }

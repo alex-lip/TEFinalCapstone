@@ -1,11 +1,10 @@
 <template>
-  <input type="number">
-  
+  <h1>Please Register</h1>
 </template>
 
 <script>
 export default {
-
+    name: 'verification'
 }
 </script>
 

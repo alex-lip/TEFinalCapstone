@@ -55,8 +55,8 @@ const router = new Router({
       },
     },
     {
-      path: "/register/verify",
-      name: "verify",
+      path: "/verification",
+      name: "verification",
       component: Verification,
     },
     {
