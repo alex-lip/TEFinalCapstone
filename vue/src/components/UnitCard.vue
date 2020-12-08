@@ -1,14 +1,17 @@
 <template>
   <div class="unit-card">
-    <div>Current Bid: {{ unit.highBid }}</div>
-    <div>Location: {{ unit.locationName }}</div>
-    <div>Picture ID: {{ unit.picturesUnitNumber }}</div>
     <div>Unit ID: {{ unit.unitId }}</div>
+    <div>Location: {{ unit.locationName }}</div>
     <div>Unit Number: {{ unit.unitNumber }}</div>
     <div>Size: {{ unit.unitSize }}</div>
+    <div>Current Bid: {{ unit.highBid }}</div>
+    <div>Picture ID: {{ unit.picturesUnitNumber }}</div>
+    <!--TODO: Need to add multiple pictures not just picture number-->
 
-    <p>Make each card clickable to go to specific unit page</p>
-    <p>Edit and Delete buttons</p>
+    <div>
+    <button class="btnEditUnit">Edit Unit</button><!--TODO: need to code to link the form to edit the unit, EditUnit.vue/ and code so it is hidden to nonAdmin users-->
+    <button class="btnDeleteUnit">Delete Unit</button><!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
+    </div>
   </div>
 </template>
 
@@ -22,6 +25,8 @@ export default {
 
 <style>
 .unit-card {
-  background-color: red;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 10px;
 }
 </style>

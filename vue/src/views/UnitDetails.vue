@@ -1,9 +1,7 @@
 <template>
   <div>
     <UnitCard
-      v-for="u in this.$store.state.units"
-      v-bind:key="u.unitId"
-      v-bind:unit="u"
+      v-bind:unit="unitDetails"
     >
     </UnitCard>
   </div>
@@ -25,11 +23,11 @@ export default {
   },
   created() {
     this.unitDetails = this.$store.state.units.find(
-      (u) => u.id == this.$route.params.id
+      (u) => u.unitId == this.$route.params.id
     );
     if (!this.unitDetails) {
       this.unitDetails = this.$store.state.units.find(
-        (u) => u.id == this.$route.params.id
+        (u) => u.unitId == this.$route.params.id
       );
     }
   },
