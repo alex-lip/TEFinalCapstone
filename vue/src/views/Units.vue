@@ -3,7 +3,6 @@
     <table id="tblUnits">
       <thead>
         <tr>
-          <th>&nbsp;</th>
           <th>Auction Number</th>
           <th>Location Name</th>
           <th>Unit Number</th>
@@ -13,8 +12,6 @@
       </thead>
       <tbody>
         <tr>
-          <td>
-          </td>
           <td>
             <input type="text" id="locationNameFilter" v-model="filter.locationName" />
           </td>
@@ -32,7 +29,6 @@
           v-for="unit in filteredList"
           v-bind:key="unit.id"
         >
-          <td class="unit-id">{{ unit.unitId }}</td>
           <router-link class="unit-id" v-bind:to="{name: 'unit-details', params: {id: unit.unitId}}">{{unit.unitId}}</router-link><!--link to route to specific unit and its details like time left and pictures-->
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
