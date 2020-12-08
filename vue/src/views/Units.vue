@@ -3,7 +3,6 @@
     <table id="tblUnits">
       <thead>
         <tr>
-          <th>&nbsp;</th>
           <th>Auction Number</th>
           <th>Location Name</th>
           <th>Unit Number</th>
@@ -14,12 +13,18 @@
       <tbody>
         <tr>
           <td>
+            <input
+              type="text"
+              id="locationNameFilter"
+              v-model="filter.locationName"
+            />
           </td>
           <td>
-            <input type="text" id="locationNameFilter" v-model="filter.locationName" />
-          </td>
-          <td>
-            <input type="text" id="unitNumberFilter" v-model="filter.unitNumber" />
+            <input
+              type="text"
+              id="unitNumberFilter"
+              v-model="filter.unitNumber"
+            />
           </td>
           <td>
             <input type="text" id="unitSizeFilter" v-model="filter.unitSize" />
@@ -28,12 +33,14 @@
             <input type="text" id="highBidFilter" v-model="filter.highBid" />
           </td>
         </tr>
-        <tr
-          v-for="unit in filteredList"
-          v-bind:key="unit.id"
-        >
-          <td class="unit-id">{{ unit.unitId }}</td>
-          <router-link class="unit-id" v-bind:to="{name: 'unit-details', params: {id: unit.unitId}}">{{unit.unitId}}</router-link><!--link to route to specific unit and its details like time left and pictures-->
+        <tr v-for="unit in filteredList" v-bind:key="unit.id">
+          <!--link to route to specific unit and its details like time left and pictures-->
+          <router-link
+            class="unit-id"
+            v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
+          >
+            {{ unit.unitId }}
+          </router-link>
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
           <td>{{ unit.unitSize }}</td>
@@ -74,7 +81,7 @@ export default {
   created() {
     this.getUnits();
   },
-    computed: {
+  computed: {
     filteredList() {
       let filteredUnits = this.$store.state.units;
       if (this.filter.locationName != "") {
@@ -100,15 +107,13 @@ export default {
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid
-            .toLowerCase()
-            .includes(this.filter.highBid.toLowerCase())
+          unit.highBid.toLowerCase().includes(this.filter.highBid.toLowerCase())
         );
       }
       return filteredUnits;
     },
- },
-}
+  },
+};
 </script>
 
 <style>
@@ -125,7 +130,9 @@ table {
   color: black;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
 }
 </style>
