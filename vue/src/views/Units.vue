@@ -1,5 +1,11 @@
 <template>
   <div class="units">
+    <h1 id = title>Storage Auctions</h1>
+    <p></p>
+    <h3 id = title>Full Listing of all units avaiable for auction</h3>
+    <h3 id = title>Click on the individual auction numbers to see further details and/or place a bid</h3>
+    <button class="btnAddUnit">Add Unit</button><!--TODO: Link button to Add Unit Form/ and hide button for nonAdmin users-->
+    <p></p>
     <table id="tblUnits">
       <thead>
         <tr>
@@ -12,6 +18,8 @@
       </thead>
       <tbody>
         <tr>
+          <td>
+          </td>
           <td>
             <input
               type="text"
@@ -34,13 +42,15 @@
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
-          <!--link to route to specific unit and its details like time left and pictures-->
-          <router-link
-            class="unit-id"
-            v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
-          >
-            {{ unit.unitId }}
-          </router-link>
+          <td>
+            <!--link to route to specific unit and its details like time left and pictures-->
+            <router-link
+              class="unit-id"
+              v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
+            >
+              {{ unit.unitId }}
+            </router-link>
+          </td>
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
           <td>{{ unit.unitSize }}</td>
@@ -134,5 +144,21 @@ table,
 th,
 td {
   border: 1px solid black;
+}
+
+.unit-id{
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-bottom: 4px;
+}
+
+#title{
+  display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  background-color: white;
 }
 </style>
