@@ -23,10 +23,7 @@ namespace Capstone
             var toAddress = new MailAddress(toEmail);
             const string fromPassword = "dotnetmike";
             const string subject = "Welcome to Self Storage Auction";
-            string body = "Click here to confirm your account " + verificationNumber;
-
-            
-
+            string body = "Enter the following code on the site to verify your account:xxxxx " + verificationNumber;
 
             var smtp = new SmtpClient
             {

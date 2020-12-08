@@ -18,6 +18,7 @@
       </thead>
       <tbody>
         <tr>
+          <td></td>
           <td>
           </td>
           <td>
@@ -42,13 +43,15 @@
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
-          <!--link to route to specific unit and its details like time left and pictures-->
-          <router-link
-            class="unit-id"
-            v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
-          >
-            {{ unit.unitId }}
-          </router-link>
+          <td>
+            <!--link to route to specific unit and its details like time left and pictures-->
+            <router-link
+              class="unit-id"
+              v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
+            >
+              {{ unit.unitId }}
+            </router-link>
+          </td>
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
           <td>{{ unit.unitSize }}</td>
