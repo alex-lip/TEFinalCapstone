@@ -55,6 +55,11 @@ const router = new Router({
       },
     },
     {
+      path: "/register/verify",
+      name: "verify",
+      component: Verification,
+    },
+    {
       path: "/units",
       name: "units",
       component: () => import("../views/Units.vue"),

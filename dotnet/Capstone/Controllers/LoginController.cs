@@ -130,5 +130,13 @@ namespace Capstone.Controllers
             return result;
         }
 
+        // Verify method
+        // User enters a 6 digit number into a new page that is the redirect from /register
+        // This verify method checks the entered number against the generated number, which has been added to that user record in DB
+        // If the numbers match, change that field to "EMAIL_VERIFIED", which allows them to login
+
+        // Front End
+        // View for registration/verify
+
     }
 }
