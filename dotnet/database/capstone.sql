@@ -31,6 +31,8 @@ CREATE TABLE units(
 	unit_size VARCHAR(200) NOT NULL,
 	pictures_unitnumber INTEGER,
 	high_bid MONEY NOT NULL,
+	CONSTRAINT units_location_name_check CHECK ((location_name = 'Columbus, OH') OR (location_name = 'New York, NY') OR (location_name = 'Cleveland, OH')),
+	CONSTRAINT units_unit_size_check CHECK ((unit_size = '5x10') OR (unit_size = '10x10') OR (unit_size = '10x15') OR (unit_size = '10x20') OR (unit_size = '10x30'))
 )
 
 CREATE TABLE pictures(
@@ -44,8 +46,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user@user.
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
 
-INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '30 sqft', 4, 900);
-INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '50 sqft', 33, 1);
+INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '5x10', 4, 900);
+INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '10x10', 33, 1);
 
 ALTER TABLE units ADD FOREIGN KEY (pictures_unitnumber) REFERENCES pictures(picture_unitnumber)
 
