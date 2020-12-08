@@ -13,8 +13,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>    <!-- Modify filter to show dropdown selection in order to filter by location or size -->  
-            <input type="checkbox" id="selectBox" v-on:change="$event.target.checked ? selectedUserIDs = units.map(u => u.id) : selectedUnitIDs = []"/>
+          <td>
           </td>
           <td>
             <input type="text" id="locationNameFilter" v-model="filter.locationName" />
@@ -28,21 +27,17 @@
           <td>
             <input type="text" id="highBidFilter" v-model="filter.highBid" />
           </td>
-          <td>&nbsp;</td>
         </tr>
         <tr
           v-for="unit in filteredList"
           v-bind:key="unit.id"
         >
-          <td class="unit-id">{{ unit.id }}</td>
-          <router-link class="unit-id" v-bind:to="{name: 'unit-details', params: {id: unit.id}}">{{unit.id}}</router-link><!--link to route to specific unit and its details like time left and pictures-->
+          <td class="unit-id">{{ unit.unitId }}</td>
+          <router-link class="unit-id" v-bind:to="{name: 'unit-details', params: {id: unit.unitId}}">{{unit.unitId}}</router-link><!--link to route to specific unit and its details like time left and pictures-->
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
           <td>{{ unit.unitSize }}</td>
           <td>{{ unit.highBid }}</td>
-          <td>
-            <button class="btnUnitDetails"></button><!--need to add button functionality here to take users to the unit card of the unit in question-->
-          </td>
         </tr>
       </tbody>
     </table>
@@ -51,18 +46,13 @@
 
 <script>
 import unitService from "../services/UnitService";
-//import UnitCard from "../components/UnitCard.vue";
 
 export default {
   name: "Units",
 
-  //components: {
-  //  UnitCard,
-  //},
-
   data() {
     return {
-      unit: {
+      filter: {
         id: null,
         locationName: "",
         unitNumber: "",
@@ -86,7 +76,7 @@ export default {
   },
     computed: {
     filteredList() {
-      let filteredUnits = this.units;
+      let filteredUnits = this.$store.state.units;
       if (this.filter.locationName != "") {
         filteredUnits = filteredUnits.filter((unit) =>
           unit.locationName
@@ -131,9 +121,11 @@ body {
 
 table {
   width: 80%;
+  background-color: white;
+  color: black;
 }
 
 table, th, td {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 </style>

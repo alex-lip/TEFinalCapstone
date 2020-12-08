@@ -2,7 +2,7 @@
   <div>
     <UnitCard
       v-for="u in this.$store.state.units"
-      v-bind:key="u.id"
+      v-bind:key="u.unitId"
       v-bind:unit="u"
     >
     </UnitCard>
@@ -10,8 +10,14 @@
 </template>
 
 <script>
+import unitService from "../services/UnitService";
+import UnitCard from "../components/UnitCard";
+
 export default {
   name: "unit-details",
+  components: {
+    UnitCard,
+  },
   data() {
     return {
       unitDetails: undefined,
