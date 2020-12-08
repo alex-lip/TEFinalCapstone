@@ -12,6 +12,7 @@
       </thead>
       <tbody>
         <tr>
+          <td></td>
           <td>
             <input
               type="text"
