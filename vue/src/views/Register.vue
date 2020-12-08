@@ -45,11 +45,9 @@
 
 <script>
 import authService from '../services/AuthService';
-import Verification from '../views/Verification.vue';
 
 export default {
   name: 'register',
-  components: { Verification },
   data() {
     return {
       user: {
