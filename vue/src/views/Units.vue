@@ -1,59 +1,73 @@
 <template>
   <div class="units">
-    <!-- Create a dropdown selection in order to filter by location -->  
-
-    <!-- Added this commented out table here, wasn't sure if I should put it in, we never really came to a full agreement on the display for the selection of units
-    <div>
-    <h2 id = contents>
-    <table border="1" width="100%">
-	<col style="width:10%">
-	<col style="width:10%">
-	<col style="width:10%">
-  <col style="width:70%">
-	<thead>
-	<tr>
-		<th>Unit Location</th>
-		<th>Unit Number</th>
-		<th>Unit Size</th>
-    <th>Unit Details </th>
-	</tr>
-  <tr>
-		<th>{{ unit.locationName }}</th>
-		<th>{{ unit.unitNumber }}</th>
-		<th>{{ unit.unitSize }}</th>
-    <th>Inventory Pictures</th> Need to add link here to pull up the unit card so users can see unit pictures and current high bid
-	</tr>
-	</thead>  
-      </h2>
-  </div>-->
-
-    <!-- List all Units -->
-    <UnitCard
-      v-for="u in this.$store.state.units"
-      v-bind:key="u.id"
-      v-bind:unit="u"
-    >
-    </UnitCard>
-
-    <p>Segment to add unit (Part of the "Unit Information" Card)</p>
+    <table id="tblUnits">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Auction Number</th>
+          <th>Location Name</th>
+          <th>Unit Number</th>
+          <th>Unit Size</th>
+          <th>High Bid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>    <!-- Modify filter to show dropdown selection in order to filter by location or size -->  
+            <input type="checkbox" id="selectBox" v-on:change="$event.target.checked ? selectedUserIDs = units.map(u => u.id) : selectedUnitIDs = []"/>
+          </td>
+          <td>
+            <input type="text" id="locationNameFilter" v-model="filter.locationName" />
+          </td>
+          <td>
+            <input type="text" id="unitNumberFilter" v-model="filter.unitNumber" />
+          </td>
+          <td>
+            <input type="text" id="unitSizeFilter" v-model="filter.unitSize" />
+          </td>
+          <td>
+            <input type="text" id="highBidFilter" v-model="filter.highBid" />
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr
+          v-for="unit in filteredList"
+          v-bind:key="unit.id"
+        >
+          <td class="unit-id">{{ unit.id }}</td>
+          <router-link class="unit-id" v-bind:to="{name: 'unit-details', params: {id: unit.id}}">{{unit.id}}</router-link><!--link to route to specific unit and its details like time left and pictures-->
+          <td>{{ unit.locationName }}</td>
+          <td>{{ unit.unitNumber }}</td>
+          <td>{{ unit.unitSize }}</td>
+          <td>{{ unit.highBid }}</td>
+          <td>
+            <button class="btnUnitDetails"></button><!--need to add button functionality here to take users to the unit card of the unit in question-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import unitService from "../services/UnitService";
-import UnitCard from "../components/UnitCard.vue";
+//import UnitCard from "../components/UnitCard.vue";
 
 export default {
   name: "Units",
 
-  components: {
-    UnitCard,
-  },
+  //components: {
+  //  UnitCard,
+  //},
 
   data() {
     return {
       unit: {
-        // Idk the unit properties that I need yet.
+        id: null,
+        locationName: "",
+        unitNumber: "",
+        unitSize: "",
+        highBid: "",
       },
     };
   },
@@ -70,7 +84,41 @@ export default {
   created() {
     this.getUnits();
   },
-};
+    computed: {
+    filteredList() {
+      let filteredUnits = this.units;
+      if (this.filter.locationName != "") {
+        filteredUnits = filteredUnits.filter((unit) =>
+          unit.locationName
+            .toLowerCase()
+            .includes(this.filter.locationName.toLowerCase())
+        );
+      }
+      if (this.filter.unitNumber != "") {
+        filteredUnits = filteredUnits.filter((unit) =>
+          unit.unitNumber
+            .toLowerCase()
+            .includes(this.filter.unitNumber.toLowerCase())
+        );
+      }
+      if (this.filter.unitSize != "") {
+        filteredUnits = filteredUnits.filter((unit) =>
+          unit.unitSize
+            .toLowerCase()
+            .includes(this.filter.unitSize.toLowerCase())
+        );
+      }
+      if (this.filter.highBid != "") {
+        filteredUnits = filteredUnits.filter((unit) =>
+          unit.highBid
+            .toLowerCase()
+            .includes(this.filter.highBid.toLowerCase())
+        );
+      }
+      return filteredUnits;
+    },
+ },
+}
 </script>
 
 <style>
@@ -81,5 +129,11 @@ body {
   text-align: left;
 }
 
+table {
+  width: 80%;
+}
 
+table, th, td {
+  border: 1px solid white;
+}
 </style>
