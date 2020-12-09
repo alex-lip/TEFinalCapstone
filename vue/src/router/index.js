@@ -6,7 +6,6 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 
-
 Vue.use(Router);
 
 /**
@@ -64,6 +63,14 @@ const router = new Router({
       name: "units",
       component: () => import("../views/Units.vue"),
       // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/unit/newunit",
+      name: "add-unit",
+      component: () => import("../views/AddUnit.vue"),
       meta: {
         requiresAuth: true,
       },

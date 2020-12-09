@@ -4,6 +4,8 @@
       v-bind:unit="unitDetails"
     >
     </UnitCard>
+    <button class="btnEditUnit">Edit Unit</button><!--TODO: need to code to link the form to edit the unit, EditUnit.vue/ and code so it is hidden to nonAdmin users-->
+    <button class="btnDeleteUnit" v-on:click="deleteUnit(unitDetails.unitId)">Delete Unit</button><!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
   </div>
 </template>
 
@@ -15,6 +17,9 @@ export default {
   name: "unit-details",
   components: {
     UnitCard,
+  },
+  props:{
+    unitId: Number
   },
   data() {
     return {
