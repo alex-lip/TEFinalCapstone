@@ -15,6 +15,7 @@ namespace Capstone.DAO
             "(@username, @password_hash, @salt, @user_role)";
         // Insert code in DB
         private string sqlAddVerificationCode = "INSERT INTO verification_code (user_id, code) VALUES (@user_id, @code); SELECT SCOPE_IDENTITY()";
+        private string sqlGetVerificationCode = "SELECT code FROM verification_code WHERE user_id = @user_id";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -75,7 +76,29 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@code", verificationCode);
                 cmd.ExecuteNonQuery();
             }
+        }
 
+        public bool CheckVerificationCode(User user, int userInputVerificationCode)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetVerificationCode, conn);
+                cmd.Parameters.AddWithValue("@user_id", user.UserId);
+
+                int returnValue = cmd.ExecuteNonQuery();
+
+                if (returnValue != userInputVerificationCode)
+                {
+                    Console.WriteLine("It works");
+                      
+                    return true;
+                    
+                }
+            }
+
+            return false;
         }
 
         private User GetUserFromReader(SqlDataReader reader)
