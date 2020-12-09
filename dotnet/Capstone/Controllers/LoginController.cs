@@ -123,6 +123,11 @@ namespace Capstone.Controllers
                 result = Created(user.Username, null);
                 userDAO.AddVerificationCode(user, sixDigitNumber);
 
+                // Get user input of 6 digit number
+                int userInput = sixDigitNumber; 
+
+                bool verified = userDAO.CheckVerificationCode(user, userInput);
+
             }
             else
             {
