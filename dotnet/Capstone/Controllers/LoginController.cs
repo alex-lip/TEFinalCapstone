@@ -137,6 +137,28 @@ namespace Capstone.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Verify the user input verification code matches the code in the DB.
+        /// </summary>
+        [AllowAnonymous]
+        [HttpGet("verification")]
+        public bool Verification(User user, int userInput)
+        {
+            // Get user input on form /verification
+
+            int userInputCode = userInput;
+
+            bool verificationCodeMatch = userDAO.CheckVerificationCode(user, userInputCode);
+
+            if (verificationCodeMatch == true)
+            {
+                // update user.verification_code to 1
+            }
+
+            return verificationCodeMatch;
+        }
+
+
         // Verify method
         // User enters a 6 digit number into a new page that is the redirect from /register
         // This verify method checks the entered number against the generated number, which has been added to that user record in DB
