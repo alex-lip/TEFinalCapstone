@@ -1,22 +1,18 @@
 import axios from "axios";
 
-const http = axios.create({
-  baseURL: "http://localhost:8081"
-});
-
 export default {
   getAllUnits() {
     return axios.get('/units');
   },
   createNewUnit(newUnit){
-    return http.post('/units', newUnit);
+    return axios.post('/units', newUnit);
 },
-editTopic(unitId, updatedUnit){
-  return http.put('/units/' + unitId, updatedUnit);
+editUnit(unitId, updatedUnit){
+  return axios.put('/units/' + unitId, updatedUnit);
 },
-deleteTopic(unitId){
+deleteUnit(unitId){
   console.log('deleting/' + unitId);
-  return http.delete(`/units/${unitId}`);
+  return axios.delete(`/units/${unitId}`);
 }
   //  EXAMPLE TO USE
   //   login(user) {

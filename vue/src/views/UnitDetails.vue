@@ -4,7 +4,9 @@
       v-bind:unit="unitDetails"
     >
     </UnitCard>
+    <router-link v-bind:to="{name: 'edit-unit'}">
     <button class="btnEditUnit">Edit Unit</button><!--TODO: need to code to link the form to edit the unit, EditUnit.vue/ and code so it is hidden to nonAdmin users-->
+    </router-link>
     <button class="btnDeleteUnit" v-on:click="deleteUnit(unitDetails.unitId)">Delete Unit</button><!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
   </div>
 </template>

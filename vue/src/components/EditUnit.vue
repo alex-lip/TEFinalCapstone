@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent>
+  <form @submit.prevent="updateUnit()">
     <div class="field">
       <label for="unitNumber">Location Name</label>
       <input type="text" v-model="locationName" />
@@ -13,15 +13,17 @@
       <input type="text" v-model="unitSize" />
     </div>
     <div class="field">
-      <label for="unitNumber">Iventory Pictures</label>
+      <label for="unitNumber">Inventory Pictures</label>
       <input type="text" v-model="unitPictures" />
     </div>
-    <div class="field">
+    <!--<div class="field">
       <label for="unitNumber">Unit Notes</label>
-      <input type="text" v-model="unitPictures" />
-    </div>
+      <input type="text" v-model="unit.unitNotes" />
+    </div>-->
     <div class="actions">
-      <button type="submit" v-on:click="updateUnit()">Save Changes to Unit</button>
+      <router-link v-bind:to="{name: 'units'}">
+      <button type="submit">Save Changes to Unit</button>
+      </router-link>
     </div>
   </form>
 </template>
@@ -31,21 +33,30 @@ import unitService from "../services/UnitService";
 
 export default {
   name: "create-unit",
-  props: ["unitID"],
+  props: ["unitId"],
   data() {
     return {
-      title: ""
+      locationName: "",
+      unitNumber: "",
+      unitSize: "",
+      unitPictures: ""
     };
   },
   methods: {
     updateUnit() {
-      const unit = { id: this.unitId };
+      const unit = { 
+        id: this.unitId,
+        locationName: this.locationName,
+        unitNumber: this.unitNumber,
+        unitSize: this.unitSize,
+        unitPictures: this.unitPictures 
+        };
         unitService
         .editUnit(this.unitId, unit)
         .then((response) => {
           if (response.status === 200){
 
-        // Navigate away as needed
+        //this.$store.commit('UNIT_UPDATED', this.unit);
         if (this.$router.currentRoute.name !== "Units") {
           this.$router.push({ name: "Units" });
           }

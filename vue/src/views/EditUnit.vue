@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import AddUnit from '@/components/EditUnit.vue';
+import EditUnit from '@/components/EditUnit.vue';
 
 export default {
   components:{
-    AddUnit,
+    EditUnit,
   },
   
 };

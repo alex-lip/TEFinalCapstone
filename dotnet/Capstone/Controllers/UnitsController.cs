@@ -25,5 +25,25 @@ namespace Capstone.Controllers
         {
             return Ok(unitDAO.GetUnits());
         }
+
+        /*
+        [HttpPost]
+        public ActionResult<List<Unit>> CreateNewUnit()
+        {
+            
+        }
+
+        [HttpPut]
+        public ActionResult<List<Unit>> EditUnit()
+        {
+            
+        }
+
+        [HttpDelete]
+        public ActionResult<List<Unit>> DeleteUnit()
+        {
+            
+        }
+        */
     }
 }
