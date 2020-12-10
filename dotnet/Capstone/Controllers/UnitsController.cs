@@ -2,7 +2,6 @@
 using Capstone.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using RestSharp;
 
 namespace Capstone.Controllers
 {
@@ -27,7 +26,7 @@ namespace Capstone.Controllers
             return Ok(unitDAO.GetUnits());
         }
 
-        
+        /*
         [HttpPost]
         public IActionResult CreateNewUnit(Unit newUnit)
         {
@@ -97,6 +96,6 @@ namespace Capstone.Controllers
 
             return true;
         }
-        
+        */
     }
 }
