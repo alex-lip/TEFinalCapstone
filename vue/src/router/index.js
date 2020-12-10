@@ -75,6 +75,16 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+
+    {
+      path: "/unit/:id/edit",
+      name: "edit-unit",
+      component: () => import("../views/EditUnit.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
     {
       path: "/unit/:id",
       name: "unit-details",
