@@ -9,7 +9,11 @@ export default {
     return axios.post("/login/register", user);
   },
 
-  verify(verificationCode) {
+  // verify(verificationCode) {
+  //   return axios.get("login/verification", Boolean);
+  // },
+
+  verify() {
     return axios.get("login/verification", Boolean);
   },
 };
