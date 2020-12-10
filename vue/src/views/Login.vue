@@ -88,7 +88,7 @@ export default {
 };
 </script>
 <style>
-body {
+/* body {
   font-family: system-ui;
   background: #ff944d;
   color: black;
@@ -112,5 +112,5 @@ img{
   width: 100%;
   height: 30%;
   padding: 10px;
-}
+} */
 </style>

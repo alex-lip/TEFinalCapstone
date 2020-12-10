@@ -2,46 +2,51 @@
      Note that you have classes from bootstrap available to you.
      See https://getbootstrap.com/docs/4.5/getting-started/introduction/ for reference on bootstrap -->
 <template>
-  <div id="app" class="container">
-    <!-- If you start to get random styling you don't like, remove container from this div -->
-    <div id="nav">
-      <router-link class="nav-item" v-bind:to="{ name: 'home' }">
-        <i class="fas fa-home"></i>
-        <!-- This is a font awesome icon -->
-        Home
-      </router-link>
-      <router-link class="nav-item" v-bind:to="{ name: 'units' }">
-        &nbsp;|&nbsp;Available Units
-      </router-link>
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'register' }"
-        v-if="!$store.state.token"
-        >&nbsp;|&nbsp;Register</router-link
-      >
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'login' }"
-        v-if="!$store.state.token"
-      >
-        &nbsp;|&nbsp;Login
-      </router-link>
-      <router-link
-        class="nav-item"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token"
-      >
-        &nbsp;|&nbsp;Logout
-      </router-link>
+  <!-- If you start to get random styling you don't like, remove "container" from this "app" div -->
+  <div id="app">
+    <div id="content-wrap">
+      <Header />
+      <router-view />
+      <Footer />
     </div>
-    <router-view />
   </div>
 </template>
 
 <script>
-export default {};
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+};
 </script>
 
 <!-- Application-Wide Styles go here. 
      Any valid CSS or SCSS is allowable here. See https://sass-lang.com/documentation/style-rules for info on SCSS -->
-<style lang="scss"></style>
+<style lang="scss">
+#id {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  text-align: center;
+  padding-bottom: 2.5rem; /* Footer Height */
+}
+
+#footer {
+  background: #ff944d;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; /* Footer Height */
+}
+
+#nav {
+  height: 2.5rem;
+  background: #ff944d;
+}
+</style>
