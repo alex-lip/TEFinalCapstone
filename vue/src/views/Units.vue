@@ -5,7 +5,7 @@
     <h3 id = title>Full Listing of all units avaiable for auction</h3>
     <h3 id = title>Click on the individual auction numbers to see further details and/or place a bid</h3>
     <router-link v-bind:to="{name: 'add-unit'}">
-    <button class="btnAddUnit">Add Unit</button><!--TODO: Link button to Add Unit Form/ and hide button for nonAdmin users-->
+    <button class="btnAddUnit">Add Unit</button><!--TODO: hide button for nonAdmin users-->
     </router-link>
     <p></p>
     <table id="tblUnits">
@@ -93,6 +93,7 @@ export default {
   created() {
     this.getUnits();
   },
+  
   computed: {
     filteredList() {
       let filteredUnits = this.$store.state.units;

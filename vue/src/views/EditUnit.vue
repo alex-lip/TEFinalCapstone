@@ -1,20 +1,24 @@
 <template>
-    <div id="editunit">
-    <edit-unit />
+  <div id="editunit">
+    <EditUnit />
+    You Made it to the EditUnit view.
   </div>
 </template>
 
 <script>
-import AddUnit from '@/components/EditUnit.vue';
+import EditUnit from "@/components/EditUnit.vue";
 
 export default {
-  components:{
-    AddUnit,
+  name: "edit-unit",
+
+  components: {
+    EditUnit,
   },
-  
+
+  // props: {
+  //   unitId: Number,
+  // },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
