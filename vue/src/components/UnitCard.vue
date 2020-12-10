@@ -5,7 +5,8 @@
     <div>Unit Number: {{ unit.unitNumber }}</div>
     <div>Size: {{ unit.unitSize }}</div>
     <div>Current Bid: {{ unit.highBid }}</div>
-    <div>Picture ID: {{ unit.picturesUnitNumber }}</div>
+    <img v-bind:src="'https://i.imgur.com/epMSRQH.png'" />
+    <!-- <div>Picture ID: {{ unit.picturesUnitNumber }}</div> -->
     <!--TODO: Need to add multiple pictures not just picture number-->
   </div>
 </template>
