@@ -21,7 +21,7 @@ CREATE TABLE users (
 	password_hash VARCHAR(200) NOT NULL,
 	salt VARCHAR(200) NOT NULL,
 	user_role VARCHAR(50) NOT NULL,
-	verification_status BIT DEFAULT 0,
+	verification_status INT DEFAULT 0,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
 
