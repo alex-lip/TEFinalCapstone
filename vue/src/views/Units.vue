@@ -129,7 +129,11 @@ export default {
 </script>
 
 <style>
-body {
+#tblUnits {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* body {
   font-family: system-ui;
   background: #ff944d;
   color: black;
@@ -162,5 +166,5 @@ td {
   margin: auto;
   text-align: center;
   background-color: white;
-}
+} */
 </style>
