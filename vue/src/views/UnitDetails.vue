@@ -2,6 +2,10 @@
   <div>
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
+    <button class="btnPlaceBid">
+      Bid on Unit
+    </button>
+    <p/>
     <router-link
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >

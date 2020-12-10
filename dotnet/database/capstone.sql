@@ -38,6 +38,8 @@ CREATE TABLE units(
 	unit_size VARCHAR(200) NOT NULL,
 	pictures_unitnumber INTEGER,
 	high_bid MONEY NOT NULL,
+	unit_notes VARCHAR(1000),
+	auction_end DATETIME,
 	CONSTRAINT units_location_name_check CHECK ((location_name = 'Columbus, OH') OR (location_name = 'New York, NY') OR (location_name = 'Cleveland, OH')),
 	CONSTRAINT units_unit_size_check CHECK ((unit_size = '5x10') OR (unit_size = '10x10') OR (unit_size = '10x15') OR (unit_size = '10x20') OR (unit_size = '10x30'))
 )
@@ -46,6 +48,16 @@ CREATE TABLE pictures(
 	picture_id INTEGER IDENTITY PRIMARY KEY,
 	unit_id INTEGER,
 	picture_srclink VARCHAR(200) NOT NULL,
+	FOREIGN KEY (unit_id) REFERENCES units(unit_id)
+)
+
+CREATE TABLE bids(
+	bid_id INTEGER IDENTITY PRIMARY KEY,
+	unit_id INTEGER NOT NULL,
+	username VARCHAR(50) NOT NULL,
+	bid_amount MONEY NOT NULL,
+	bid_placed DATETIME NOT NULL,
+	FOREIGN KEY (username) REFERENCES users(username),
 	FOREIGN KEY (unit_id) REFERENCES units(unit_id)
 )
 
