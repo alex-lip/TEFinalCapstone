@@ -130,6 +130,10 @@ export default {
 </script>
 
 <style>
+#tblUnits {
+  margin-left: auto;
+  margin-right: auto;
+}
 /* body {
   font-family: system-ui;
   background: #ff944d;
