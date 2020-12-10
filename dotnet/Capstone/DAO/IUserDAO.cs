@@ -9,6 +9,8 @@ namespace Capstone.DAO
         User AddUser(string username, string password, string role, int verificationCode);
         void AddVerificationCode(User user, int verificationCode);
 
-        bool CheckVerificationCode(User user, int userInputVerificationCode);
+        bool CheckVerificationCode(int userId, int userInputVerificationCode);
+
+        void ChangeVerifiedStatus(int userId);
     }
 }
