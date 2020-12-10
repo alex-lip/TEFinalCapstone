@@ -9,11 +9,8 @@ export default {
     return axios.post("/login/register", user);
   },
 
-  // verify(verificationCode) {
-  //   return axios.get("login/verification", Boolean);
-  // },
-
-  verify() {
-    return axios.get("login/verification", Boolean);
-  },
-};
+  verification(userId, verificationCode) {
+    const payload = { userId: userId, verificationCode: verificationCode}
+    return axios.post('login/verification', payload)
+  }
+}

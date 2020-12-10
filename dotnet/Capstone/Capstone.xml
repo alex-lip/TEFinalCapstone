@@ -31,7 +31,7 @@
             </summary>
             <param name="userParam">The new user to create</param>
         </member>
-        <member name="M:Capstone.Controllers.LoginController.Verification(Capstone.Models.User,System.Int32)">
+        <member name="M:Capstone.Controllers.LoginController.Verification(Capstone.Models.VerificationRequest)">
             <summary>
             Verify the user input verification code matches the code in the DB.
             </summary>

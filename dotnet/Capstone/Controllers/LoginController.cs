@@ -72,10 +72,12 @@ namespace Capstone.Controllers
             User user = userDAO.GetUser(userParam.Username);
 
             // If we found a user and the password hash matches
-            if (user != null && passwordHasher.VerifyHashMatch(user.PasswordHash, userParam.Password, user.Salt))
+            if (user != null && passwordHasher.VerifyHashMatch(user.PasswordHash, userParam.Password, user.Salt) && user.VerificationStatus == 1)
             {
                 // Create an authentication token
                 string token = tokenGenerator.GenerateToken(user.UserId, user.Username, user.Role);
+
+                // If not verified, return badrequest(custom error message)
 
                 // Create a ReturnUser object to return to the client
                 LoginResponse retUser = new LoginResponse()
@@ -126,7 +128,6 @@ namespace Capstone.Controllers
                 // Get user input of 6 digit number
                 int userInput = sixDigitNumber; 
 
-                bool verified = userDAO.CheckVerificationCode(user, userInput);
 
             }
             else
@@ -141,31 +142,28 @@ namespace Capstone.Controllers
         /// Verify the user input verification code matches the code in the DB.
         /// </summary>
         [AllowAnonymous]
-        [HttpGet("verification")]
-        public bool Verification(User user, int userInput)
+        [HttpPost("verification")]
+        public IActionResult Verification(VerificationRequest request)
         {
             // Get user input on form /verification
+            bool verificationCodeMatch = false;
+            int userInputCode = request.VerificationCode;
+            int userId = request.UserId;
 
-            int userInputCode = userInput;
-
-            bool verificationCodeMatch = userDAO.CheckVerificationCode(user, userInputCode);
+            verificationCodeMatch = userDAO.CheckVerificationCode(userId, userInputCode);
 
             if (verificationCodeMatch == true)
             {
-                // update user.verification_code to 1
+                userDAO.ChangeVerifiedStatus(userId);
+                return Ok(); // these send a status code
             }
 
-            return verificationCodeMatch;
+            else
+            {
+                return BadRequest(); // add message
+                // bad request, unauthenticated
+            }
+
         }
-
-
-        // Verify method
-        // User enters a 6 digit number into a new page that is the redirect from /register
-        // This verify method checks the entered number against the generated number, which has been added to that user record in DB
-        // If the numbers match, change that field to "EMAIL_VERIFIED", which allows them to login
-
-        // Front End
-        // View for registration/verify
-
     }
 }

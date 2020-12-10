@@ -16,6 +16,7 @@ namespace Capstone.DAO
         // Insert code in DB
         private string sqlAddVerificationCode = "INSERT INTO verification_code (user_id, code) VALUES (@user_id, @code); SELECT SCOPE_IDENTITY()";
         private string sqlGetVerificationCode = "SELECT code FROM verification_code WHERE user_id = @user_id";
+        private string sqlChangeVerifiedStatus = "UPDATE users SET verification_status = @verification_status WHERE user_id = @user_id";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -78,21 +79,34 @@ namespace Capstone.DAO
             }
         }
 
-        public bool CheckVerificationCode(User user, int userInputVerificationCode)
+        public void ChangeVerifiedStatus(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                int verifiedStatus = 1;
+
+                SqlCommand cmd = new SqlCommand(sqlChangeVerifiedStatus, conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                cmd.Parameters.AddWithValue("@verification_status", verifiedStatus);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public bool CheckVerificationCode(int userId, int userInputVerificationCode)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlGetVerificationCode, conn);
-                cmd.Parameters.AddWithValue("@user_id", user.UserId);
+                cmd.Parameters.AddWithValue("@user_id", userId);
 
                 int returnValue = cmd.ExecuteNonQuery();
 
                 if (returnValue != userInputVerificationCode)
                 {
-                    Console.WriteLine("It works");
-                      
+                    
                     return true;
                     
                 }
