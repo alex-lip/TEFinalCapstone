@@ -93,6 +93,7 @@ export default {
   created() {
     this.getUnits();
   },
+  
   computed: {
     filteredList() {
       let filteredUnits = this.$store.state.units;

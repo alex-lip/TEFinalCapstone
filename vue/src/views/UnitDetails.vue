@@ -1,13 +1,26 @@
 <template>
   <div>
-    <UnitCard
-      v-bind:unit="unitDetails"
+    <UnitCard v-bind:unit="unitDetails"> </UnitCard>
+
+    <router-link 
+      :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
+<<<<<<< HEAD
     </UnitCard>
     <router-link v-bind:to="{name: 'edit-unit'}">
     <button class="btnEditUnit">Edit Unit</button><!--TODO: need to code to link the form to edit the unit, EditUnit.vue/ and code so it is hidden to nonAdmin users-->
     </router-link>
     <button class="btnDeleteUnit" v-on:click="deleteUnit(unitDetails.unitId)">Delete Unit</button><!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
+=======
+      <!-- <button class="btnEditUnit">Edit Unit</button> -->
+      Edit Unit
+    </router-link> <!--TODO: code so it is hidden to nonAdmin users-->
+
+    <button class="btnDeleteUnit" v-on:click="deleteUnit(unitDetails.unitId)">
+      Delete Unit
+    </button>
+    <!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
+>>>>>>> 7e84f4d6d7a37caa1e0cb7eb87fbf5d023b8063e
   </div>
 </template>
 
@@ -17,17 +30,21 @@ import UnitCard from "../components/UnitCard";
 
 export default {
   name: "unit-details",
+
   components: {
     UnitCard,
   },
-  props:{
-    unitId: Number
+
+  props: {
+    unitId: Number,
   },
+
   data() {
     return {
       unitDetails: undefined,
     };
   },
+
   created() {
     this.unitDetails = this.$store.state.units.find(
       (u) => u.unitId == this.$route.params.id
@@ -38,6 +55,11 @@ export default {
       );
     }
   },
+
+  computed: {
+
+  },
+
   methods: {
     deleteUnit(id) {
       const confirmed = confirm(
