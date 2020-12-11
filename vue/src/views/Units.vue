@@ -8,10 +8,9 @@
       place a bid
     </h3>
     <router-link v-bind:to="{ name: 'add-unit' }">
-      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button
-      ><!--TODO: hide button for nonAdmin users-->
+      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
-    <button v-if="userRole == 'admin'">User View</button>
+    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">User View</button>
     <p></p>
     <table id="tblUnits">
       <thead>
@@ -37,14 +36,14 @@
             <input
               type="text"
               id="unitNumberFilter"
-              v-model="filter.unitNumber"
+              v-model.number="filter.unitNumber"
             />
           </td>
           <td>
             <input type="text" id="unitSizeFilter" v-model="filter.unitSize" />
           </td>
           <td>
-            <input type="text" id="highBidFilter" v-model="filter.highBid" />
+            <input type="text" id="highBidFilter" v-model.number="filter.highBid" />
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
@@ -112,20 +111,25 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitNumber
-            .startsWith(this.filter.unitNumber)
+<<<<<<< HEAD
+          unit.unitNumber === this.filter.unitNumber
+=======
+          unit.unitNumber.startsWith(this.filter.unitNumber)
+>>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
         );
       }
       if (this.filter.unitSize != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitSize
-            .startsWith(this.filter.unitSize)
+          unit.unitSize.startsWith(this.filter.unitSize)
         );
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid
-            .startsWith(this.filter.highBid)
+<<<<<<< HEAD
+          unit.highBid <= this.filter.highBid
+=======
+          unit.highBid.startsWith(this.filter.highBid)
+>>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
         );
       }
       return filteredUnits;
@@ -138,6 +142,13 @@ export default {
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid black;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }
 /* body {
   font-family: system-ui;
@@ -152,11 +163,7 @@ table {
   color: black;
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
-}
+
 
 .unit-id{
   border-bottom: 1px solid black;

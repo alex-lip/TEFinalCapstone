@@ -25,6 +25,34 @@ namespace Capstone.Controllers
         {
             return Ok(unitDAO.GetUnits());
         }
+<<<<<<< HEAD
+        
+        //[HttpPost]
+        //public IActionResult CreateNewUnit(Unit newUnit)
+        //{
+        //    RestRequest request = new RestRequest(this.API_URL + "units");
+
+        //    request.AddJsonBody(newUnit);
+            
+        //    IRestResponse<Unit> response = this.client.Post<Unit>(request);
+            
+        //    if(response.ResponseStatus != ResponseStatus.Completed)
+        //    {
+        //        Console.WriteLine("Could not add the specified unit");
+        //        return null;
+        //    }
+
+        //    if(!response.IsSuccessful)
+        //    {
+        //        Console.WriteLine();
+        //        return null;
+        //    }
+
+        //    return response.Data;
+        //}
+        
+        /*
+=======
 
         /*
         [HttpPost]
@@ -32,6 +60,7 @@ namespace Capstone.Controllers
         {
             RestRequest request = new RestRequest(this.API_URL + "units");
             
+>>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
         [HttpPut]
         public Unit EditUnit(Unit updatedUnit)
         {
@@ -78,5 +107,9 @@ namespace Capstone.Controllers
             return true;
         }
         */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
     }
 }
