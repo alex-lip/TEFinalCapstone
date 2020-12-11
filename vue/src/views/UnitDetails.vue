@@ -77,7 +77,7 @@ export default {
       );
 
       if (confirmed) {
-        unitService.deleteUnit(3).then((response) => {
+        unitService.deleteUnit(this.unitDetails.unitId).then((response) => {
           console.debug("Unit deleted", response);
 
           if (response.status === 200) {
