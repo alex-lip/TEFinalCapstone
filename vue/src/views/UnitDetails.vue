@@ -5,13 +5,18 @@
     <button class="btnPlaceBid">
       Bid on Unit
     </button>
+<<<<<<< HEAD
     <router-link v-bind:to="{name: 'units'}">
     <button class="btnNoBid">
       Return to List of Units
     </button>
     </router-link>
     <p/>
+=======
+    <p />
+>>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
     <router-link
+      v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
       <!-- <button class="btnEditUnit">Edit Unit</button> -->
@@ -19,10 +24,17 @@
     </router-link>
     <!--TODO: code so it is hidden to nonAdmin users-->
 
-    <button class="btnDeleteUnit" v-on:click="deleteUnit(unitDetails.unitId)">
+    <button
+      class="btnDeleteUnit"
+      v-if="userRole == 'admin'"
+      v-on:click="deleteUnit(unitDetails.unitId)"
+    >
       Delete Unit
     </button>
     <!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
+    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+      User View
+    </button>
   </div>
 </template>
 
@@ -45,6 +57,8 @@ export default {
   data() {
     return {
       unitDetails: undefined,
+
+      userRole: this.$store.state.user.role,
     };
   },
 

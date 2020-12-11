@@ -148,13 +148,13 @@ namespace Capstone.Controllers
             // Get user input on form /verification
             bool verificationCodeMatch = false;
             int userInputCode = request.VerificationCode;
-            int userId = request.UserId;
+            string username = request.UserName;
 
-            verificationCodeMatch = userDAO.CheckVerificationCode(userId, userInputCode);
+            verificationCodeMatch = userDAO.CheckVerificationCode(username, userInputCode);
 
             if (verificationCodeMatch == true)
             {
-                userDAO.ChangeVerifiedStatus(userId);
+                userDAO.ChangeVerifiedStatus(username);
                 return Ok(); // these send a status code
             }
 
