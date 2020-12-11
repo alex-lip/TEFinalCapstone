@@ -8,10 +8,9 @@
       place a bid
     </h3>
     <router-link v-bind:to="{ name: 'add-unit' }">
-      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button
-      ><!--TODO: hide button for nonAdmin users-->
+      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
-    <button v-if="userRole == 'admin'">User View</button>
+    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">User View</button>
     <p></p>
     <table id="tblUnits">
       <thead>
@@ -112,20 +111,17 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitNumber
-            .startsWith(this.filter.unitNumber)
+          unit.unitNumber.startsWith(this.filter.unitNumber)
         );
       }
       if (this.filter.unitSize != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitSize
-            .startsWith(this.filter.unitSize)
+          unit.unitSize.startsWith(this.filter.unitSize)
         );
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid
-            .startsWith(this.filter.highBid)
+          unit.highBid.startsWith(this.filter.highBid)
         );
       }
       return filteredUnits;
