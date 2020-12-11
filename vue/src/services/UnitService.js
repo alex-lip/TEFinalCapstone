@@ -8,8 +8,7 @@ export default {
     return axios.post("/units", newUnit);
   },
   editUnit(unitId, updatedUnit) {
-    const payload = { unitId: unitId, updatedUnit: updatedUnit}
-    return axios.put("/units/" + unitId, payload);
+    return axios.put("/units/" + unitId, updatedUnit);
   },
   deleteUnit(unitId) {
     return axios.delete(`/units/${unitId}`, unitId);

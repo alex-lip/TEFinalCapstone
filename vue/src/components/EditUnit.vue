@@ -2,30 +2,30 @@
   <form @submit.prevent="updateUnit()">
     <div class="field">
       <label for="unitNumber">Location Name</label>
-      <textarea class="form-control" v-model="this.unitDetails.locationName" />
+      <textarea class="form-control" v-model="unitDetails.locationName" />
     </div>
     <div class="field">
       <label for="unitNumber">Unit Number</label>
-      <textarea class="form-control" v-model="this.unitDetails.unitNumber" />
+      <textarea class="form-control" v-model.number="unitDetails.unitNumber" />
     </div>
     <div class="field">
       <label for="unitSize">Unit Size</label>
-      <textarea class="form-control" v-model="this.unitDetails.unitSize" />
+      <textarea class="form-control" v-model="unitDetails.unitSize" />
     </div>
     <div class="field">
       <label for="unitPictures">Inventory Pictures</label>
-      <textarea class="form-control" v-model="this.unitDetails.picturesUnitNumber" />
+      <textarea class="form-control" v-model="unitDetails.picturesUnitNumber" />
     </div>
     <div class="form-group">
       <label for="notes">Notes</label>
-      <textarea class="form-control" id="notes" v-model="this.unitDetails.notes" />
+      <textarea class="form-control" id="notes" v-model="unitDetails.notes" />
     </div>
     <div class="form-group">
       <label for="facilityAddress">Facility Address</label>
       <textarea
         class="form-control"
         id="facilityAddress"
-        v-model="this.unitDetails.facilityAddress"
+        v-model="unitDetails.facilityAddress"
       />
     </div>
     <div class="form-group">
@@ -91,11 +91,6 @@ export default {
     this.unitDetails = this.$store.state.units.find(
       (u) => u.unitId == this.$route.params.id
     );
-    if (!this.unitDetails) {
-      this.unitDetails = this.$store.state.units.find(
-        (u) => u.unitId == this.$route.params.id
-      );
-    }
   },
 };
 </script>
