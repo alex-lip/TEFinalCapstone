@@ -11,7 +11,7 @@ export default {
     return axios.put("/units/" + unitId, updatedUnit);
   },
   deleteUnit(unitId) {
-    return axios.delete(`/units/${unitId}`);
+    return axios.delete(`/units/${unitId}`, unitId);
   },
   //  EXAMPLE TO USE
   //   login(user) {

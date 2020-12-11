@@ -23,7 +23,7 @@
     <button
       class="btnDeleteUnit"
       v-if="userRole == 'admin'"
-      v-on:click="deleteUnit({ unitId })"
+      v-on:click.prevent="deleteUnit()"
     >
       Delete Unit
     </button>
@@ -46,9 +46,9 @@ export default {
     //unitService,
   },
 
-  props: {
-    unitId: Number,
-  },
+   props: {
+     unitId: Number,
+   },
 
   data() {
     return {
@@ -71,13 +71,13 @@ export default {
 
   computed: {},
   methods: {
-    deleteUnit(id) { // use filter to grab from state
+    deleteUnit() { // use filter to grab from state
       const confirmed = confirm(
         "Are you sure you want to delete this unit? This cannot be undone"
       );
 
       if (confirmed) {
-        unitService.deleteUnit(id).then((response) => {
+        unitService.deleteUnit(this.unit.unitId).then((response) => {
           console.debug("Unit deleted", response);
 
           if (response.status === 200) {
