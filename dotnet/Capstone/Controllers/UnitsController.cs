@@ -27,7 +27,6 @@ namespace Capstone.Controllers
         }
 
         /*
-<<<<<<< HEAD
         [HttpPost]
         public IActionResult CreateNewUnit(Unit newUnit)
         {
@@ -52,25 +51,12 @@ namespace Capstone.Controllers
             return response.Data;
         }
 
-=======
-
-=======
->>>>>>> 247e5df05b186061e29e173a0768358257f72a11
->>>>>>> c289bffe4145ff23936b5163a68000ce8fd2bc70
 
         [HttpPost]
         public IActionResult CreateNewUnit(Unit newUnit)
         {
             RestRequest request = new RestRequest(this.API_URL + "units");
-            
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 247e5df05b186061e29e173a0768358257f72a11
->>>>>>> c289bffe4145ff23936b5163a68000ce8fd2bc70
         [HttpPut]
         public Unit EditUnit(Unit updatedUnit)
         {
@@ -110,11 +96,6 @@ namespace Capstone.Controllers
             return NoContent();
 
         }
-<<<<<<< HEAD
-        
 
-=======
-        */
->>>>>>> c289bffe4145ff23936b5163a68000ce8fd2bc70
     }
 }
