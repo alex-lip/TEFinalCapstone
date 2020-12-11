@@ -8,7 +8,7 @@
           type="text"
           class="form-control"
           id="locationName"
-          v-model="newUnit.locationName"
+          v-model.trim="newUnit.locationName"
           autocomplete="location"
           required
         />
@@ -30,7 +30,7 @@
           type="text"
           class="form-control"
           id="unitSize"
-          v-model="newUnit.unitSize"
+          v-model.trim="newUnit.unitSize"
           autocomplete="size"
         />
       </div>
@@ -39,14 +39,14 @@
       </div>
       <div class="form-group">
         <label for="notes">Notes</label>
-        <textarea class="form-control" id="notes" v-model="newUnit.notes" />
+        <textarea class="form-control" id="notes" v-model.trim="newUnit.notes" />
       </div>
       <div class="form-group">
         <label for="facilityAddress">Facility Address</label>
         <textarea
           class="form-control"
           id="facilityAddress"
-          v-model="newUnit.facilityAddress"
+          v-model.trim="newUnit.facilityAddress"
         />
       </div>
       <div class="form-group">
@@ -55,7 +55,7 @@
           class="form-control"
           id="auctionEnd"
           type="datetime-local"
-          v-model="newUnit.auctionEnd"
+          v-model.trim="newUnit.auctionEnd"
         />
       </div>
       <div class="form-group">

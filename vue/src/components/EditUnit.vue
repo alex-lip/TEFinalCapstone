@@ -30,14 +30,14 @@
     </div>
     <div class="form-group">
       <label for="endDate">End Date</label>
-      <textarea class="form-control" id="endDate" v-model="this.unitDetails.auctionEnd" />
+      <input class="form-control" id="endDate" type="datetime-local" v-model="unitDetails.auctionEnd" />
     </div>
     <div class="form-group">
       <label for="highBid">High Bid</label>
       <textarea
         class="form-control"
         id="highBid"
-        v-model.number="this.unitDetails.highBid"
+        v-model.number="unitDetails.highBid"
       />
     </div>
     <div class="actions">
