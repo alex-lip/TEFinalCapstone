@@ -111,7 +111,11 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredUnits = filteredUnits.filter((unit) =>
+<<<<<<< HEAD
           unit.unitNumber === this.filter.unitNumber
+=======
+          unit.unitNumber.startsWith(this.filter.unitNumber)
+>>>>>>> 247e5df05b186061e29e173a0768358257f72a11
         );
       }
       if (this.filter.unitSize != "") {
@@ -121,7 +125,11 @@ export default {
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
+<<<<<<< HEAD
           unit.highBid <= this.filter.highBid
+=======
+          unit.highBid.startsWith(this.filter.highBid)
+>>>>>>> 247e5df05b186061e29e173a0768358257f72a11
         );
       }
       return filteredUnits;

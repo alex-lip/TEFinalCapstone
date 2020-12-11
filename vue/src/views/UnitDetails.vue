@@ -11,7 +11,10 @@
     </button>
     </router-link>
     <p/>
+<<<<<<< HEAD
     <p />
+=======
+>>>>>>> 247e5df05b186061e29e173a0768358257f72a11
     <router-link
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"

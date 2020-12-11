@@ -25,6 +25,7 @@ namespace Capstone.Controllers
         {
             return Ok(unitDAO.GetUnits());
         }
+<<<<<<< HEAD
         
         //[HttpPost]
         //public IActionResult CreateNewUnit(Unit newUnit)
@@ -52,6 +53,8 @@ namespace Capstone.Controllers
         
         /*
 
+=======
+>>>>>>> 247e5df05b186061e29e173a0768358257f72a11
 
         /*
         [HttpPost]
@@ -59,7 +62,10 @@ namespace Capstone.Controllers
         {
             RestRequest request = new RestRequest(this.API_URL + "units");
             
+<<<<<<< HEAD
 
+=======
+>>>>>>> 247e5df05b186061e29e173a0768358257f72a11
         [HttpPut]
         public Unit EditUnit(Unit updatedUnit)
         {
