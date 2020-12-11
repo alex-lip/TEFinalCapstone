@@ -81,12 +81,12 @@ namespace Capstone.Controllers
             return response.Data;
         }
         */
-        [HttpDelete("{id}")]
+        [HttpDelete("{unitId}")]
         public ActionResult DeleteUnit(int unitId)
         {
             Unit unit = this.unitDAO.GetUnitById(unitId);
 
-            if (unit == null)
+            if (unit == null || unitId == 0)
             {
                 return NotFound();
             }

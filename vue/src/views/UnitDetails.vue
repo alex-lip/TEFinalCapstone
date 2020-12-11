@@ -23,7 +23,11 @@
     <button
       class="btnDeleteUnit"
       v-if="userRole == 'admin'"
+<<<<<<< HEAD
       v-on:click.prevent="deleteUnit()"
+=======
+      v-on:click="deleteUnit()"
+>>>>>>> 735afe727ddc64e32c2dcac1df6a042cfbeac5fc
     >
       Delete Unit
     </button>
