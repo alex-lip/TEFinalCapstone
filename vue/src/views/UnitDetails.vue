@@ -23,7 +23,7 @@
     <button
       class="btnDeleteUnit"
       v-if="userRole == 'admin'"
-      v-on:click="deleteUnit(unitDetails.unitId)"
+      v-on:click="deleteUnit()"
     >
       Delete Unit
     </button>
@@ -70,9 +70,8 @@ export default {
   },
 
   computed: {},
-
   methods: {
-    deleteUnit() { // use filter to grab from state
+    deleteUnit(id) { // use filter to grab from state
       const confirmed = confirm(
         "Are you sure you want to delete this unit? This cannot be undone"
       );
