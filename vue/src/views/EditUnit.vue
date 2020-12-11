@@ -1,7 +1,6 @@
 <template>
   <div id="editunit">
     <EditUnit />
-    You Made it to the EditUnit view.
   </div>
 </template>
 

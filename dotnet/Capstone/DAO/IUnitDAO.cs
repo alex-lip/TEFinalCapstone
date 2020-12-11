@@ -12,5 +12,7 @@ namespace Capstone.DAO
         void DeleteUnit(Unit unit);
 
         bool AddUnit(Unit unit);
+
+        bool EditUnit(int id, Unit unit);
     }
 }

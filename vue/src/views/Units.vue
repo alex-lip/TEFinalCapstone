@@ -29,6 +29,7 @@
             <input
               type="text"
               id="locationNameFilter"
+              placeholder="Location Name"
               v-model="filter.locationName"
             />
           </td>
@@ -36,14 +37,15 @@
             <input
               type="text"
               id="unitNumberFilter"
+              placeholder="Unit Number"
               v-model.number="filter.unitNumber"
             />
           </td>
           <td>
-            <input type="text" id="unitSizeFilter" v-model="filter.unitSize" />
+            <input type="text" id="unitSizeFilter" placeholder="Unit Size" v-model="filter.unitSize" />
           </td>
           <td>
-            <input type="text" id="highBidFilter" v-model.number="filter.highBid" />
+            <input type="text" id="highBidFilter" placeholder="High Bid" v-model.number="filter.highBid" />
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">

@@ -32,6 +32,12 @@ namespace Capstone.Controllers
             return Ok(unitDAO.AddUnit(unit));
         }
 
+        [HttpPut("{unitId}")]
+        public ActionResult EditUnit(int id, Unit unit)
+        {
+            return Ok(unitDAO.EditUnit(id, unit));
+        }
+
         [HttpDelete("{unitId}")]
         public ActionResult DeleteUnit(int unitId)
         {
