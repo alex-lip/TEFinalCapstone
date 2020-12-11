@@ -113,20 +113,19 @@ export default {
       if (this.filter.unitNumber != "") {
         filteredUnits = filteredUnits.filter((unit) =>
           unit.unitNumber
-            .toLowerCase()
-            .includes(this.filter.unitNumber.toLowerCase())
+            .startsWith(this.filter.unitNumber)
         );
       }
       if (this.filter.unitSize != "") {
         filteredUnits = filteredUnits.filter((unit) =>
           unit.unitSize
-            .toLowerCase()
-            .includes(this.filter.unitSize.toLowerCase())
+            .startsWith(this.filter.unitSize)
         );
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid.toLowerCase().includes(this.filter.highBid.toLowerCase())
+          unit.highBid
+            .startsWith(this.filter.highBid)
         );
       }
       return filteredUnits;

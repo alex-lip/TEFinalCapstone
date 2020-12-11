@@ -26,11 +26,19 @@ namespace Capstone.Controllers
             return Ok(unitDAO.GetUnits());
         }
 
+<<<<<<< HEAD
+        /*
+        [HttpPost]
+        public IActionResult CreateNewUnit(Unit newUnit)
+        {
+            RestRequest request = new RestRequest(this.API_URL + "units");
+=======
         
         //[HttpPost]
         //public IActionResult CreateNewUnit(Unit newUnit)
         //{
         //    RestRequest request = new RestRequest(this.API_URL + "units");
+>>>>>>> b48835520407ea1524a52772b1a99dcf97582864
             
         //    request.AddJsonBody(newUnit);
             
@@ -51,6 +59,54 @@ namespace Capstone.Controllers
         //    return response.Data;
         //}
         
+<<<<<<< HEAD
+        [HttpPut]
+        public Unit EditUnit(Unit updatedUnit)
+        {
+            RestRequest request = new RestRequest(this.API_URL + "units/" + updatedUnit.Id);
+
+            request.AddJsonBody(updatedUnit);
+
+            IRestResponse<Unit> response = this.client.Put<Unit>(request);
+
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                Console.WriteLine("Could not update the specified unit");
+                return null;
+            }
+
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine("Encountered an error updating unit: " + response.ErrorMessage + " (" + response.StatusCode + ")");
+                return null;
+            }
+
+            return response.Data;
+        }
+
+        [HttpDelete]
+        public bool DeleteUnit(int unitId)
+        {
+             RestRequest request = new RestRequest(this.API_URL + "units/" + unitId);
+
+            IRestResponse response = this.client.Delete(request);
+
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                Console.WriteLine("Could not delete the specified unit");
+                return false;
+            }
+
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine("Encountered an error deleting unit: " + response.ErrorMessage + " (" + response.StatusCode + ")");
+                return false;
+            }
+
+            return true;
+        }
+        */
+=======
         //[HttpPut]
         //public Unit EditUnit(Unit updatedUnit)
         //{
@@ -97,5 +153,6 @@ namespace Capstone.Controllers
         //    return true;
         //}
         
+>>>>>>> b48835520407ea1524a52772b1a99dcf97582864
     }
 }

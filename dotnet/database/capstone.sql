@@ -57,8 +57,8 @@ CREATE TABLE bids(
 	username VARCHAR(50) NOT NULL,
 	bid_amount MONEY NOT NULL,
 	bid_placed DATETIME NOT NULL,
-	FOREIGN KEY (username) REFERENCES users(username),
-	FOREIGN KEY (unit_id) REFERENCES units(unit_id)
+	--FOREIGN KEY (username) REFERENCES users(username),
+	--FOREIGN KEY (unit_id) REFERENCES units(unit_id)
 )
 
 --populate default data: 'password'
@@ -68,7 +68,6 @@ INSERT INTO users (username, password_hash, salt, user_role, verification_status
 
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '5x10', 4, 900);
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '10x10', 33, 1);
-
 
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
