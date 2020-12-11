@@ -23,10 +23,13 @@ namespace Capstone.DAO
 
         //TODO: need to update for unit notes
         private string sqlPostUnit =
-    "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
+            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
             "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
 
-        private string sqlPutUnit = "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, pictures_unitnumber = @pictures_unitnumber, unit_notes = @notes, facility_address = @facility_address, high_bid = @high_bid WHERE unitId = @unitId;";
+        private string sqlPutUnit = 
+            "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, " +
+            "pictures_unitnumber = @pictures_unitnumber, unit_notes = @notes, facility_address = @facility_address, " +
+            "high_bid = @high_bid WHERE unit_id = @unitId;";
         
         private string sqlGetUnitById = "SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
             "FROM units WHERE unit_id = @unit_id";
@@ -140,6 +143,7 @@ namespace Capstone.DAO
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(sqlPutUnit, connection);
+                command.Parameters.AddWithValue("@unitId", unit.UnitId);
                 command.Parameters.AddWithValue("@location_name", unit.LocationName);
                 command.Parameters.AddWithValue("@unit_number", unit.UnitNumber);
                 command.Parameters.AddWithValue("@unit_size", unit.UnitSize);
