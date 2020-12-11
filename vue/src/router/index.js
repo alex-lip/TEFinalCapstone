@@ -68,7 +68,7 @@ const router = new Router({
       },
     },
     {
-      path: "/unit/newunit",
+      path: "/units/newunit",
       name: "add-unit",
       component: () => import("../views/AddUnit.vue"),
       meta: {
@@ -77,7 +77,7 @@ const router = new Router({
     },
 
     {
-      path: "/unit/:id/edit",
+      path: "/units/:id/edit",
       name: "edit-unit",
       component: () => import("../views/EditUnit.vue"),
       meta: {
@@ -94,7 +94,7 @@ const router = new Router({
     //   },
     // },
     {
-      path: "/unit/:id",
+      path: "/units/:id",
       name: "unit-details",
       component: () => import("../views/UnitDetails.vue"),
       // Does the user have to be logged in in order to see the available units?

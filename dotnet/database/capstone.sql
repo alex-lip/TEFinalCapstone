@@ -66,6 +66,7 @@ INSERT INTO users (username, password_hash, salt, user_role, verification_status
 
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Columbus, OH', '1000', '5x10', 4, 900);
 INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('New York, NY', '55', '10x10', 33, 1);
+INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, high_bid) VALUES ('Cleveland, OH', '54', '10x20', 33, 1);
 
 ALTER TABLE bids ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE bids ADD FOREIGN KEY (unit_id) REFERENCES units(unit_id);
