@@ -1,12 +1,17 @@
 <template>
   <div class="units">
-    <h1 id = title>Storage Auctions</h1>
+    <h1 id="title">Storage Auctions</h1>
     <p></p>
-    <h3 id = title>Full Listing of all units avaiable for auction</h3>
-    <h3 id = title>Click on the individual auction numbers to see further details and/or place a bid</h3>
-    <router-link v-bind:to="{name: 'add-unit'}">
-    <button class="btnAddUnit">Add Unit</button><!--TODO: hide button for nonAdmin users-->
+    <h3 id="title">Full Listing of all units avaiable for auction</h3>
+    <h3 id="title">
+      Click on the individual auction numbers to see further details and/or
+      place a bid
+    </h3>
+    <router-link v-bind:to="{ name: 'add-unit' }">
+      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button
+      ><!--TODO: hide button for nonAdmin users-->
     </router-link>
+    <button v-if="userRole == 'admin'">User View</button>
     <p></p>
     <table id="tblUnits">
       <thead>
@@ -20,8 +25,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>
-          </td>
+          <td></td>
           <td>
             <input
               type="text"
@@ -78,6 +82,8 @@ export default {
         unitSize: "",
         highBid: "",
       },
+
+      userRole: this.$store.state.user.role,
     };
   },
 
@@ -93,7 +99,7 @@ export default {
   created() {
     this.getUnits();
   },
-  
+
   computed: {
     filteredList() {
       let filteredUnits = this.$store.state.units;
