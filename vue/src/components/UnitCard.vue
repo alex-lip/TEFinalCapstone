@@ -22,7 +22,7 @@ export default {
 <style>
 .unit-card {
   background-color: white;
-  border: 3px solid black;
+  border: 5px solid black;
   border-radius: 10px;
 }
 

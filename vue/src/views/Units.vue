@@ -33,14 +33,14 @@
             <input
               type="text"
               id="unitNumberFilter"
-              v-model="filter.unitNumber"
+              v-model.number="filter.unitNumber"
             />
           </td>
           <td>
             <input type="text" id="unitSizeFilter" v-model="filter.unitSize" />
           </td>
           <td>
-            <input type="text" id="highBidFilter" v-model="filter.highBid" />
+            <input type="text" id="highBidFilter" v-model.number="filter.highBid" />
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
@@ -106,8 +106,7 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitNumber
-            .startsWith(this.filter.unitNumber)
+          unit.unitNumber === this.filter.unitNumber
         );
       }
       if (this.filter.unitSize != "") {
@@ -118,8 +117,7 @@ export default {
       }
       if (this.filter.highBid != "") {
         filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid
-            .startsWith(this.filter.highBid)
+          unit.highBid <= this.filter.highBid
         );
       }
       return filteredUnits;
@@ -132,6 +130,13 @@ export default {
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid black;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }
 /* body {
   font-family: system-ui;
@@ -146,11 +151,7 @@ table {
   color: black;
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
-}
+
 
 .unit-id{
   border-bottom: 1px solid black;

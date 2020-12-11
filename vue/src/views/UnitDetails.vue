@@ -5,6 +5,11 @@
     <button class="btnPlaceBid">
       Bid on Unit
     </button>
+    <router-link v-bind:to="{name: 'units'}">
+    <button class="btnNoBid">
+      Return to List of Units
+    </button>
+    </router-link>
     <p/>
     <router-link
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
@@ -78,4 +83,25 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.btnPlaceBid{
+  background-color: #3366ff;
+  border: 3px solid white;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+}
+.btnNoBid{
+  background-color:#3366ff;
+  border: 3px solid white;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+}
+</style>
