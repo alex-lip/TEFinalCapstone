@@ -11,7 +11,6 @@ export default {
     return axios.put("/units/" + unitId, updatedUnit);
   },
   deleteUnit(unitId) {
-    console.log("deleting/" + unitId);
     return axios.delete(`/units/${unitId}`);
   },
   //  EXAMPLE TO USE

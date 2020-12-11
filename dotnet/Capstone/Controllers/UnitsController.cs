@@ -25,42 +25,39 @@ namespace Capstone.Controllers
         {
             return Ok(unitDAO.GetUnits());
         }
-<<<<<<< HEAD
-        
-        //[HttpPost]
-        //public IActionResult CreateNewUnit(Unit newUnit)
-        //{
-        //    RestRequest request = new RestRequest(this.API_URL + "units");
-
-        //    request.AddJsonBody(newUnit);
-            
-        //    IRestResponse<Unit> response = this.client.Post<Unit>(request);
-            
-        //    if(response.ResponseStatus != ResponseStatus.Completed)
-        //    {
-        //        Console.WriteLine("Could not add the specified unit");
-        //        return null;
-        //    }
-
-        //    if(!response.IsSuccessful)
-        //    {
-        //        Console.WriteLine();
-        //        return null;
-        //    }
-
-        //    return response.Data;
-        //}
-        
-        /*
-=======
 
         /*
         [HttpPost]
         public IActionResult CreateNewUnit(Unit newUnit)
         {
             RestRequest request = new RestRequest(this.API_URL + "units");
+
+            request.AddJsonBody(newUnit);
+
+            IRestResponse<Unit> response = this.client.Post<Unit>(request);
+
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                Console.WriteLine("Could not add the specified unit");
+                return null;
+            }
+
+            if (!response.IsSuccessful)
+            {
+                Console.WriteLine();
+                return null;
+            }
+
+            return response.Data;
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateNewUnit(Unit newUnit)
+        {
+            RestRequest request = new RestRequest(this.API_URL + "units");
             
->>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
+
         [HttpPut]
         public Unit EditUnit(Unit updatedUnit)
         {
@@ -84,32 +81,23 @@ namespace Capstone.Controllers
 
             return response.Data;
         }
-
-        [HttpDelete]
-        public bool DeleteUnit(int unitId)
-        {
-             RestRequest request = new RestRequest(this.API_URL + "units/" + unitId);
-
-            IRestResponse response = this.client.Delete(request);
-
-            if (response.ResponseStatus != ResponseStatus.Completed)
-            {
-                Console.WriteLine("Could not delete the specified unit");
-                return false;
-            }
-
-            if (!response.IsSuccessful)
-            {
-                Console.WriteLine("Encountered an error deleting unit: " + response.ErrorMessage + " (" + response.StatusCode + ")");
-                return false;
-            }
-
-            return true;
-        }
         */
-<<<<<<< HEAD
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUnit(int unitId)
+        {
+            Unit unit = this.unitDAO.GetUnitById(unitId);
 
-=======
->>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
+            if (unit == null)
+            {
+                return NotFound();
+            }
+
+            this.unitDAO.DeleteUnit(unit);
+
+            return NoContent();
+
+        }
+        
+
     }
 }

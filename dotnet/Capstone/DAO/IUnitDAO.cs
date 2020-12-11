@@ -6,5 +6,9 @@ namespace Capstone.DAO
     public interface IUnitDAO
     {
         List<Unit> GetUnits();
+
+        Unit GetUnitById(int unit_id);
+
+        void DeleteUnit(Unit unit);
     }
 }

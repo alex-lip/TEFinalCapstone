@@ -27,6 +27,11 @@ namespace Capstone.DAO
         
         private string sqlPutUnit = "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, pictures_unitnumber = @pictures_unitnumber WHERE unitId = @unitId;";
 
+        private string sqlGetUnitById = "SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
+            "FROM units WHERE unit_id = @unit_id";
+
+        private string sqlDeleteUnit = "DELETE FROM units WHERE unit_id = @unit_id";
+
         // METHODS
         public List<Unit> GetUnits()
         {
@@ -58,6 +63,50 @@ namespace Capstone.DAO
                 return result;
             }
         }
+
+        public Unit GetUnitById(int unit_id)
+        {
+            Unit result = new Unit();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlGetUnitById, connection);
+                command.Parameters.AddWithValue("@unit_id", unit_id);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Unit unit = new Unit()
+                    {
+                        UnitId = Convert.ToInt32(reader["unit_id"]),
+                        LocationName = Convert.ToString(reader["location_name"]),
+                        UnitNumber = Convert.ToInt32(reader["unit_number"]),
+                        UnitSize = Convert.ToString(reader["unit_size"]),
+                        PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
+                        HighBid = Convert.ToDecimal(reader["high_bid"]),
+                    };
+                    result = unit;
+                }
+
+                return result;
+            }
+        }
+
+        public void DeleteUnit(Unit unit)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlDeleteUnit, connection);
+                command.Parameters.AddWithValue("@unit_id", unit.UnitId);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public Unit CreateNewUnit(string location_name, int unit_number, string unit_size, int pictures_unitnumber)
         {
             Unit result = new Unit();
