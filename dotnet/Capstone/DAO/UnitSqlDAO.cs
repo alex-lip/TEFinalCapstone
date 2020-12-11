@@ -23,8 +23,8 @@ namespace Capstone.DAO
 
         //TODO: need to update for unit notes
         private string sqlPostUnit =
-    "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
-            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
+            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid, auction_end) " +
+            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid, @auction_end);";
         
         private string sqlPutUnit = "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, pictures_unitnumber = @pictures_unitnumber WHERE unitId = @unitId;";
 
@@ -80,7 +80,7 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@notes", unit.Notes);
                 command.Parameters.AddWithValue("@facility_address", unit.FacilityAddress);
                 command.Parameters.AddWithValue("@high_bid", (decimal)unit.HighBid);
-                //command.Parameters.AddWithValue("@end_date", unit.AuctionEnd);
+                command.Parameters.AddWithValue("@auction_end", unit.AuctionEnd);
                 command.ExecuteNonQuery();
 
                 return true;
@@ -133,23 +133,23 @@ namespace Capstone.DAO
             }
         }
 
-        public Unit CreateNewUnit(string location_name, int unit_number, string unit_size, int pictures_unitnumber)
-        {
-            Unit result = new Unit();
+        //public Unit CreateNewUnit(string location_name, int unit_number, string unit_size, int pictures_unitnumber)
+        //{
+        //    Unit result = new Unit();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
-                SqlCommand command = new SqlCommand(sqlPostUnit, connection);
+        //        SqlCommand command = new SqlCommand(sqlPostUnit, connection);
 
-                command.Parameters.AddWithValue("@location_name", location_name);
-                command.Parameters.AddWithValue("@unit_number", unit_number);
-                command.Parameters.AddWithValue("@unit_size", unit_size);
-                command.Parameters.AddWithValue("@pictures_unitnumber", pictures_unitnumber);
-                command.ExecuteNonQuery();
-            }
-            return result;
-        }
+        //        command.Parameters.AddWithValue("@location_name", location_name);
+        //        command.Parameters.AddWithValue("@unit_number", unit_number);
+        //        command.Parameters.AddWithValue("@unit_size", unit_size);
+        //        command.Parameters.AddWithValue("@pictures_unitnumber", pictures_unitnumber);
+        //        command.ExecuteNonQuery();
+        //    }
+        //    return result;
+        //}
     }
 }
