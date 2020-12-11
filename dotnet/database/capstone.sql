@@ -53,8 +53,8 @@ CREATE TABLE pictures(
 
 CREATE TABLE bids(
 	bid_id INTEGER IDENTITY PRIMARY KEY,
-	unit_id INTEGER NOT NULL,
-	user_id VARCHAR(50) NOT NULL,
+	unit_id INT NOT NULL,
+	user_id INT NOT NULL,
 	bid_amount MONEY NOT NULL,
 	bid_placed DATETIME NOT NULL,
 )

@@ -72,7 +72,7 @@ export default {
   computed: {},
 
   methods: {
-    deleteUnit(id) {
+    deleteUnit() { // use filter to grab from state
       const confirmed = confirm(
         "Are you sure you want to delete this unit? This cannot be undone"
       );
