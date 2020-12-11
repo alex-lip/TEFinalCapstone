@@ -66,6 +66,7 @@ export default {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
+        this.$store.state.userVerification = this.user.username;
         authService
           .register(this.user)
           .then((response) => {

@@ -29,6 +29,7 @@ export default new Vuex.Store({
 
     user: currentUser || {}, // If a user is an admin, their user.role will be 'admin'
 
+    userVerification: "",
     // Currently holds available units. May need to refactor/rename for unavailable units.
     units: [],
   },

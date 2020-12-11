@@ -15,8 +15,10 @@ namespace Capstone.DAO
             "(@username, @password_hash, @salt, @user_role)";
         // Insert code in DB
         private string sqlAddVerificationCode = "INSERT INTO verification_code (user_id, code) VALUES (@user_id, @code); SELECT SCOPE_IDENTITY()";
-        private string sqlGetVerificationCode = "SELECT code FROM verification_code WHERE user_id = @user_id";
-        private string sqlChangeVerifiedStatus = "UPDATE users SET verification_status = @verification_status WHERE user_id = @user_id";
+        private string sqlGetVerificationCode = "SELECT code FROM verification_code WHERE user_id = (SELECT user_id FROM users WHERE users.username = '@username')";
+        private string sqlChangeVerifiedStatus = "UPDATE users SET verification_status = @verification_status " +
+            "WHERE user_id = (SELECT user_id FROM users WHERE users.username = @username)";
+
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -79,7 +81,7 @@ namespace Capstone.DAO
             }
         }
 
-        public void ChangeVerifiedStatus(int userId)
+        public void ChangeVerifiedStatus(string username)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -87,20 +89,20 @@ namespace Capstone.DAO
                 int verifiedStatus = 1;
 
                 SqlCommand cmd = new SqlCommand(sqlChangeVerifiedStatus, conn);
-                cmd.Parameters.AddWithValue("@user_id", userId);
+                cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@verification_status", verifiedStatus);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public bool CheckVerificationCode(int userId, int userInputVerificationCode)
+        public bool CheckVerificationCode(string username, int userInputVerificationCode)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlGetVerificationCode, conn);
-                cmd.Parameters.AddWithValue("@user_id", userId);
+                cmd.Parameters.AddWithValue("@username", username);
 
                 int returnValue = cmd.ExecuteNonQuery();
 
