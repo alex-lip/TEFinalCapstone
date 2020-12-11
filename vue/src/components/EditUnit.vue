@@ -2,42 +2,42 @@
   <form @submit.prevent="updateUnit()">
     <div class="field">
       <label for="unitNumber">Location Name</label>
-      <textarea class="form-control" v-model="locationName" /><!--placeholder={{unit.locationName}}-->
+      <textarea class="form-control" v-model="this.unitDetails.locationName" />
     </div>
     <div class="field">
       <label for="unitNumber">Unit Number</label>
-      <textarea class="form-control" v-model="unitNumber" /><!--placeholder={{unit.unitNumber}}-->
+      <textarea class="form-control" v-model="this.unitDetails.unitNumber" />
     </div>
     <div class="field">
       <label for="unitSize">Unit Size</label>
-      <textarea class="form-control" v-model="unitSize" /><!--placeholder={{unit.unitSize}}-->
+      <textarea class="form-control" v-model="this.unitDetails.unitSize" />
     </div>
     <div class="field">
       <label for="unitPictures">Inventory Pictures</label>
-      <textarea class="form-control" v-model="unitPictures" /><!--placeholder={{unit.unitPictures}}-->
+      <textarea class="form-control" v-model="this.unitDetails.picturesUnitNumber" />
     </div>
     <div class="form-group">
       <label for="notes">Notes</label>
-      <textarea class="form-control" id="notes" v-model="unitNotes" /><!--placeholder={{unit.unitNotes}}-->
+      <textarea class="form-control" id="notes" v-model="this.unitDetails.notes" />
     </div>
     <div class="form-group">
-      <label for="facilityAddress">Facility Address</label><!--placeholder={{unit.facilityAddress}}-->
+      <label for="facilityAddress">Facility Address</label>
       <textarea
         class="form-control"
         id="facilityAddress"
-        v-model="facilityAddress"
+        v-model="this.unitDetails.facilityAddress"
       />
     </div>
     <div class="form-group">
       <label for="endDate">End Date</label>
-      <textarea class="form-control" id="endDate" v-model="endDate" /><!--placeholder={{unit.facilityAddress}} -->
+      <textarea class="form-control" id="endDate" v-model="this.unitDetails.auctionEnd" />
     </div>
     <div class="form-group">
-      <label for="highBid">High Bid</label><!--placeholder={{unit.highBid}}-->
+      <label for="highBid">High Bid</label>
       <textarea
         class="form-control"
         id="highBid"
-        v-model.number="highBid"
+        v-model.number="this.unitDetails.highBid"
       />
     </div>
     <div class="actions">
@@ -50,23 +50,24 @@
 import unitService from "../services/UnitService";
 
 export default {
-  name: "create-unit",
   props: ["unitId"],
   data() {
     return {
-      locationName: "",
-      unitNumber: 0,
-      unitSize: "",
-      unitPictures: "",
-      unitNotes: "",
-      facilityAddress: "",
-      highBid: 0,
-      endDate: ''
+      unitDetails: undefined,
+      //locationName: "",
+      //unitNumber: 0,
+      //unitSize: "",
+      //unitPictures: "",
+      //unitNotes: "",
+      //facilityAddress: "",
+      //highBid: 0,
+      //endDate: ''
     };
   },
   methods: {
+    
     updateUnit() {
-      const unit = {
+      /*const unit = {
         locationName: this.locationName,
         unitNumber: this.unitNumber,
         unitSize: this.unitSize,
@@ -75,8 +76,8 @@ export default {
         facilityAddress: this.facilityAddress,
         highBid: this.highBid,
         endDate: this.endDate
-      };
-      unitService.editUnit(this.$props.unitId, unit).then((response) => {
+      };*/
+      unitService.editUnit(this.unitDetails.unitId, this.unitDetails).then((response) => {
         if (response.status === 200) {
           //this.$store.commit('UNIT_UPDATED', this.unit);
           if (this.$router.currentRoute.name !== "Units") {
@@ -86,18 +87,16 @@ export default {
       });
     },
   },
-  // created() {
-  //   unitService
-  //     .get(this.unitId)
-  //     .then((response) => {
-  //       this.$store.commit("SET_UNIT", response.data);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response.status == 404) {
-  //         this.$router.push("/not-found");
-  //       }
-  //     });
-  // },
+   created() {
+    this.unitDetails = this.$store.state.units.find(
+      (u) => u.unitId == this.$route.params.id
+    );
+    if (!this.unitDetails) {
+      this.unitDetails = this.$store.state.units.find(
+        (u) => u.unitId == this.$route.params.id
+      );
+    }
+  },
 };
 </script>
 
