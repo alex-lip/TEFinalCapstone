@@ -66,8 +66,8 @@ INSERT INTO users (username, password_hash, salt, user_role, verification_status
 INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
 
 
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures_unitnumber, high_bid, auction_end) VALUES ('Village Mini Storage', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 4, 900, 03/19/2021);
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures_unitnumber, high_bid, auction_end) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', 33, 1, 02/26/2021);
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures_unitnumber, high_bid, auction_end) VALUES ('Village Mini Storage', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 4, 900, '20210319 23:59:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures_unitnumber, high_bid, auction_end) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', 33, 1, '20210225 11:59:59');
 
 
 ALTER TABLE bids ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
