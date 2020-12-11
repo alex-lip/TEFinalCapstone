@@ -4,12 +4,18 @@
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="verificationError">
         {{ verificationErrorMsg }}
-        </div>
-  <h1>Please enter your code</h1>
-  <input type="text" placeholder="123456" maxlength="6"  v-model.number="verificationCode.code" required> 
-  <button>Submit</button>
-  </form>
-</div>
+      </div>
+      <h1>Please enter your code</h1>
+      <input
+        type="text"
+        placeholder="123456"
+        maxlength="6"
+        v-model.number="verificationCode.code"
+        required
+      />
+      <button>Submit</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -21,20 +27,21 @@ export default {
       verificationCode: {
         code: '',
       },
-      user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
-      },
+      // user: {
+      //   username: '',
+      //   password: '',
+      //   confirmPassword: '',
+      //   role: 'user',
+      // },
       invalidCredentials: false,
       networkError: false,
-    };
+        };
     },
+    props: { usernameProp: String },
     methods: {
       submitVerification() { 
         AuthService
-          .verification(this.verificationCode.code) 
+          .verification(this.$store.state.userVerification, this.verificationCode.code) //set this state to empty once verified
           .then((response) => {
             if (response.status == 200) {
               this.$router.push({name: 'login',}); // navigate to a different success page // alert if unsuccessful this.data.error
@@ -58,5 +65,4 @@ export default {
 </script>
 
 <style>
-
 </style>
