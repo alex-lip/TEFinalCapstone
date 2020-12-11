@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="verificationError">
         {{ verificationErrorMsg }}
       </div>
-      <h1>Please enter your code</h1>
+      <h1>Please enter the verification code: </h1>
       <input
         type="text"
         placeholder="123456"
