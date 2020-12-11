@@ -5,16 +5,12 @@
     <button class="btnPlaceBid">
       Bid on Unit
     </button>
-<<<<<<< HEAD
     <router-link v-bind:to="{name: 'units'}">
     <button class="btnNoBid">
       Return to List of Units
     </button>
     </router-link>
     <p/>
-=======
-    <p />
->>>>>>> 5439d3d8f906055339cafcb5ee3bbc6677d92935
     <router-link
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
