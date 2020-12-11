@@ -25,4 +25,10 @@ export default {
   border: 3px solid black;
   border-radius: 10px;
 }
+
+img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
 </style>

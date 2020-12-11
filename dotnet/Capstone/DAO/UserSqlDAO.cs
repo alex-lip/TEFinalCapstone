@@ -10,7 +10,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
+        private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role, verification_status FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, user_role) VALUES " +
             "(@username, @password_hash, @salt, @user_role)";
         // Insert code in DB
@@ -126,6 +126,7 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
+                VerificationStatus = Convert.ToInt32(reader["verification_status"])
             };
 
             return u;
