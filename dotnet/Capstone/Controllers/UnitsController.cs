@@ -26,6 +26,12 @@ namespace Capstone.Controllers
             return Ok(unitDAO.GetUnits());
         }
 
+        [HttpPost]
+        public ActionResult CreateUnit(Unit unit)
+        {
+            return Ok(unitDAO.AddUnit(unit));
+
+        }
         /*
         [HttpPost]
         public IActionResult CreateNewUnit(Unit newUnit)

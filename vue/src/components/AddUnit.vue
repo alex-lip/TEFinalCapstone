@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="unitNumber">Unit Number</label>
                 <input type="text" class="form-control" id="unitNumber" 
-                       v-model="newUnit.unitNumber"
+                       v-model.number="newUnit.unitNumber"
                        autocomplete="number"
                        required>
             </div>
@@ -26,12 +26,30 @@
                 <label for="pictures">Inventory Pictures</label>
  
             </div>
-            <!--<div class="form-group">
+            <div class="form-group">
                 <label for="notes">Notes</label>
                 <textarea class="form-control" 
                           id="notes" 
-                          v-model="unit.notes" />
-            </div>-->
+                          v-model="newUnit.notes" />
+            </div>
+            <div class="form-group">
+                <label for="facilityAddress">Facility Address</label>
+                <textarea class="form-control" 
+                          id="facilityAddress" 
+                          v-model="newUnit.facilityAddress" />
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <textarea class="form-control" 
+                          id="endDate" 
+                          v-model="newUnit.endDate" />
+            </div>
+            <div class="form-group">
+                <label for="highBid">High Bid</label>
+                <textarea class="form-control" 
+                          id="highBid" 
+                          v-model.number="newUnit.highBid" />
+            </div>
             <button type="submit" class="btn btn-success">Create</button>
         </form>
     </div>
@@ -46,16 +64,19 @@ export default {
             errorMessage: '',
             newUnit: {
                 locationName: '',
-                unitNumber: '',
+                unitNumber: 0,
                 unitSize: '',
                 pictures: '',
-                notes: ''
+                notes: '',
+                facilityAddress: '',
+                endDate: '',
+                highBid: 0,
             }
         }
     },
     methods: {
         saveUnit() {
-            UnitService.createNewUnit(this.unit)
+            UnitService.createNewUnit(this.newUnit)
                 .then(response => {
                     const newUnit = response.data;
                     this.$store.commit('UNIT_ADDED', newUnit);

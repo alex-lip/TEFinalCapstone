@@ -10,5 +10,7 @@ namespace Capstone.DAO
         Unit GetUnitById(int unit_id);
 
         void DeleteUnit(Unit unit);
+
+        bool AddUnit(Unit unit);
     }
 }

@@ -23,7 +23,8 @@ namespace Capstone.DAO
 
         //TODO: need to update for unit notes
         private string sqlPostUnit =
-    "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber) VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber);";
+    "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
+            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
         
         private string sqlPutUnit = "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, pictures_unitnumber = @pictures_unitnumber WHERE unitId = @unitId;";
 
@@ -31,6 +32,7 @@ namespace Capstone.DAO
             "FROM units WHERE unit_id = @unit_id";
 
         private string sqlDeleteUnit = "DELETE FROM units WHERE unit_id = @unit_id";
+
 
         // METHODS
         public List<Unit> GetUnits()
@@ -54,13 +56,37 @@ namespace Capstone.DAO
                         UnitNumber = Convert.ToInt32(reader["unit_number"]),
                         UnitSize = Convert.ToString(reader["unit_size"]),
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
-                        HighBid = Convert.ToDecimal(reader["high_bid"]),
+                        HighBid = Convert.ToInt32(reader["high_bid"]),
                     };
 
                     result.Add(unit);
                 }
 
                 return result;
+            }
+        }
+
+        public bool AddUnit(Unit unit)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlPostUnit, connection);
+                command.Parameters.AddWithValue("@location_name", unit.LocationName);
+                command.Parameters.AddWithValue("@unit_number", unit.UnitNumber);
+                command.Parameters.AddWithValue("@unit_size", unit.UnitSize);
+                command.Parameters.AddWithValue("@pictures_unitnumber", unit.PicturesUnitNumber);
+                command.Parameters.AddWithValue("@notes", unit.Notes);
+                command.Parameters.AddWithValue("@facility_address", unit.FacilityAddress);
+                command.Parameters.AddWithValue("@high_bid", (decimal)unit.HighBid);
+                //command.Parameters.AddWithValue("@end_date", unit.AuctionEnd);
+                command.ExecuteNonQuery();
+
+                return true;
+
+                //@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address
+
             }
         }
 
@@ -86,7 +112,7 @@ namespace Capstone.DAO
                         UnitNumber = Convert.ToInt32(reader["unit_number"]),
                         UnitSize = Convert.ToString(reader["unit_size"]),
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
-                        HighBid = Convert.ToDecimal(reader["high_bid"]),
+                        HighBid = Convert.ToInt32(reader["high_bid"]),
                     };
                     result = unit;
                 }

@@ -1,4 +1,6 @@
-﻿namespace Capstone.Models
+﻿using System;
+
+namespace Capstone.Models
 {
     public class Unit
     {
@@ -12,6 +14,12 @@
 
         public int PicturesUnitNumber { get; set; }
 
-        public decimal HighBid { get; set; }
+        public int HighBid { get; set; }
+
+        public string Notes { get; set; }
+
+        public string FacilityAddress { get; set; }
+
+        public DateTime AuctionEnd { get; set; }
     }
 }
