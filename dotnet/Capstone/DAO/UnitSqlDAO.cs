@@ -64,7 +64,8 @@ namespace Capstone.DAO
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
                         HighBid = Convert.ToInt32(reader["high_bid"]),
                         Notes = Convert.ToString(reader["unit_notes"]),
-                        FacilityAddress = Convert.ToString(reader["facility_address"])
+                        FacilityAddress = Convert.ToString(reader["facility_address"]),
+                        AuctionEnd = Convert.ToDateTime(reader["auction_end"])
                     };
 
                     result.Add(unit);
@@ -128,7 +129,8 @@ namespace Capstone.DAO
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
                         HighBid = Convert.ToInt32(reader["high_bid"]),
                         Notes = Convert.ToString(reader["unit_notes"]),
-                        FacilityAddress = Convert.ToString(reader["facility_address"])
+                        FacilityAddress = Convert.ToString(reader["facility_address"]),
+                        AuctionEnd = Convert.ToDateTime(reader["auction_end"])
                     };
                     result = unit;
                 }
