@@ -2,11 +2,11 @@
   <div>
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
-    <button class="btnPlaceBid">
+    <button class="btn-custom">
       Bid on Unit
     </button>
     <router-link v-bind:to="{name: 'units'}">
-    <button class="btnNoBid">
+    <button class="btn-custom-outline">
       Return to List of Units
     </button>
     </router-link>
