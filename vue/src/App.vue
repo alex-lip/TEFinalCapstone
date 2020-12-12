@@ -27,14 +27,14 @@ export default {
 <!-- Application-Wide Styles go here. 
      Any valid CSS or SCSS is allowable here. See https://sass-lang.com/documentation/style-rules for info on SCSS -->
 <style lang="scss">
-#id {
+#app {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
   text-align: center;
-  padding-bottom: 2.5rem; /* Footer Height */
+  padding-bottom: 4.5rem; /* Footer Height */
 }
 
 #footer {
@@ -42,8 +42,17 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem; /* Footer Height */
+  height: 4.5rem; /* Footer Height */
 }
+
+// #nav {
+//   height: 4.5rem;
+//   background: #ff944d;
+// }
+
+// html {
+//   background: #FFFCFF;
+// }
 
 .btn-custom {
   background-color: #ff944d;

@@ -18,9 +18,10 @@ namespace Capstone.DAO
 
         // QUERIES
         private string sqlGetBids =
-            "SELECT b.bid_id, b.unit_id, b.bid_amount, b.bid_placed, u.username, high_bid " +
-            "FROM bids b" +
-            "JOIN users u ON u.user_id = b.user_id;";
+            "SELECT b.bid_id, n.unit_number, b.bid_amount, b.bid_placed, u.username, high_bid " +
+            "FROM bids b " +
+            "JOIN users u ON u.user_id = b.user_id " +
+            "JOIN units n ON n.unit_id = b.unit_id;";
 
         private string sqlPostBid =
             "INSERT INTO bids (bid_id, unit_id, user_id, bid_amount, bid_placed) " +
