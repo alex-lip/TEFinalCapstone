@@ -3,9 +3,9 @@
   <div class="row align-items-start vh-100 overlay">
     <div class="col-md-1 .ml-md-auto">Column 1</div>
     <div class="col-md-5 .ml-md-auto" id="aboutContent">
-      <h1>Discover Hidden Treasures</h1>
-      <h2>Bid on the contents of abandoned self storage units.</h2>
-      <p>Register today to participate in online auctions.</p>
+      <h1>Best Place to Bid on Abandoned Self Storage Units</h1>
+      <p>Bid on the contents of abandoned self storage units.
+      Register today to participate in online auctions.</p>
     </div>
     <div class="col-md-1 .ml-md-auto">Column 3</div>
   <div id="register" class="col text-center">
@@ -127,19 +127,17 @@ export default {
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
+    background: rgba(0, 0, 0, 0.8); /*can be anything, of course*/
     background-blend-mode: multiply;
     padding-top: 35px;
 }
 
 #aboutContent {
-  border: black;
-  border-style: solid;
-  text-align: left;
-  background:rgb(47, 47, 47);
+  text-align: center;
+  background:rgb(47, 47, 47, 0.6);
   color: white;
   border-radius: 5px;
-  padding: 15px;
+  padding: 1px;
 }
 
 #register {
@@ -152,9 +150,12 @@ export default {
   padding: 5px;
 }
 
+h1 {
+  font-size: 2.5em;
+}
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 </style>
 

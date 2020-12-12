@@ -115,7 +115,7 @@ export default {
 } */
   #navbar-brand  {
     color: black;
-    font-size: 2.0em;
+    font-size: 1.5em;
     font-weight: 600;
   }
 
