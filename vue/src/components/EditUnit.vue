@@ -97,7 +97,10 @@ export default {
           if (response.status === 200) {
             //this.$store.commit('UNIT_UPDATED', this.unit);
             if (this.$router.currentRoute.name !== "Units") {
-              this.$router.push({ name: "Units" });
+              this.$router.push({
+                name: "unit-details",
+                params: { unitId: this.unitDetails.unitId }
+              });
             }
           }
         });
