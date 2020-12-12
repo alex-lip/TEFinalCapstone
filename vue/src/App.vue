@@ -59,7 +59,18 @@ export default {
   color: white;
   font-weight: 600;
   font-size: 18px;
+  margin: 4px;
 }
+
+.btn-custom-outline {
+  background-color: white;
+  color: #ff944d;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 4px;
+}
+
+
 
 // #nav {
 //   height: 2.5rem;
