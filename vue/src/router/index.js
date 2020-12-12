@@ -85,14 +85,15 @@ const router = new Router({
       },
     },
 
-    // {
-    //   path: "/unit/updateunit/:id",
-    //   name: "edit-unit",
-    //   component: () => import("../views/EditUnit.vue"),
-    //   meta: {
-    //     requiresAuth: true,
-    //   },
-    // },
+    {
+      path: "/units/:id/images",
+      name: "images",
+      component: () => import("../views/Images.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
     {
       path: "/units/:id",
       name: "unit-details",

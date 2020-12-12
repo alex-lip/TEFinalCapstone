@@ -15,11 +15,14 @@
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
-      <!-- <button class="btnEditUnit">Edit Unit</button> -->
-      Edit Unit
+      <button class="btnEditUnit">Edit Unit</button>
     </router-link>
-    <!--TODO: code so it is hidden to nonAdmin users-->
-
+    <router-link
+      v-if="userRole == 'admin'"
+      :to="{ name: 'images', params: { id: this.unitDetails.unitId } }"
+    >
+      <button class="btnImgs">Images</button>
+    </router-link>
     <button
       class="btnDeleteUnit"
       v-if="userRole == 'admin'"
@@ -27,7 +30,6 @@
     >
       Delete Unit
     </button>
-    <!--TODO: need to code to link to the deleteUnit method in UnitDetails/ and code so it is hidden to nonAdmin users-->
     <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
