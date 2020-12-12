@@ -24,7 +24,7 @@
       </thead>
       <tbody>
         <tr>
-          <td></td>
+          <td style="text-align: left;">Filter</td>
           <td>
             <input
               type="text"
