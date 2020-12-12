@@ -80,10 +80,10 @@ export default {
         unitService.deleteUnit(this.unitDetails.unitId).then((response) => {
           console.debug("Unit deleted", response);
 
-          if (response.status === 200) {
-            //Call out to our web service and have it make the delete
-            this.$store.commit("UNIT_DELETED", this.unit);
-            this.$router.push({ name: "Units" });
+          if (response.status === 204) {
+            // Call out to our web service and have it make the delete
+            // this.$store.commit("UNIT_DELETED", this.unit);
+            this.$router.push({ name: "units" });
           }
         });
       }
