@@ -45,8 +45,9 @@ export default {
   height: 2.5rem; /* Footer Height */
 }
 
-#nav {
-  height: 2.5rem;
-  background: #ff944d;
-}
+// #nav {
+//   height: 2.5rem;
+//   background: #ff944d;
+//   color: black;
+// }
 </style>

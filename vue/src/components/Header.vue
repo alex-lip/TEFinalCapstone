@@ -1,34 +1,67 @@
 <template>
-  <div id="nav">
-    <router-link class="nav-item" v-bind:to="{ name: 'home' }">
-      <i class="fas fa-home"></i>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+
+  <a class="navbar-brand" href="#">
+   <router-link class="nav-item" v-bind:to="{ name: 'home' }">
+     Self Storage Auctions
+   </router-link></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="#">
+        <router-link class="nav-item" v-bind:to="{ name: 'home' }"> <!--<i class="fas fa-home"></i> -->
       <!-- This is a font awesome icon -->
       Home
-    </router-link>
-    <router-link class="nav-item" v-bind:to="{ name: 'units' }">
-      &nbsp;|&nbsp;Available Units
-    </router-link>
-    <router-link
-      class="nav-item"
-      v-bind:to="{ name: 'register' }"
-      v-if="!$store.state.token"
-      >&nbsp;|&nbsp;Register</router-link
-    >
-    <router-link
+    </router-link></a>
+
+      <a class="nav-item nav-link" href="#">
+        <router-link class="nav-item" v-bind:to="{ name: 'units' }">
+        Available Units
+      </router-link></a>
+
+
+      <a class="nav-item nav-link" href="#">
+        <router-link
       class="nav-item"
       v-bind:to="{ name: 'login' }"
-      v-if="!$store.state.token"
-    >
-      &nbsp;|&nbsp;Login
-    </router-link>
-    <router-link
+      v-if="!$store.state.token">
+      Login
+    </router-link></a>
+      
+      <a class="nav-item nav-link" href="#">
+      <router-link class="nav-item" v-bind:to="{ name: 'register' }" v-if="!$store.state.token">
+      Register </router-link></a>
+    </div>
+  </div>
+    
+    <a class="nav-item nav-link" href="#">
+      <router-link
       class="nav-item"
       v-bind:to="{ name: 'logout' }"
-      v-if="$store.state.token"
-    >
-      &nbsp;|&nbsp;Logout
-    </router-link>
-  </div>
+      v-if="$store.state.token">
+      Logout
+    </router-link></a>
+    
+
+    
+
+    <!-- <router-link
+      class="nav-item"
+      v-bind:to="{ name: 'register' }"
+      v-if="!$store.state.token">
+      Register
+      </router-link> -->
+
+    
+
+    
+   
+  </nav>
+
 </template>
 
 <script>
@@ -37,4 +70,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  .navbar-brand {
+    color: #ff944d;
+    font-size: 2.0em;
+  }
+
+  .nav-item {
+    font-size: 1.2em;
+    color: white;
+  }
+
+  .bg-custom {
+    background-color: #ff944d;
+  }
+
+</style>
