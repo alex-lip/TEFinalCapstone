@@ -53,7 +53,6 @@
           autocomplete="size"
         />
       </div>
-
       <div class="form-group">
         <label for="notes">Notes</label>
         <input
@@ -63,7 +62,6 @@
           v-model.trim="newUnit.notes"
         />
       </div>
-
       <div class="form-group">
         <label for="facilityAddress">Facility Address</label>
         <select
@@ -127,12 +125,15 @@ export default {
   methods: {
     saveUnit() {
       UnitService.createNewUnit(this.newUnit)
-        .then((response) => {
-          const newUnit = response.data;
-          this.$store.commit("UNIT_ADDED", newUnit);
+        .then((/*response*/) => {
+          // const newUnit = response.data;
+          // this.$store.commit("UNIT_ADDED", newUnit);
+          // this.$router.push({
+          //   name: "UnitDetails",
+          //   params: { unitId: newUnit.id },
+          // });
           this.$router.push({
-            name: "UnitDetails",
-            params: { unitId: newUnit.id },
+            name: "units",
           });
         })
         .catch((error) => {
