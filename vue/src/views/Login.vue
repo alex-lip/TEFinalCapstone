@@ -1,8 +1,9 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="container">
+  
     <form class="form-signin" @submit.prevent="login">
-      <h1 id = title>Storage Auctions</h1>
-      <h1 id="loginform" class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 id = title>Welcome to Self Storage Auctions</h1>
+      <h2 id="loginform" class="h3 mb-3 font-weight-normal">Please Sign In</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -88,6 +89,10 @@ export default {
 };
 </script>
 <style>
+
+
+
+
 /* body {
   font-family: system-ui;
   background: #ff944d;

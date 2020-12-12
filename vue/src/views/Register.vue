@@ -1,5 +1,10 @@
 <template>
-  <div id="register" class="text-center">
+<div class="container-fluid">
+  <div class="row align-items-start">
+    <div class="col-md-2 .ml-md-auto">Column 1</div>
+    <div class="col-md-4 .ml-md-auto" id="registerContent">Column 2</div>
+    <div class="col-md-1 .ml-md-auto">Column 3</div>
+  <div id="register" class="col text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -41,6 +46,10 @@
       </button>
     </form>
   </div>
+  <div class="col-md-2 .ml-md-auto">Column 4</div>
+  </div>
+  </div>
+
 </template>
 
 <script>
@@ -94,4 +103,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+.container-fluid {
+  background-color: gray;
+}
+
+#registerContent {
+  background-color: red;
+}
+</style>
