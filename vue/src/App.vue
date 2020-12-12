@@ -39,10 +39,17 @@ export default {
 
 #footer {
   background: #ff944d;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 2.5rem; /* Footer Height */
+}
+
+.btn-custom {
+  background-color: #ff944d;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 // #nav {

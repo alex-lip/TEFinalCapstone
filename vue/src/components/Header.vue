@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
 
-  <a class="navbar-brand" href="#">
-   <router-link class="nav-item" v-bind:to="{ name: 'home' }">
+  <a class="navbar-brand" href="#" >
+   <router-link class="nav-item" id="navbar-brand" v-bind:to="{ name: 'home' }">
      Self Storage Auctions
    </router-link></a>
 
@@ -71,9 +71,10 @@ export default {
 </script>
 
 <style>
-  .navbar-brand {
-    color: #ff944d;
+  #navbar-brand  {
+    color: black;
     font-size: 2.0em;
+    font-weight: 600;
   }
 
   .nav-item {

@@ -1,4 +1,5 @@
 <template>
+<div class="container-sm">
   <form @submit.prevent="updateUnit()">
     <div class="field">
       <label for="unitNumber">Location Name</label>
@@ -44,6 +45,7 @@
         <button type="submit">Save Changes to Unit</button>
     </div>
   </form>
+</div>
 </template>
 
 <script>
@@ -95,4 +97,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container-sm {
+  border: black;
+  background-color: rgb(255, 248, 248);
+  padding-bottom: 50px;
+  font-size: 14pt;
+  font-weight: 600;
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+</style>
