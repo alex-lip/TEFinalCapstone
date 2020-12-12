@@ -23,8 +23,8 @@ namespace Capstone.DAO
             "SELECT * FROM units;";
 
         private string sqlPostUnit =
-            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
-            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
+            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid, auction_end) " +
+            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid, @auction_end);";
 
         private string sqlPutUnit = 
             "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, " +
@@ -85,7 +85,7 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@location_name", unit.LocationName);
                 command.Parameters.AddWithValue("@unit_number", unit.UnitNumber);
                 command.Parameters.AddWithValue("@unit_size", unit.UnitSize);
-                //command.Parameters.AddWithValue("@pictures_unitnumber", unit.PicturesUnitNumber);
+                command.Parameters.AddWithValue("@pictures_unitnumber", unit.PicturesUnitNumber);
                 command.Parameters.AddWithValue("@notes", unit.Notes);
                 command.Parameters.AddWithValue("@facility_address", unit.FacilityAddress);
                 command.Parameters.AddWithValue("@high_bid", (decimal)unit.HighBid);

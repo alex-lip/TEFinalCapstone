@@ -4,7 +4,12 @@
     <form @submit.prevent="saveUnit()">
       <div class="form-group">
         <label for="locationName">Location Name</label>
-        <select class="form-control" id="locationName" v-model.trim="newUnit.locationName" required>
+        <select
+          class="form-control"
+          id="locationName"
+          v-model.trim="newUnit.locationName"
+          required
+        >
           <option>Village Mini Storage</option>
           <option>Millersport Storage</option>
         </select>
@@ -38,19 +43,35 @@
           autocomplete="size"
         />
       </div>
-
       <div class="form-group">
         <label for="pictures">Inventory Pictures</label>
+        <input
+          type="text"
+          class="form-control"
+          id="unitPicture"
+          v-model.trim="newUnit.pictures"
+          autocomplete="size"
+        />
       </div>
 
       <div class="form-group">
         <label for="notes">Notes</label>
-        <input type="text" class="form-control" id="notes" v-model.trim="newUnit.notes" />
+        <input
+          type="text"
+          class="form-control"
+          id="notes"
+          v-model.trim="newUnit.notes"
+        />
       </div>
 
       <div class="form-group">
         <label for="facilityAddress">Facility Address</label>
-        <select class="form-control" id="facilityAddress" v-model.trim="newUnit.facilityAddress" required>
+        <select
+          class="form-control"
+          id="facilityAddress"
+          v-model.trim="newUnit.facilityAddress"
+          required
+        >
           <option>1001 S Main St. Baltimore, OH 43105</option>
           <option>67290 Lancaster St. Millersport, OH 43046</option>
         </select>
@@ -71,7 +92,8 @@
       </div>
       <div class="form-group">
         <label for="highBid">High Bid</label>
-        <input type="text"
+        <input
+          type="text"
           class="form-control"
           id="highBid"
           v-model.number="newUnit.highBid"
@@ -134,6 +156,4 @@ export default {
 .text-center {
   text-align: center;
 }
-
-
 </style>

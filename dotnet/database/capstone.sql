@@ -40,7 +40,7 @@ CREATE TABLE units(
 	pictures_unitnumber INTEGER,
 	high_bid MONEY NOT NULL,
 	unit_notes VARCHAR(1000),
-	auction_end DATETIME,
+	auction_end DATETIME NOT NULL,
 	CONSTRAINT units_location_name_check CHECK ((location_name = 'Village Mini Storage') OR (location_name = 'Millersport Storage')),--(Balitmore North)/Stowaway/FairfieldRealEstate
 	CONSTRAINT units_facility_address_check CHECK((facility_address = '1001 S Main St. Baltimore, OH 43105') OR (facility_address = '67290 Lancaster St. Millersport, OH 43046')),--Need to add the other addresses here
 	CONSTRAINT units_unit_size_check CHECK ((unit_size = '5x10') OR (unit_size = '5x5') OR (unit_size = '10x10') OR (unit_size = '10x15') OR (unit_size = '10x20') OR (unit_size = '10x30') OR (unit_size = '10x25') OR (unit_size = '10x35') OR (unit_size = '10x40'))
