@@ -1,28 +1,30 @@
 <template>
+<div class="container-sm">
+  <h1 class="text-center">Edit Unit Details</h1>
   <form @submit.prevent="updateUnit()">
     <div class="field">
       <label for="unitNumber">Location Name</label>
-      <textarea class="form-control" v-model="unitDetails.locationName" />
+      <input type="text" class="form-control" v-model="unitDetails.locationName" />
     </div>
     <div class="field">
       <label for="unitNumber">Unit Number</label>
-      <textarea class="form-control" v-model.number="unitDetails.unitNumber" />
+      <input type="text" class="form-control" v-model.number="unitDetails.unitNumber" />
     </div>
     <div class="field">
       <label for="unitSize">Unit Size</label>
-      <textarea class="form-control" v-model="unitDetails.unitSize" />
+      <input type="text" class="form-control" v-model="unitDetails.unitSize" />
     </div>
     <div class="field">
       <label for="unitPictures">Inventory Pictures</label>
-      <textarea class="form-control" v-model="unitDetails.picturesUnitNumber" />
+      <input type="text" class="form-control" v-model="unitDetails.picturesUnitNumber" />
     </div>
     <div class="form-group">
       <label for="notes">Notes</label>
-      <textarea class="form-control" id="notes" v-model="unitDetails.notes" />
+      <input type="text" class="form-control" id="notes" v-model="unitDetails.notes" />
     </div>
     <div class="form-group">
       <label for="facilityAddress">Facility Address</label>
-      <textarea
+      <input type="text"
         class="form-control"
         id="facilityAddress"
         v-model="unitDetails.facilityAddress"
@@ -34,7 +36,7 @@
     </div>
     <div class="form-group">
       <label for="highBid">High Bid</label>
-      <textarea
+      <input type="text"
         class="form-control"
         id="highBid"
         v-model.number="unitDetails.highBid"
@@ -44,6 +46,7 @@
         <button type="submit">Save Changes to Unit</button>
     </div>
   </form>
+</div>
 </template>
 
 <script>
@@ -95,4 +98,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container-sm {
+  border: black;
+  background-color: rgb(255, 248, 248);
+  padding-bottom: 50px;
+  font-size: 14pt;
+  font-weight: 600;
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+</style>

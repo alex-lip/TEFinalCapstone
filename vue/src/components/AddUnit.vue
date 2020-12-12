@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <h1>Add Unit</h1>
+  <div class="container-sm">
+    <h1 class="text-center">Add Unit</h1>
     <form @submit.prevent="saveUnit()">
       <div class="form-group">
         <label for="locationName">Location Name</label>
-        <input
+        <select class="form-control" id="locationName" v-model.trim="newUnit.locationName" required>
+          <option>Village Mini Storage</option>
+          <option>Millersport Storage</option>
+        </select>
+        <!-- <input
           type="text"
           class="form-control"
           id="locationName"
           v-model.trim="newUnit.locationName"
           autocomplete="location"
           required
-        />
+        /> -->
       </div>
       <div class="form-group">
         <label for="unitNumber">Unit Number</label>
@@ -34,20 +38,27 @@
           autocomplete="size"
         />
       </div>
+
       <div class="form-group">
         <label for="pictures">Inventory Pictures</label>
       </div>
+
       <div class="form-group">
         <label for="notes">Notes</label>
-        <textarea class="form-control" id="notes" v-model.trim="newUnit.notes" />
+        <input type="text" class="form-control" id="notes" v-model.trim="newUnit.notes" />
       </div>
+
       <div class="form-group">
         <label for="facilityAddress">Facility Address</label>
-        <textarea
+        <select class="form-control" id="facilityAddress" v-model.trim="newUnit.facilityAddress" required>
+          <option>1001 S Main St. Baltimore, OH 43105</option>
+          <option>67290 Lancaster St. Millersport, OH 43046</option>
+        </select>
+        <!-- <input type="text"
           class="form-control"
           id="facilityAddress"
           v-model.trim="newUnit.facilityAddress"
-        />
+        /> -->
       </div>
       <div class="form-group">
         <label for="auctionEnd">End Date</label>
@@ -60,13 +71,13 @@
       </div>
       <div class="form-group">
         <label for="highBid">High Bid</label>
-        <textarea
+        <input type="text"
           class="form-control"
           id="highBid"
           v-model.number="newUnit.highBid"
         />
       </div>
-      <button type="submit" class="btn btn-success">Create</button>
+      <button type="submit" class="btn btn-custom">Create</button>
     </form>
   </div>
 </template>
@@ -110,4 +121,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container-sm {
+  border: black;
+  background-color: rgb(255, 248, 248);
+  padding-bottom: 50px;
+  font-size: 14pt;
+  font-weight: 600;
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+</style>
