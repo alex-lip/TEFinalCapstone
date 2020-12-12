@@ -43,7 +43,7 @@
       />
     </div>
     <div class="actions">
-        <button type="submit">Save Changes to Unit</button>
+        <button type="submit" class="btn btn-custom">Save Changes to Unit</button>
     </div>
   </form>
 </div>
