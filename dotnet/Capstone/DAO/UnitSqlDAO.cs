@@ -21,7 +21,6 @@ namespace Capstone.DAO
             "SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
             "FROM units;";
 
-        //TODO: need to update for unit notes
         private string sqlPostUnit =
             "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
             "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
@@ -35,7 +34,6 @@ namespace Capstone.DAO
             "FROM units WHERE unit_id = @unit_id";
 
         private string sqlDeleteUnit = "DELETE FROM units WHERE unit_id = @unit_id";
-
 
         // METHODS
         public List<Unit> GetUnits()
