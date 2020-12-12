@@ -115,12 +115,20 @@ namespace Capstone.DAO
                 {
                     Unit unit = new Unit()
                     {
+                        //UnitId = Convert.ToInt32(reader["unit_id"]),
+                        //LocationName = Convert.ToString(reader["location_name"]),
+                        //UnitNumber = Convert.ToInt32(reader["unit_number"]),
+                        //UnitSize = Convert.ToString(reader["unit_size"]),
+                        //PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
+                        //HighBid = Convert.ToInt32(reader["high_bid"]),
                         UnitId = Convert.ToInt32(reader["unit_id"]),
                         LocationName = Convert.ToString(reader["location_name"]),
                         UnitNumber = Convert.ToInt32(reader["unit_number"]),
                         UnitSize = Convert.ToString(reader["unit_size"]),
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
                         HighBid = Convert.ToInt32(reader["high_bid"]),
+                        Notes = Convert.ToString(reader["unit_notes"]),
+                        FacilityAddress = Convert.ToString(reader["facility_address"])
                     };
                     result = unit;
                 }
