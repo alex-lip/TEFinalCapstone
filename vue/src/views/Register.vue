@@ -1,12 +1,16 @@
 <template>
-<div class="container-fluid">
-  <div class="row align-items-start">
-    <div class="col-md-2 .ml-md-auto">Column 1</div>
-    <div class="col-md-4 .ml-md-auto" id="registerContent">Column 2</div>
+<div class="container-fluid vh-100">
+  <div class="row align-items-start vh-100 overlay">
+    <div class="col-md-1 .ml-md-auto">Column 1</div>
+    <div class="col-md-5 .ml-md-auto" id="aboutContent">
+      <h1>Best Place to Bid on Abandoned Self Storage Units</h1>
+      <p>Bid on the contents of abandoned self storage units.
+      Register today to participate in online auctions.</p>
+    </div>
     <div class="col-md-1 .ml-md-auto">Column 3</div>
   <div id="register" class="col text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -38,15 +42,22 @@
           v-model="user.confirmPassword"
           required />
       </div>
-      <div class="form-group">
-        <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      </div>
-      <button class="btn btn-primary" type="submit">
+      <div class="btnGroup">
+      <button class="btn btn-custom" type="submit">
         Create Account
       </button>
+      
+        <router-link :to="{ name: 'login' }">
+          <button class="btn btn-custom-outline">
+          Have an account?
+          </button>
+          </router-link>
+      
+      
+      </div>
     </form>
   </div>
-  <div class="col-md-2 .ml-md-auto">Column 4</div>
+  <div class="col-md-1 .ml-md-auto">Column 4</div>
   </div>
   </div>
 
@@ -106,10 +117,46 @@ export default {
 <style>
 
 .container-fluid {
-  background-color: gray;
+  background-image: url(https://images.unsplash.com/photo-1595050309250-3047a857b88d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1987&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  height: 100%;
+  
 }
 
-#registerContent {
-  background-color: red;
+.overlay {
+    background: rgba(0, 0, 0, 0.8); /*can be anything, of course*/
+    background-blend-mode: multiply;
+    padding-top: 35px;
+}
+
+#aboutContent {
+  text-align: center;
+  background:rgb(47, 47, 47, 0.6);
+  color: white;
+  border-radius: 5px;
+  padding: 1px;
+}
+
+#register {
+  background:white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.btnGroup {
+  padding: 5px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+p {
+  font-size: 1.5em;
 }
 </style>
+
+

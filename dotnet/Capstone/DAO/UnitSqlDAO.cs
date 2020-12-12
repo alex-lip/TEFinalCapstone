@@ -18,20 +18,25 @@ namespace Capstone.DAO
 
         // QUERIES
         private string sqlGetUnits =
-            "SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
-            "FROM units;";
+            //"SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid, unit_notes, facility_address " +
+            //"FROM units;";
+            "SELECT * FROM units;";
 
         private string sqlPostUnit =
-            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid) " +
-            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid);";
+            "INSERT INTO units (location_name, unit_number, unit_size, pictures_unitnumber, unit_notes, facility_address, high_bid, auction_end) " +
+            "VALUES (@location_name, @unit_number, @unit_size, @pictures_unitnumber, @notes, @facility_address, @high_bid, @auction_end);";
 
         private string sqlPutUnit = 
             "UPDATE units SET location_name = @location_name, unit_number = @unit_number, unit_size = @unit_size, " +
             "pictures_unitnumber = @pictures_unitnumber, unit_notes = @notes, facility_address = @facility_address, " +
             "high_bid = @high_bid WHERE unit_id = @unitId;";
         
-        private string sqlGetUnitById = "SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
-            "FROM units WHERE unit_id = @unit_id";
+        private string sqlGetUnitById = 
+            //"SELECT unit_id, location_name, unit_number, unit_size, pictures_unitnumber, high_bid " +
+            //"FROM units WHERE unit_id = @unit_id";
+            "SELECT * " +
+            "FROM units " + 
+            "WHERE unit_id = @unit_id;";
 
         private string sqlDeleteUnit = "DELETE FROM units WHERE unit_id = @unit_id";
 
@@ -58,6 +63,9 @@ namespace Capstone.DAO
                         UnitSize = Convert.ToString(reader["unit_size"]),
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
                         HighBid = Convert.ToInt32(reader["high_bid"]),
+                        Notes = Convert.ToString(reader["unit_notes"]),
+                        FacilityAddress = Convert.ToString(reader["facility_address"]),
+                        AuctionEnd = Convert.ToDateTime(reader["auction_end"])
                     };
 
                     result.Add(unit);
@@ -108,12 +116,21 @@ namespace Capstone.DAO
                 {
                     Unit unit = new Unit()
                     {
+                        //UnitId = Convert.ToInt32(reader["unit_id"]),
+                        //LocationName = Convert.ToString(reader["location_name"]),
+                        //UnitNumber = Convert.ToInt32(reader["unit_number"]),
+                        //UnitSize = Convert.ToString(reader["unit_size"]),
+                        //PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
+                        //HighBid = Convert.ToInt32(reader["high_bid"]),
                         UnitId = Convert.ToInt32(reader["unit_id"]),
                         LocationName = Convert.ToString(reader["location_name"]),
                         UnitNumber = Convert.ToInt32(reader["unit_number"]),
                         UnitSize = Convert.ToString(reader["unit_size"]),
                         PicturesUnitNumber = Convert.ToInt32(reader["pictures_unitnumber"]),
                         HighBid = Convert.ToInt32(reader["high_bid"]),
+                        Notes = Convert.ToString(reader["unit_notes"]),
+                        FacilityAddress = Convert.ToString(reader["facility_address"]),
+                        AuctionEnd = Convert.ToDateTime(reader["auction_end"])
                     };
                     result = unit;
                 }
