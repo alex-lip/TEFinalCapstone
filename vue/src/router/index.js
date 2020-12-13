@@ -98,6 +98,11 @@ const router = new Router({
       path: "*",
       redirect: "/",
     },
+    {
+      path: "/terms",
+      name: "terms",
+      component: () => import("../views/Terms.vue"),
+    },
   ],
 });
 

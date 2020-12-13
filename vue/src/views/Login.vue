@@ -37,6 +37,14 @@
           v-model="user.password"
           required />
       </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+          <label class="form-check-label" for="defaultCheck1">
+            <router-link :to="{name: 'terms'}">
+            I agree to the Terms & Conditions
+            </router-link>
+          </label>
+      </div>
       <div class="form-group">
         <router-link :to="{ name: 'register' }">Need an account?</router-link>
       </div>
