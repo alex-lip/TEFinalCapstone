@@ -67,8 +67,8 @@ INSERT INTO users (username, password_hash, salt, user_role, verification_status
 INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
 
 
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', '4', 900, '20210319 23:59', 'Clean unit!');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', '33', 1, '20210225 11:59', 'Minor water damage!');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 'https://i.imgur.com/dc1PU8j.jpg', 900, '20210319 23:59', 'Clean unit!');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', 'https://i.imgur.com/u4qSjQL.jpg', 1, '20210225 11:59', 'Minor water damage!');
 
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (1, 'https://i.imgur.com/epMSRQH.png');
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (2, 'https://i.imgur.com/dc1PU8j.jpg');
