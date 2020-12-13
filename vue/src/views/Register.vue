@@ -4,8 +4,10 @@
     <div class="col-md-1 .ml-md-auto">Column 1</div>
     <div class="col-md-5 .ml-md-auto" id="aboutContent">
       <h1>Best Place to Bid on Abandoned Self Storage Units</h1>
-      <p>Bid on the contents of abandoned self storage units.
-      Register today to participate in online auctions.</p>
+      <p>Bid on the contents of abandoned self storage units.</p>
+      <p>Register today to participate in online auctions.</p>
+      <p>Real time auctions.</p>
+      <p>Same day local pickup.</p>
     </div>
     <div class="col-md-1 .ml-md-auto">Column 3</div>
   <div id="register" class="col text-center">
@@ -138,12 +140,14 @@ export default {
   color: white;
   border-radius: 5px;
   padding: 1px;
+  margin-top:80px;
 }
 
 #register {
   background:white;
   border-radius: 10px;
   padding: 15px;
+  margin-top:80px;
 }
 
 .btnGroup {
@@ -156,6 +160,8 @@ h1 {
 
 p {
   font-size: 1.5em;
+  text-align: left;
+  padding-left: 20px;
 }
 </style>
 
