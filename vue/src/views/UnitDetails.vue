@@ -2,16 +2,16 @@
   <div>
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
-    <button class="btn-custom" v-on:click="showBidForm = !showBidForm">
+    <!-- <button class="btn-custom" v-on:click="showBidForm = !showBidForm">
       Bid on Unit
     </button>
     <form id="frmAddNewBid" v-show=showBidForm>
             <div class="field">
         <label for="bidAmount">Please enter your bid:</label>
-        <input type="text" name="bidAmount" v-model.trim="bid.bidAmount"/>
+        <input type="text" name="bidAmount" v-model.trim="bid.bidAmount"/> -->
         <!--TODO: Need to input some boolean check to verify the amount entered is higher than the current high bid, and connect form to add bid to log and change high bid value on the unit-->
-      </div>
-    </form>
+      <!-- </div>
+    </form> -->
     <router-link v-bind:to="{ name: 'units' }">
       <button class="btn-custom-outline">
         Return to List of Units
