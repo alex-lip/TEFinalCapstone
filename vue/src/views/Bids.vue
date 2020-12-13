@@ -8,15 +8,33 @@
       <thead>
         <tr>
           <th>Bid Id Number</th>
+          <th>Location Name</th>
+          <th>Facility Address</th>
           <th>Unit Number</th>
           <th>Bid Amount</th>
           <th>Bid Placed On</th>
-          <th>User email</th>
+          <th>User Email</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style="text-align: left;">Filter</td>
+          <td>
+            <input
+              type="text"
+              id="locationNameFilter"
+              placeholder="Location Name"
+              v-model="filter.locationName"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              id="facilityAddressFilter"
+              placeholder="Facility Address"
+              v-model="filter.facilityAddress"
+            />
+          </td>
           <td>
             <input
               type="text"
@@ -42,6 +60,8 @@
         </tr>
         <tr v-for="bid in filteredList" v-bind:key="bid.id">
           <td>{{ bid.bidId }}</td>
+          <td>{{ bid.locationName }}</td>
+          <td>{{ bid.facilityAddress }}</td>
           <td>{{ bid.unitNumber }}</td>
           <td>{{ bid.bidAmount }}</td>
           <td>{{ bid.bidPlaced }}</td>
@@ -62,6 +82,8 @@ export default {
     return {
       filter: {
         id: null,
+        locationName: "",
+        facilityAddress: "",
         unitNumber: 0,
         bidAmount: 0,
         bidPlaced: "",
@@ -75,7 +97,7 @@ export default {
   methods: {
     // Methods to create, read, update, and delete...
     getBids() {
-      unitService.getAllBids().then((response) => {
+      bidService.getAllBids().then((response) => {
         this.$store.commit("SET_BIDS", response.data);
       });
     },

@@ -15,6 +15,7 @@
         <label for="bidAmount">Please enter your bid: </label>
         <input type="text" name="bidAmount" />  
         <!-- v-model.trim="bid.bidAmount" -->
+        <button type="submit" class="btnSubmit" v-on:click.prevent="addNewBid()">Submit Bid</button>
       </div>
     </form>
 
@@ -101,6 +102,9 @@ export default {
         });
       }
     },
+    AddNewBid(){
+      //TODO: populate method to add to list of bids
+    },
   },
 };
 </script>
@@ -125,5 +129,13 @@ export default {
   text-align: center;
   display: inline-block;
   font-size: 24px;
+}
+.btnSubmit{
+  background-color: #3366ff;
+  border: 3px solid white;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  display: inline-block;
 }
 </style>
