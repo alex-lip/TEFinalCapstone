@@ -86,15 +86,6 @@ const router = new Router({
     },
 
     {
-      path: "/units/:id/images",
-      name: "images",
-      component: () => import("../views/Images.vue"),
-      meta: {
-        requiresAuth: true,
-      },
-    },
-
-    {
       path: "/units/:id",
       name: "unit-details",
       component: () => import("../views/UnitDetails.vue"),

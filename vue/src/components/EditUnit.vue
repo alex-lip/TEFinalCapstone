@@ -31,7 +31,7 @@
         <input
           type="text"
           class="form-control"
-          v-model="unitDetails.picturesUnitNumber"
+          v-model="unitDetails.pictures"
         />
       </div>
       <div class="form-group">
