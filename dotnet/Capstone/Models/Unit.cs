@@ -12,7 +12,7 @@ namespace Capstone.Models
 
         public string UnitSize { get; set; }
 
-        public int PicturesUnitNumber { get; set; }
+        public string Pictures { get; set; }
 
         public int HighBid { get; set; }
 

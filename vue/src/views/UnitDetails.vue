@@ -5,23 +5,17 @@
     <button class="btn-custom">
       Bid on Unit
     </button>
-    <router-link v-bind:to="{name: 'units'}">
-    <button class="btn-custom-outline">
-      Return to List of Units
-    </button>
+    <router-link v-bind:to="{ name: 'units' }">
+      <button class="btn-custom-outline">
+        Return to List of Units
+      </button>
     </router-link>
-    <p/>
+    <p />
     <router-link
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
       <button class="btnEditUnit">Edit Unit</button>
-    </router-link>
-    <router-link
-      v-if="userRole == 'admin'"
-      :to="{ name: 'images', params: { id: this.unitDetails.unitId } }"
-    >
-      <button class="btnImgs">Images</button>
     </router-link>
     <button
       class="btnDeleteUnit"
@@ -45,12 +39,11 @@ export default {
 
   components: {
     UnitCard,
-    //unitService,
   },
 
-   props: {
-     unitId: Number,
-   },
+  props: {
+    unitId: Number,
+  },
 
   data() {
     return {
@@ -61,19 +54,17 @@ export default {
   },
 
   created() {
+    // Populate 'unitDetails' data
     this.unitDetails = this.$store.state.units.find(
       (u) => u.unitId == this.$route.params.id
     );
-    if (!this.unitDetails) {
-      this.unitDetails = this.$store.state.units.find(
-        (u) => u.unitId == this.$route.params.id
-      );
-    }
   },
 
   computed: {},
+
   methods: {
-    deleteUnit() { // use filter to grab from state
+    deleteUnit() {
+      // use filter to grab from state
       const confirmed = confirm(
         "Are you sure you want to delete this unit? This cannot be undone"
       );
@@ -95,7 +86,7 @@ export default {
 </script>
 
 <style>
-.btnPlaceBid{
+.btnPlaceBid {
   background-color: #3366ff;
   border: 3px solid white;
   border-radius: 12px;
@@ -105,8 +96,8 @@ export default {
   display: inline-block;
   font-size: 24px;
 }
-.btnNoBid{
-  background-color:#3366ff;
+.btnNoBid {
+  background-color: #3366ff;
   border: 3px solid white;
   border-radius: 12px;
   color: white;

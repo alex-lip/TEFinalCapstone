@@ -10,7 +10,9 @@
     <router-link v-bind:to="{ name: 'add-unit' }">
       <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
-    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">User View</button>
+    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+      User View
+    </button>
     <p></p>
     <table id="tblUnits">
       <thead>
@@ -42,10 +44,20 @@
             />
           </td>
           <td>
-            <input type="text" id="unitSizeFilter" placeholder="Unit Size" v-model="filter.unitSize" />
+            <input
+              type="text"
+              id="unitSizeFilter"
+              placeholder="Unit Size"
+              v-model="filter.unitSize"
+            />
           </td>
           <td>
-            <input type="text" id="highBidFilter" placeholder="High Bid" v-model.number="filter.highBid" />
+            <input
+              type="text"
+              id="highBidFilter"
+              placeholder="High Bid"
+              v-model.number="filter.highBid"
+            />
           </td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
@@ -98,6 +110,7 @@ export default {
   },
 
   created() {
+    // Populate the $store with all Available Units
     this.getUnits();
   },
 
@@ -112,8 +125,8 @@ export default {
         );
       }
       if (this.filter.unitNumber != "") {
-        filteredUnits = filteredUnits.filter((unit) =>
-          unit.unitNumber === this.filter.unitNumber
+        filteredUnits = filteredUnits.filter(
+          (unit) => unit.unitNumber === this.filter.unitNumber
         );
       }
       if (this.filter.unitSize != "") {
@@ -122,8 +135,8 @@ export default {
         );
       }
       if (this.filter.highBid != "") {
-        filteredUnits = filteredUnits.filter((unit) =>
-          unit.highBid <= this.filter.highBid
+        filteredUnits = filteredUnits.filter(
+          (unit) => unit.highBid <= this.filter.highBid
         );
       }
       return filteredUnits;
