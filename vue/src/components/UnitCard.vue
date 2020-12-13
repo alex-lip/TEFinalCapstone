@@ -1,6 +1,6 @@
 <template>
   <div class="unit-card">
-    <!-- <div>Unit ID: {{ unit.unitId }}</div> -->
+    <!--<div>Unit ID: {{ unit.unitId }}</div>-->
     <div>Unit Number: {{ unit.unitNumber }}</div>
     <div>Location: {{ unit.locationName }}</div>
     <div>Size: {{ unit.unitSize }}</div>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     unit: Object, // This prop is hooked to 'u' in 'Units.vue'

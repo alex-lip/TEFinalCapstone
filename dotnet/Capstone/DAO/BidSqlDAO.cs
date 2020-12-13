@@ -27,14 +27,15 @@ namespace Capstone.DAO
             "INSERT INTO bids (bid_id, unit_id, user_id, bid_amount, bid_placed) " +
             "VALUES (@bid_id, @unit_id, @user_id, @bid_amount, @bid_placed);";
 
-        private string sqlPutUnit =
-            "UPDATE bids SET bid_id = @bid_id, unit_id = @unit_id, user_id = @user_id, " +
-            "bid_amount = @bid_amount, bid_placed = @bid_placed;";
-
         private string sqlGetBidById = "SELECT bid_id, unit_id, user_id, bid_amount, bid_placed " +
             "FROM bids WHERE bid_id = @bid_id;";
 
-        private string sqlDeleteBid = "DELETE FROM bids WHERE bid_id = @bid_id";
+        private string sqlGetBidByUnitId = "SELECT bid_id, unit_id, user_id, bid_amount, bid_placed " +
+            "FROM bids WHERE unit_id = @unit_id;";
+
+        private string sqlGetBidByUserId = "SELECT bid_id, unit_id, user_id, bid_amount, bid_placed " +
+            "FROM bids WHERE user_id = @user_id;";
+
         /*TODO: Finish methods below
         // METHODS
         public List<Bid> GetBids()
@@ -115,35 +116,7 @@ namespace Capstone.DAO
                 return result;
             }
         }
-        public void DeleteUnit(Bid bid)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(sqlDeleteUnit, connection);
-                command.Parameters.AddWithValue("@bid_id", bid.BidId);
-                command.ExecuteNonQuery();
-            }
-        }
-
-        public bool EditUnit(int id, Bid bid)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(sqlPutBid, connection);
-                command.Parameters.AddWithValue("@bid_id", bid.BidId);
-                command.Parameters.AddWithValue("@unit_id", bid.UnitId);
-                command.Parameters.AddWithValue("@user_id", bid.UserId);
-                command.Parameters.AddWithValue("@bid_amount", bid.BidAmount);
-                command.Parameters.AddWithValue("@bid_placed", bid.BidPlaced);
-                command.ExecuteNonQuery();
-
-                return true;
-            }
-        }
+       
         */
     }
 }
