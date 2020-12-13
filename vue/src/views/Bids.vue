@@ -74,7 +74,7 @@ export default {
 
   methods: {
     // Methods to create, read, update, and delete...
-    getUnits() {
+    getBids() {
       unitService.getAllBids().then((response) => {
         this.$store.commit("SET_BIDS", response.data);
       });

@@ -5,25 +5,34 @@
     <button class="btn-custom" v-on:click="showBidForm = !showBidForm">
       Bid on Unit
     </button>
-    <form id="frmAddNewBid" v-show=showBidForm>
-            <div class="field">
-        <label for="bidAmount">Please enter your bid:</label>
-        <input type="text" name="bidAmount" v-model.trim="bid.bidAmount"/>
-        <!--TODO: Need to input some boolean check to verify the amount entered is higher than the current high bid, and connect form to add bid to log and change high bid value on the unit-->
+
+    <!-- TODO: Need to input some boolean check to verify the amount entered is 
+    higher than the current high bid, and connect form to add bid to log and change 
+    high bid value on the unit.
+    -->
+    <form id="frmAddNewBid" v-show="showBidForm">
+      <div class="field">
+        <label for="bidAmount">Please enter your bid: </label>
+        <input type="text" name="bidAmount" />  
+        <!-- v-model.trim="bid.bidAmount" -->
       </div>
     </form>
+
     <router-link v-bind:to="{ name: 'units' }">
       <button class="btn-custom-outline">
         Return to List of Units
       </button>
     </router-link>
+
     <p />
+
     <router-link
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
       <button class="btnEditUnit">Edit Unit</button>
     </router-link>
+
     <button
       class="btnDeleteUnit"
       v-if="userRole == 'admin'"
@@ -31,6 +40,7 @@
     >
       Delete Unit
     </button>
+
     <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
