@@ -158,7 +158,7 @@ td {
 
 body {
   font-family: system-ui;
-  background: #ff944d;
+  background: white;
   color: black;
   text-align: left;
 }
