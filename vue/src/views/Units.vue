@@ -2,7 +2,7 @@
   <div class="units">
     <h1 id="title">Storage Auctions</h1>
     <p></p>
-    <h3 id="title">Full Listing of all units avaiable for auction</h3>
+    <h3 id="title">Full Listing of all units available for auction</h3>
     <h3 id="title">
       Click on the individual auction numbers to see further details and/or
       place a bid
