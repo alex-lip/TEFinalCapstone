@@ -6,7 +6,7 @@
     <div>Address: {{unit.facilityAddress}}</div>
     <div>Size: {{ unit.unitSize }}</div>
     <div>Details: {{ unit.notes }}</div>
-    <div>Current Bid: {{ unit.highBid }}</div>
+    <div>Current Bid: ${{ unit.highBid }}</div>
     <div>End of Auction: {{unit.auctionEnd}}</div>
     <img :src="unit.pictures" />
   </div>
