@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Capstone.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    public class IBidDAO
+    public interface IBidDAO
     {
-       /*TODO: fix syntax to accept methods below
+       //TODO: fix syntax to accept methods below
         List<Bid> GetBids();
 
-        Bid GetBidById(int bid_id);
+        /*Bid GetBidById(int bid_id);
 
         void DeleteBid(Bid bid);
 

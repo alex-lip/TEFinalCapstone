@@ -95,6 +95,15 @@ const router = new Router({
     },
 
     {
+      path: "/units/:id/placebid",
+      name: "place-bid",
+      component: () => import("../views/PlaceBid.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/units/:id",
       name: "unit-details",
       component: () => import("../views/UnitDetails.vue"),

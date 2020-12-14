@@ -78,6 +78,10 @@ INSERT INTO units (location_name, facility_address, unit_number, unit_size, pict
 ALTER TABLE bids ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE bids ADD FOREIGN KEY (unit_id) REFERENCES units(unit_id);
 
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 1, 900, '20200319 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 1, 1, '20200319 23:59');
+
+
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
 

@@ -58,6 +58,10 @@ export default new Vuex.Store({
 
     SET_UNITS(state, data) {
       state.units = data;
+    },
+
+    SET_BIDS(state, data) {
+      state.bids = data;
     }
   },
 });

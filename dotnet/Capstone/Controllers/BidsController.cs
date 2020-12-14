@@ -18,7 +18,7 @@ namespace Capstone.Controllers
         {
             this.bidDAO = bidDAO;
         }
-        /*
+        
         // CONTROLLER METHODS
         [HttpGet]
         public ActionResult<List<Bid>> GetAllBids()
@@ -26,6 +26,7 @@ namespace Capstone.Controllers
             return Ok(bidDAO.GetBids());
         }
 
+        /*
         [HttpPost]
         public ActionResult CreateBid(Bid bid)
         {
