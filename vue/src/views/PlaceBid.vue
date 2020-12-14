@@ -12,15 +12,21 @@
         <input
           type="number"
           name="bidAmount"
-          v-model.trim.number="unitDetails.highBid"
+          v-model.trim.number="newBid.bidAmount"
         />
-        <button
-          type="submit"
-          class="btnSubmit"
-          v-on:click.prevent="addNewBid()"
-        >
-          Submit Bid
-        </button>
+
+        <!-- TODO: LINK TO USER'S BID HISTORY!!!!!! -->
+        <router-link :to="{ name: 'users-bids' }">
+          <!-- params: { id: user.userId } -->
+          <button
+            type="submit"
+            class="btnSubmit"
+            v-on:click.prevent="addNewBid()"
+          >
+            Submit Bid
+          </button>
+        </router-link>
+      <div v-if="bidError">Please Enter an amount greater than the current high bid!</div>
       </div>
     </form>
   </div>
@@ -41,11 +47,19 @@ export default {
 
   data() {
     return {
-      bidAmount: 0,
       bidError: false,
       unitDetails: undefined,
 
       userRole: this.$store.state.user.role,
+
+      user: this.$store.state.user,
+
+      newBid: {
+        unitId: 0,
+        userId: 0,
+        bidAmount: 0,
+        bidPlaced: "",
+      },
     };
   },
 
@@ -66,6 +80,25 @@ export default {
       bidService.getAllBids().then((response) => {
         this.$store.commit("SET_BIDS", response.data);
       });
+    },
+
+    addNewBid() {
+      this.checkBidAmount(this.newBid.bidAmount);
+
+      if (this.bidError === true) {
+        console.log("Needs to be greater.")
+      } else {
+        this.newBid.unitId = this.unitDetails.unitId;
+        this.newBid.userId = this.user.userId;
+        this.newBid.bidPlaced = "2021-03-19T23:59:00";
+        bidService.createNewBid(this.newBid);
+      }
+    },
+
+    checkBidAmount(bidAmount) {
+      if (bidAmount <= this.unitDetails.highBid) {
+        this.bidError = true;
+      }
     },
   },
 };

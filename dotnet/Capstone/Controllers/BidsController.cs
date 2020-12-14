@@ -26,13 +26,13 @@ namespace Capstone.Controllers
             return Ok(bidDAO.GetBids());
         }
 
-        /*
+        
         [HttpPost]
         public ActionResult CreateBid(Bid bid)
         {
             return Ok(bidDAO.AddBid(bid));
         }
-
+        /*
         [HttpPut("{id}")]
         public ActionResult EditBid(int id, Bid bid)
         {

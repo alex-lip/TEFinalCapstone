@@ -76,6 +76,7 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    
     {
       path: "/usersbids",
       name: "users-bids",

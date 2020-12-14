@@ -28,8 +28,8 @@ namespace Capstone.DAO
             "JOIN units n ON n.unit_id = b.unit_id;";
 
         private string sqlPostBid =
-            "INSERT INTO bids (bid_id, unit_id, user_id, bid_amount, bid_placed) " +
-            "VALUES (@bid_id, @unit_id, @user_id, @bid_amount, @bid_placed);";
+            "INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) " +
+            "VALUES (@unit_id, @user_id, @bid_amount, @bid_placed);";
 
         private string sqlGetBidById =
             "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
@@ -84,14 +84,13 @@ namespace Capstone.DAO
             }
         }
 
-        /*public bool AddBid(Bid bid)
+        public bool AddBid(Bid bid)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(sqlPostBid, connection);
-                command.Parameters.AddWithValue("@bid_id", bid.BidId);
                 command.Parameters.AddWithValue("@unit_id", bid.UnitId);
                 command.Parameters.AddWithValue("@user_id", bid.UserId);
                 command.Parameters.AddWithValue("@bid_amount", bid.BidAmount);
@@ -103,6 +102,7 @@ namespace Capstone.DAO
             }
         }
 
+        /*
         public Bid GetUnitById(int bid_id)
         {
             Bid result = new Bid();
