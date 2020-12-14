@@ -21,7 +21,7 @@
           <button
             type="submit"
             class="btnSubmit"
-            v-on:click.prevent="addNewBid()"
+            v-on:click="addNewBid()"
           >
             Submit Bid
           </button>
