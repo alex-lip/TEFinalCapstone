@@ -76,6 +76,7 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    
     {
       path: "/usersbids",
       name: "users-bids",
@@ -104,6 +105,15 @@ const router = new Router({
     },
 
     {
+      path: "/units/:id/placebid",
+      name: "place-bid",
+      component: () => import("../views/PlaceBid.vue"),
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/units/:id",
       name: "unit-details",
       component: () => import("../views/UnitDetails.vue"),
@@ -112,15 +122,7 @@ const router = new Router({
         requiresAuth: true,
       },
     },
-    {
-      path: "/units/:id/bid",
-      name: "unit-details-place-bid",
-      component: () => import("../views/UntDtlsPlaceBid.vue"),
-      // Does the user have to be logged in in order to see the available units?
-      meta: {
-        requiresAuth: true,
-      },
-    },
+
     {
       path: "*",
       redirect: "/",

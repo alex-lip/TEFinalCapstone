@@ -2,10 +2,14 @@
   <div>
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
-    <router-link v-bind:to="{ name: 'unit-details-place-bid' }">
-    <button class="btn-custom">
-      Bid on Unit
-    </button>
+    <!-- TODO: Need to input some boolean check to verify the amount entered is 
+    higher than the current high bid, and connect form to add bid to log and change 
+    high bid value on the unit.
+    -->
+    <router-link
+      :to="{ name: 'place-bid', params: { id: this.unitDetails.unitId } }"
+    >
+      <button class="btn-custom">Place Bid</button>
     </router-link>
 
     <router-link v-bind:to="{ name: 'units' }">
@@ -88,7 +92,7 @@ export default {
         });
       }
     },
-    AddNewBid(){
+    AddNewBid() {
       //TODO: populate method to add to list of bids
     },
   },
@@ -116,7 +120,7 @@ export default {
   display: inline-block;
   font-size: 24px;
 }
-.btnSubmit{
+.btnSubmit {
   background-color: #3366ff;
   border: 3px solid white;
   border-radius: 12px;
