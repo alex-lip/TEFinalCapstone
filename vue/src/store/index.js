@@ -33,6 +33,9 @@ export default new Vuex.Store({
 
     // Currently holds available units. May need to refactor/rename for unavailable units.
     units: [],
+
+    // Hold ALL bids.
+    bids: [],
   },
 
   mutations: {
