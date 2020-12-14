@@ -26,7 +26,15 @@
             Submit Bid
           </button>
         </router-link>
-      <div v-if="bidError">Please Enter an amount greater than the current high bid!</div>
+        <div v-if="bidError">
+          Please Enter an amount greater than the current high bid!
+        </div>
+
+        <router-link v-bind:to="{ name: 'units' }">
+          <button class="btn-custom-outline">
+            Return to List of Units
+          </button>
+        </router-link>
       </div>
     </form>
   </div>
@@ -86,7 +94,7 @@ export default {
       this.checkBidAmount(this.newBid.bidAmount);
 
       if (this.bidError === true) {
-        console.log("Needs to be greater.")
+        console.log("Needs to be greater.");
       } else {
         this.newBid.unitId = this.unitDetails.unitId;
         this.newBid.userId = this.user.userId;
