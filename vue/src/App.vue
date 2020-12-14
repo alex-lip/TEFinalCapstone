@@ -38,7 +38,7 @@ export default {
 }
 
 #footer {
-  background: #ff944d;
+  background: linear-gradient(60deg, rgb(245, 104, 10) 28%, rgb(255, 197, 90) 100%);
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -83,7 +83,7 @@ namespace Capstone
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDAO>(m => new UserSqlDAO(connectionString));
             services.AddTransient<IUnitDAO>(m => new UnitSqlDAO(connectionString));
-
+            services.AddTransient<IBidDAO>(m => new BidSqlDAO(connectionString));
             
 
         }

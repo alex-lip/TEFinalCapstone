@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Capstone.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,14 +20,16 @@ namespace Capstone.DAO
 
         // QUERIES
         private string sqlGetBids =
-            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
+
+            //"SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, u.username " +
+            "SELECT * " +
             "FROM bids b " +
             "JOIN users u ON u.user_id = b.user_id " +
             "JOIN units n ON n.unit_id = b.unit_id;";
 
         private string sqlPostBid =
-            "INSERT INTO bids (bid_id, unit_id, user_id, bid_amount, bid_placed) " +
-            "VALUES (@bid_id, @unit_id, @user_id, @bid_amount, @bid_placed);";
+            "INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) " +
+            "VALUES (@unit_id, @user_id, @bid_amount, @bid_placed);";
 
         private string sqlGetBidById =
             "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
@@ -48,7 +52,7 @@ namespace Capstone.DAO
             "JOIN units n ON n.unit_id = b.unit_id " +
             "FROM bids WHERE user_id = @user_id;";
 
-        /*TODO: Finish methods below
+        //TODO: Finish methods below
         // METHODS
         public List<Bid> GetBids()
         {
@@ -58,7 +62,7 @@ namespace Capstone.DAO
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(sqlGetUnits, connection);
+                SqlCommand command = new SqlCommand(sqlGetBids, connection);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -69,8 +73,8 @@ namespace Capstone.DAO
                         BidId = Convert.ToInt32(reader["bid_id"]),
                         UnitId = Convert.ToInt32(reader["unit_id"]),
                         UserId = Convert.ToInt32(reader["user_id"]),
-                        BidAmount = Convert.ToInt32(reader["bid_amount"]),//TODO: Is there a decimal converter? Is that even necessary
-                        BidPlaced = Convert.ToString(reader["bid_placed"])//TODO: Is there a datetime converter?
+                        BidAmount = Convert.ToDecimal(reader["bid_amount"]),
+                        BidPlaced = Convert.ToDateTime(reader["bid_placed"])
                     };
 
                     result.Add(bid);
@@ -87,7 +91,6 @@ namespace Capstone.DAO
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(sqlPostBid, connection);
-                command.Parameters.AddWithValue("@bid_id", bid.BidId);
                 command.Parameters.AddWithValue("@unit_id", bid.UnitId);
                 command.Parameters.AddWithValue("@user_id", bid.UserId);
                 command.Parameters.AddWithValue("@bid_amount", bid.BidAmount);
@@ -99,6 +102,7 @@ namespace Capstone.DAO
             }
         }
 
+        /*
         public Bid GetUnitById(int bid_id)
         {
             Bid result = new Bid();
