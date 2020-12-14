@@ -1,9 +1,10 @@
 <template>
-  <div id="login" class="container">
-  
+  <div id="login" class="container loginContainer">
+    <div class="row align-items-start">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
     <form class="form-signin" @submit.prevent="login">
-      <h1 id = title>Welcome to Self Storage Auctions</h1>
-      <h2 id="loginform" class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+      <h2 id="loginform" class="h3 mb-3 font-weight-normal">Sign in to Self Storage Auctions</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -37,7 +38,7 @@
           v-model="user.password"
           required />
       </div>
-      <div class="form-check">
+      <div class="form-check agree">
         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
           <label class="form-check-label" for="defaultCheck1">
             <router-link :to="{name: 'terms'}">
@@ -45,12 +46,17 @@
             </router-link>
           </label>
       </div>
-      <div class="form-group">
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      </div>
-      <button class="btn btn-primary" type="submit">Sign in</button>
+      
+      <button class="btn btn-custom" type="submit">Sign in</button>
     </form>
-    <img src="storageunits.jpg">
+    <div class="needAccount">
+      <div class="form-group"> New to Self Storage Auctions?
+        <router-link :to="{ name: 'register' }">Create an account</router-link>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
   </div>
 </template>
 
@@ -96,34 +102,28 @@ export default {
   },
 };
 </script>
+
 <style>
 
-
-
-
-/* body {
-  font-family: system-ui;
-  background: #ff944d;
-  color: black;
-  text-align: center;
+.form-signin {
+  margin-top: 50px;
+  background-color: rgb(238, 238, 238);
+  padding: 15px;
+  border-radius: 5px;
 }
 
-#loginform{
-  padding-top: 50px;
-  padding-bottom: 10px;
+.needAccount {
+  margin-top: 20px;
+  background-color: rgb(238, 238, 238);
+  padding: 15px;
+  border-radius: 5px;
 }
 
-#title{
-  display: block;
-  width: 50%;
-  margin: auto;
-  text-align: center;
-  background-color: white;
+.agree {
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 15px;
 }
 
-img{
-  width: 100%;
-  height: 30%;
-  padding: 10px;
-} */
+
 </style>

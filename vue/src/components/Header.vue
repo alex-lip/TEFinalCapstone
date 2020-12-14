@@ -118,7 +118,7 @@ export default {
   padding-left: 1rem;
 } */
   #navbar-brand  {
-    color: black;
+    color: white;
     font-size: 1.5em;
     font-weight: 600;
   }
@@ -130,6 +130,9 @@ export default {
 
   .bg-custom {
     background-color: #ff944d;
+    
+
+    /* background-color: #ff944d; */
   }
 
 </style>

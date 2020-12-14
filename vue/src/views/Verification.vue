@@ -1,11 +1,11 @@
 <template>
   <div id="verification" class="text-center">
     <form class="form-verification" @submit.prevent="submitVerification">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal"></h1>
       <div class="alert alert-danger" role="alert" v-if="verificationError">
         {{ verificationErrorMsg }}
       </div>
-      <h1>Please enter the verification code: </h1>
+      <h2>Please enter the verification code: </h2>
       <input
         type="text"
         placeholder="123456"
@@ -64,5 +64,11 @@ export default {
 
 </script>
 
+
 <style>
+
+.form-verification {
+  margin-top: 50px;
+}
+
 </style>
