@@ -90,7 +90,8 @@ export default {
       } else {
         this.newBid.unitId = this.unitDetails.unitId;
         this.newBid.userId = this.user.userId;
-        this.newBid.bidPlaced = "2021-03-19T23:59:00";
+        this.newBid.bidPlaced = new Date();
+
         bidService.createNewBid(this.newBid);
       }
     },
@@ -98,6 +99,8 @@ export default {
     checkBidAmount(bidAmount) {
       if (bidAmount <= this.unitDetails.highBid) {
         this.bidError = true;
+      } else {
+        this.bidError = false;
       }
     },
   },
