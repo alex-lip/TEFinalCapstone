@@ -68,9 +68,18 @@ const router = new Router({
       },
     },
     {
-      path: "/bids",
-      name: "bids",
-      component: () => import("../views/Bids.vue"),
+      path: "/allbids",
+      name: "all-bids",
+      component: () => import("../views/AllBids.vue"),
+      // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/usersbids",
+      name: "users-bids",
+      component: () => import("../views/UsersBids.vue"),
       // Does the user have to be logged in in order to see the available units?
       meta: {
         requiresAuth: true,
@@ -112,6 +121,7 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+
     {
       path: "*",
       redirect: "/",

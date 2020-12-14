@@ -58,9 +58,6 @@ export default {
 
   data() {
     return {
-      showBidForm: false,
-      bidAmount: 0,
-      bidError: false,
       unitDetails: undefined,
 
       userRole: this.$store.state.user.role,

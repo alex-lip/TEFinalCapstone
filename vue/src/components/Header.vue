@@ -57,7 +57,7 @@
       </router-link></a>
 
             <a class="nav-item nav-link" href="#">
-        <router-link class="nav-item" v-bind:to="{ name: 'bids' }"> <!--TODO: Need to create link here for the list of users, with only this bids made by the logged in user filtered -->
+        <router-link class="nav-item" v-bind:to="{ name: 'users-bids' }"> <!--TODO: Need to create link here for the list of users, with only this bids made by the logged in user filtered -->
         My Bidding History
       </router-link></a>
 
@@ -118,7 +118,7 @@ export default {
   padding-left: 1rem;
 } */
   #navbar-brand  {
-    color: black;
+    color: white;
     font-size: 1.5em;
     font-weight: 600;
   }
@@ -130,6 +130,9 @@ export default {
 
   .bg-custom {
     background-color: #ff944d;
+    
+
+    /* background-color: #ff944d; */
   }
 
 </style>
