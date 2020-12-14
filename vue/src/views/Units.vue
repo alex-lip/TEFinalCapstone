@@ -17,7 +17,7 @@
       User View
     </button>
     <p></p>
-    <table id="tblUnits">
+    <table class="table-striped" id="tblUnits">
       <thead>
         <tr>
           <th>Auction Number</th>
@@ -149,18 +149,19 @@ export default {
 </script>
 
 <style>
+
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
+  /*border: 1px solid black; */
 }
-
+/*
 table,
 th,
 td {
   border: 1px solid black;
 }
-/* body {
+ body {
   font-family: system-ui;
   background: #ff944d;
   color: black;

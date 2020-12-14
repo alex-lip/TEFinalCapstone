@@ -79,6 +79,7 @@ export default {
   background-color: rgb(238, 238, 238);
   padding: 5px;
   border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
 }
 
 .inputVerify {

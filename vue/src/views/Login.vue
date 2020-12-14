@@ -84,7 +84,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push({ name: "home" });
+            this.$router.push({ name: "units" });
           }
         })
         .catch((error) => {
@@ -110,6 +110,7 @@ export default {
   background-color: rgb(238, 238, 238);
   padding: 15px;
   border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
 }
 
 .needAccount {
@@ -117,11 +118,12 @@ export default {
   background-color: rgb(238, 238, 238);
   padding: 15px;
   border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
 }
 
 .agree {
   text-align: left;
-  margin-left: 4px;
+  margin-left: 30px;
   margin-bottom: 15px;
 }
 
