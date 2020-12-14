@@ -21,7 +21,7 @@
           <button
             type="submit"
             class="btnSubmit"
-            v-on:click.prevent="addNewBid()"
+            v-on:click="addNewBid()"
           >
             Submit Bid
           </button>
@@ -43,6 +43,7 @@
 <script>
 import UnitCard from "../components/UnitCard";
 import bidService from "../services/BidService.js";
+import unitService from "../services/UnitService.js";
 
 export default {
   components: {
@@ -101,6 +102,11 @@ export default {
         this.newBid.bidPlaced = new Date();
 
         bidService.createNewBid(this.newBid);
+
+        this.unitDetails.highBid = this.newBid.bidAmount;
+        unitService.editUnit(this.unitDetails.unitId, this.unitDetails);
+
+        this.getUnits();
       }
     },
 
@@ -110,6 +116,12 @@ export default {
       } else {
         this.bidError = false;
       }
+    },
+
+    getUnits() {
+      unitService.getAllUnits().then((response) => {
+        this.$store.commit("SET_UNITS", response.data);
+      });
     },
   },
 };
