@@ -18,7 +18,7 @@ namespace Capstone.DAO
 
         // QUERIES
         private string sqlGetBids =
-            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, u.username " +
+            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
             "FROM bids b " +
             "JOIN users u ON u.user_id = b.user_id " +
             "JOIN units n ON n.unit_id = b.unit_id;";
@@ -28,21 +28,21 @@ namespace Capstone.DAO
             "VALUES (@bid_id, @unit_id, @user_id, @bid_amount, @bid_placed);";
 
         private string sqlGetBidById =
-            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, u.username " +
+            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
             "FROM bids b " +
             "JOIN users u ON u.user_id = b.user_id " +
             "JOIN units n ON n.unit_id = b.unit_id " +
             "WHERE bid_id = @bid_id;";
 
         private string sqlGetBidByUnitId =
-            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, u.username " +
+            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username" +
             "FROM bids b " +
             "JOIN users u ON u.user_id = b.user_id " +
             "JOIN units n ON n.unit_id = b.unit_id " +
             "FROM bids WHERE unit_id = @unit_id;";
 
-        private string sqlGetBidByUserId = 
-            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, u.username " +
+        private string sqlGetBidByUserId =
+            "SELECT b.bid_id, n.location_name, n.facility_address, n.unit_number, b.bid_amount, b.bid_placed, n.auction_end, u.username " +
             "FROM bids b " +
             "JOIN users u ON u.user_id = b.user_id " +
             "JOIN units n ON n.unit_id = b.unit_id " +

@@ -2,11 +2,22 @@
   <div>
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
-    <router-link v-bind:to="{ name: 'unit-details-place-bid' }">
     <button class="btn-custom">
       Bid on Unit
     </button>
-    </router-link>
+
+    <!-- TODO: Need to input some boolean check to verify the amount entered is 
+    higher than the current high bid and if the date of the bid placed is past,
+    and connect form to add bid to log and change high bid value on the unit.
+    -->
+    <form id="frmAddNewBid">
+      <div class="field">
+        <label for="bidAmount">Please enter your bid: </label>
+        <input type="text" name="bidAmount" />  
+        <!-- v-model.trim="bid.bidAmount" -->
+        <button type="submit" class="btnSubmit" v-on:click.prevent="addNewBid()">Submit Bid</button>
+      </div>
+    </form>
 
     <router-link v-bind:to="{ name: 'units' }">
       <button class="btn-custom-outline">
@@ -42,7 +53,7 @@ import unitService from "../services/UnitService";
 import UnitCard from "../components/UnitCard";
 
 export default {
-  name: "unit-details",
+  name: "unit-details-place-bid",
 
   components: {
     UnitCard,
@@ -54,6 +65,8 @@ export default {
 
   data() {
     return {
+      bidAmount: 0,
+      bidError: false,
       unitDetails: undefined,
 
       userRole: this.$store.state.user.role,

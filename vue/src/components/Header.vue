@@ -57,7 +57,7 @@
       </router-link></a>
 
             <a class="nav-item nav-link" href="#">
-        <router-link class="nav-item" v-bind:to="{ name: 'bids' }"> <!--TODO: Need to create link here for the list of users, with only this bids made by the logged in user filtered -->
+        <router-link class="nav-item" v-bind:to="{ name: 'users-bids' }"> <!--TODO: Need to create link here for the list of users, with only this bids made by the logged in user filtered -->
         My Bidding History
       </router-link></a>
 
