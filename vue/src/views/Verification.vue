@@ -1,20 +1,28 @@
 <template>
   <div id="verification" class="text-center">
+    <div class="row align-items-start">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
     <form class="form-verification" @submit.prevent="submitVerification">
-      <h1 class="h3 mb-3 font-weight-normal"></h1>
+      <h2 ></h2>
       <div class="alert alert-danger" role="alert" v-if="verificationError">
         {{ verificationErrorMsg }}
       </div>
-      <h2>Please enter the verification code: </h2>
+      <h2 class="h3 mb-3 font-weight-normal">Please enter the verification code</h2>
       <input
         type="text"
+        class="inputVerify"
         placeholder="123456"
         maxlength="6"
         v-model.number="verificationCode.code"
         required
       />
-      <button>Submit</button>
+      <br>
+      <button class="btn btn-custom">Submit</button>
     </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
   </div>
 </template>
 
@@ -66,9 +74,15 @@ export default {
 
 
 <style>
-
 .form-verification {
   margin-top: 50px;
+  background-color: rgb(238, 238, 238);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.inputVerify {
+  margin: 10px;
 }
 
 </style>

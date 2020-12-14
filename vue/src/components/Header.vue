@@ -123,9 +123,19 @@ export default {
     font-weight: 600;
   }
 
+  #navbar-brand:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+
   .nav-item {
     font-size: 1.2em;
     color: white;
+  }
+
+  .nav-item:hover {
+    color: black;
   }
 
   .bg-custom {
