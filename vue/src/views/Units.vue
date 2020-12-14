@@ -10,7 +10,7 @@
     <router-link v-bind:to="{ name: 'add-unit' }">
       <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
-    <router-link v-bind:to="{ name: 'bids' }">
+    <router-link v-bind:to="{ name: 'all-bids' }">
       <button class="btnViewBids" v-if="userRole == 'admin'">View All Bids</button>
     </router-link>
     <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
