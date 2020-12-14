@@ -86,9 +86,11 @@
 
 <script>
 import bidService from "../services/BidService";
+import unitService from "../services/UnitService.js";
 
  export default {
    name: "all-bids",
+
    data() {
      return {
        filter: {
@@ -100,9 +102,11 @@ import bidService from "../services/BidService";
          bidPlaced: "",
          username: "",
        },
+       
        userRole: this.$store.state.user.role,
      };
    },
+
    methods: {
      // Methods to create, read, update, and delete...
      getBids() {
@@ -110,10 +114,20 @@ import bidService from "../services/BidService";
          this.$store.commit("SET_BIDS", response.data);
        });
      },
+
+     getUnits() {
+       unitService.getAllUnits().then((response) => {
+         this.$store.commit("SET_UNITS", response.data);
+       })
+     }
    },
+
    created() {
      this.getBids();
+
+     this.getUnits();
    },
+
    computed: {
      filteredList() {
        let filteredBids = this.$store.state.bids;
@@ -158,7 +172,7 @@ td {
 
 body {
   font-family: system-ui;
-  background: #ff944d;
+  background: white;
   color: black;
   text-align: left;
 }

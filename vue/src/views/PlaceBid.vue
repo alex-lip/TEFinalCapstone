@@ -13,15 +13,17 @@
           type="number"
           name="bidAmount"
           v-model.trim.number="newBid.bidAmount"
+          min="unitDetails.highBid + 1"
         />
 
         <!-- TODO: LINK TO USER'S BID HISTORY!!!!!! -->
         <router-link :to="{ name: 'users-bids' }">
           <!-- params: { id: user.userId } -->
           <button
+            form="frmAddNewBid"
             type="submit"
             class="btnSubmit"
-            v-on:click="addNewBid()"
+            v-on:click.prevent="addNewBid()"
           >
             Submit Bid
           </button>
@@ -80,6 +82,9 @@ export default {
 
     // Populate our bids in $store.
     this.getBids();
+
+    // Set the bidAmount to be equal to the unitDetails's bid amount.
+    this.newBid.bidAmount = this.unitDetails.highBid;
   },
 
   computed: {},
