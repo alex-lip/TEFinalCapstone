@@ -36,6 +36,8 @@ export default new Vuex.Store({
 
     // Hold ALL bids.
     bids: [],
+
+    logObjects: [],
   },
 
   mutations: {
@@ -62,6 +64,6 @@ export default new Vuex.Store({
 
     SET_BIDS(state, data) {
       state.bids = data;
-    }
+    },
   },
 });

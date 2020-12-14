@@ -78,7 +78,7 @@ const router = new Router({
     },
     
     {
-      path: "/usersbids",
+      path: "/usersbids/:userId",
       name: "users-bids",
       component: () => import("../views/UsersBids.vue"),
       // Does the user have to be logged in in order to see the available units?
