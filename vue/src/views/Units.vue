@@ -2,7 +2,7 @@
   <div class="units">
     <h1 id="title">Storage Auctions</h1>
     <p></p>
-    <h3 id="title">Full Listing of all units avaiable for auction</h3>
+    <h3 id="title">Full Listing of all units available for auction</h3>
     <h3 id="title">
       Click on the individual auction numbers to see further details and/or
       place a bid
@@ -10,7 +10,7 @@
     <router-link v-bind:to="{ name: 'add-unit' }">
       <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
-    <router-link v-bind:to="{ name: 'bids' }">
+    <router-link v-bind:to="{ name: 'all-bids' }">
       <button class="btnViewBids" v-if="userRole == 'admin'">View All Bids</button>
     </router-link>
     <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">

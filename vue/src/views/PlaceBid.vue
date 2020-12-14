@@ -21,12 +21,20 @@
           <button
             type="submit"
             class="btnSubmit"
-            v-on:click.prevent="addNewBid()"
+            v-on:click="addNewBid()"
           >
             Submit Bid
           </button>
         </router-link>
-      <div v-if="bidError">Please Enter an amount greater than the current high bid!</div>
+        <div v-if="bidError">
+          Please Enter an amount greater than the current high bid!
+        </div>
+
+        <router-link v-bind:to="{ name: 'units' }">
+          <button class="btn-custom-outline">
+            Return to List of Units
+          </button>
+        </router-link>
       </div>
     </form>
   </div>
@@ -35,6 +43,7 @@
 <script>
 import UnitCard from "../components/UnitCard";
 import bidService from "../services/BidService.js";
+import unitService from "../services/UnitService.js";
 
 export default {
   components: {
@@ -86,19 +95,33 @@ export default {
       this.checkBidAmount(this.newBid.bidAmount);
 
       if (this.bidError === true) {
-        console.log("Needs to be greater.")
+        console.log("Needs to be greater.");
       } else {
         this.newBid.unitId = this.unitDetails.unitId;
         this.newBid.userId = this.user.userId;
-        this.newBid.bidPlaced = "2021-03-19T23:59:00";
+        this.newBid.bidPlaced = new Date();
+
         bidService.createNewBid(this.newBid);
+
+        this.unitDetails.highBid = this.newBid.bidAmount;
+        unitService.editUnit(this.unitDetails.unitId, this.unitDetails);
+
+        this.getUnits();
       }
     },
 
     checkBidAmount(bidAmount) {
       if (bidAmount <= this.unitDetails.highBid) {
         this.bidError = true;
+      } else {
+        this.bidError = false;
       }
+    },
+
+    getUnits() {
+      unitService.getAllUnits().then((response) => {
+        this.$store.commit("SET_UNITS", response.data);
+      });
     },
   },
 };
