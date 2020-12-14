@@ -121,7 +121,7 @@ export default {
 
 .agree {
   text-align: left;
-  margin-left: 5px;
+  margin-left: 4px;
   margin-bottom: 15px;
 }
 

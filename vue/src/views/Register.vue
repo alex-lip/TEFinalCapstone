@@ -1,6 +1,6 @@
 <template>
-<div class="container-fluid ">
-  <div class="row align-items-start overlay">
+<div class="container-fluid">
+  <div class="row align-items-start overlay filter">
     <div class="col-md-1 .ml-md-auto"></div>
     <div class="col-md-5 .ml-md-auto" id="aboutContent">
       <h1>Bid on Abandoned Self Storage Units</h1>
@@ -11,7 +11,7 @@
     <div class="col-md-1 .ml-md-auto"></div>
   <div id="register" class="col text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+      <h1>Register</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -57,7 +57,7 @@
       
       </div>
     </form>
-  </div>
+  </div> 
   <div class="col-md-1 .ml-md-auto"></div>
   </div>
 <div class="container features">
@@ -140,25 +140,21 @@ export default {
 
 <style scoped>
 
-.container-fluid {
-  /*background-image: url(https://images.unsplash.com/photo-1595050309250-3047a857b88d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1987&q=80);
+.overlay {
+  background-image:linear-gradient(to right,rgb(0, 0, 0,0.8) 0%,rgba(0, 0, 0, 0.63) 100%), url(https://www.argus-selfstorage.com/wp-content/uploads/2016/02/slider-selfstorage.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
+  background-position-y: 60%;
+  padding-top: 35px;  
+  background-blend-mode:darken;
+    
   
-  height: 100%;
-  
-  
+  /* background-position-y: 20%;
+  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(60deg, rgb(245, 104, 10) 28%, rgb(253, 227, 177) 100%); */
 }
 
-.overlay {
-    /*background: rgba(0, 0, 0, 0.8); 
-    background-blend-mode: multiply;
-    padding-top: 35px; */
-  
-  background-position-y: 20%;
-  background: linear-gradient(60deg, rgb(245, 104, 10) 28%, rgb(253, 227, 177) 100%);
-}
 
 #aboutContent {
   text-align: center;
@@ -166,16 +162,25 @@ export default {
   border-radius: 5px;
   padding: 1px;
   margin-top:50px;
-  margin-bottom:25px;
+  margin-bottom:50px;
+   
 }
 
 #register {
-  background: (0,0,0,0.5);
   border-radius: 10px;
   padding: 15px;
-  margin-top:50px;
-  margin-bottom:25px;
+  margin-top:30px;
+  margin-bottom:50px;
 }
+
+#register h1 {
+  color: white;
+  padding: 10px;
+  font-size: 3.0rem;
+  font-weight: 400;
+
+}
+
 
 .btnGroup {
   padding: 5px;
@@ -204,6 +209,7 @@ h1 {
   text-align: left;
   padding-left: 20px;
 }
+
 </style>
 
 
