@@ -68,6 +68,24 @@ const router = new Router({
       },
     },
     {
+      path: "/usersguide",
+      name: "users-instruction",
+      component: () => import("../views/UserInstructions.vue"),
+      // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/adminguide",
+      name: "admin-instruction",
+      component: () => import("../views/AdminInstructions.vue"),
+      // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/allbids",
       name: "all-bids",
       component: () => import("../views/AllBids.vue"),
