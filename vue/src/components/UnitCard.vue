@@ -1,9 +1,9 @@
 <template>
   <div class="unit-card">
     <!--<div>Unit ID: {{ unit.unitId }}</div>-->
-    <div>Unit Number: {{ unit.unitNumber }}</div>
+    <div id="unit-num">Unit Number: {{ unit.unitNumber }}</div>
     <div>Location: {{ unit.locationName }}</div>
-    <div>Address: {{unit.facilityAddress}}</div>
+    <!-- <div>Address: {{unit.facilityAddress}}</div> -->
     <div>Size: {{ unit.unitSize }}</div>
     <div>Details: {{ unit.notes }}</div>
     <div>Current Bid: ${{ unit.highBid }}</div>
@@ -22,9 +22,17 @@ export default {
 </script>
 
 <style>
+#unit-num {
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* text-align: left; */
+
+  margin-top: 1rem;
+}
+
 .unit-card {
   background-color: white;
-  border: 5px solid black;
+  /* border: 5px solid black; */
   border-radius: 10px;
 }
 
@@ -32,5 +40,9 @@ img {
   width: 100%;
   max-width: 400px;
   height: auto;
+
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>
