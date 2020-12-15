@@ -183,7 +183,7 @@ export default {
 }
 
 .btn-custom-submit-bid {
-  background:  #23953e; 
+  background:  #3ac03a; 
   border-radius: 10px;
   color: white;
   font-weight: 600;

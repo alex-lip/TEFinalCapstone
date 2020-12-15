@@ -116,6 +116,10 @@ export default {
   padding: 10px;
 }
 
+.btn-custom-units-bid:hover {
+  transform: translateY(2px);
+}
+
 .btn-custom-units-outline:after {
   color: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
   background-color: white;

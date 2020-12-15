@@ -151,7 +151,7 @@ import bidService from "../services/BidService";
  };
 </script>
 
-<style>
+<style scoped>
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
