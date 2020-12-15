@@ -77,7 +77,15 @@
           <td>{{ bid.unitNumber }}</td>
           <td>{{ bid.bidAmount }}</td>
           <td>{{ bid.bidPlaced }}</td>
-          <td>{{ bid.username }}</td>
+          <td>
+            <!--TODO: Need to see if this link is even needed. Ask about suggested protocal for emailing the winner-->
+            <router-link
+              class="username"
+              v-bind:to="{ name: 'contact-winner', params: { username: user.username } }"
+            >
+              {{ bid.username }}
+            </router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -89,7 +97,6 @@ import bidService from "../services/BidService";
 
  export default {
    name: "all-bids",
-
    data() {
      return {
        filter: {
@@ -101,11 +108,9 @@ import bidService from "../services/BidService";
          bidPlaced: "",
          username: "",
        },
-
        userRole: this.$store.state.user.role,
      };
    },
-
    methods: {
      // Methods to create, read, update, and delete...
      getBids() {
@@ -114,15 +119,12 @@ import bidService from "../services/BidService";
        });
      },
    },
-
    created() {
      this.getBids();
    },
-
    computed: {
      filteredList() {
        let filteredBids = this.$store.state.bids;
-       
        if (this.filter.unitNumber != "") {
          filteredBids = filteredBids.filter((bid) =>
            bid.unitNumber === this.filter.unitNumber

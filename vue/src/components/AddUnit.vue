@@ -10,8 +10,12 @@
           v-model.trim="newUnit.locationName"
           required
         >
-          <option>Village Mini Storage</option>
+          <option>Village Mini Storage South</option>
+          <option>Village Mini Storage North</option>
           <option>Millersport Storage</option>
+          <option>Stow-Away</option>
+          <option>204 Self-Storage</option>
+          <option>Pickaway Self-Storage</option>
         </select>
         <!-- <input
           type="text"
