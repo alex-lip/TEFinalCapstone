@@ -51,6 +51,14 @@ export default {
 </script>
 
 <style>
+#unit-num {
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* text-align: left; */
+
+  margin-top: 1rem;
+}
+
 .unit-card {
   /*background-color: white;
   border: 5px solid black;
@@ -62,6 +70,8 @@ export default {
 
 img {
   width: 100%;
+  border-radius: .5rem;
+  margin-top: 1rem;
 }
 
 .unitNumber {

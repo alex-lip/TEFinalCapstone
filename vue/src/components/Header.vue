@@ -120,7 +120,8 @@ export default {
   #navbar-brand  {
     color: black;
     font-size: 1.5em;
-    font-weight: 600;
+    font-weight: 800;
+
   }
 
   #navbar-brand:hover {
