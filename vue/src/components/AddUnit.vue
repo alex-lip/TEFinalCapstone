@@ -48,7 +48,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="pictures">Inventory Pictures</label>
+        <label for="pictures">Inventory Pictures - insert Imgur image hyperlink here, see instructions linked to the home page </label>
         <input
           type="text"
           class="form-control"
