@@ -7,12 +7,13 @@
         <div class="form-row">
           <div class="col">
             <input type="email" class="form-control" placeholder="Winner email" readonly>
-          </div>
+          </div> 
           <div class="col">
             <input type="number" class="form-control" placeholder="Winning Bid" readonly>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="End Date" readonly>
+          <div class="col"> 
+            <input type="text" class="form-control" placeholder="End Date"  readonly>
+            
           </div>
         </div>
 
@@ -44,18 +45,9 @@
 </template>
 
 <script>
-import unitService from "../services/UnitService";
 
 export default {
   name: "contact-winner",
-  props: ["unitId"],
-  data() {
-    return {
-      unitDetails: undefined,
-    };
-  },
-
-  
 };
 </script>
 
