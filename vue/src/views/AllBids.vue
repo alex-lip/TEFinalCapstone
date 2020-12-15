@@ -86,7 +86,6 @@
 
 <script>
 import bidService from "../services/BidService";
-import unitService from "../services/UnitService.js";
 
  export default {
    name: "all-bids",
@@ -102,7 +101,7 @@ import unitService from "../services/UnitService.js";
          bidPlaced: "",
          username: "",
        },
-       
+
        userRole: this.$store.state.user.role,
      };
    },
@@ -114,23 +113,16 @@ import unitService from "../services/UnitService.js";
          this.$store.commit("SET_BIDS", response.data);
        });
      },
-
-     getUnits() {
-       unitService.getAllUnits().then((response) => {
-         this.$store.commit("SET_UNITS", response.data);
-       })
-     }
    },
 
    created() {
      this.getBids();
-
-     this.getUnits();
    },
 
    computed: {
      filteredList() {
        let filteredBids = this.$store.state.bids;
+       
        if (this.filter.unitNumber != "") {
          filteredBids = filteredBids.filter((bid) =>
            bid.unitNumber === this.filter.unitNumber

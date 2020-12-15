@@ -16,5 +16,17 @@ namespace Capstone.Models
         public decimal BidAmount { get; set; }
 
         public DateTime BidPlaced { get; set; }
+
+        public string LocationName { get; set; }
+
+        public string FacilityAddress { get; set; }
+
+        public string Username { get; set; }
+
+        public int UnitNumber { get; set; }
+
+        public decimal HighBid { get; set; }
+
+        public DateTime AuctionEnd { get; set; }
     }
 }
