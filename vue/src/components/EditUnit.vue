@@ -117,8 +117,10 @@ export default {
 <style>
 .container-sm {
   border: black;
-  background-color: rgb(255, 248, 248);
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
   padding-bottom: 50px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   font-size: 14pt;
   font-weight: 600;
   text-align: left;
