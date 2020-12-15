@@ -44,7 +44,7 @@
           required />
       </div>
       <div class="btnGroup">
-      <button class="btn btn-custom" type="submit">
+      <button class="btn btn-custom-register" type="submit">
         Create Account
       </button>
       
@@ -208,6 +208,25 @@ h1 {
   font-weight: 200;
   text-align: left;
   padding-left: 20px;
+}
+
+.btn-custom-register {
+  background: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 3px;
+}
+
+.btn-custom-register:hover {
+  background: linear-gradient(170deg, rgb(248, 103, 6) 0%, rgb(255, 189, 68) 100%);
+  transform: translateY(2px);
+}
+
+.btn-custom-register:active {
+  background: linear-gradient(170deg, rgb(248, 103, 6) 100%, rgb(255, 189, 68) 100%);
+  box-shadow: 0 5px rgb(255, 160, 52);
+  transform: translateY(4px);
 }
 
 </style>
