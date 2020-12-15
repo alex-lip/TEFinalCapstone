@@ -10,8 +10,12 @@
           v-model.trim="newUnit.locationName"
           required
         >
-          <option>Village Mini Storage</option>
+          <option>Village Mini Storage South</option>
+          <option>Village Mini Storage North</option>
           <option>Millersport Storage</option>
+          <option>Stow-Away</option>
+          <option>204 Self-Storage</option>
+          <option>Pickaway Self-Storage</option>
         </select>
         <!-- <input
           type="text"
@@ -144,11 +148,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container-sm {
   border: black;
-  background-color: rgb(255, 248, 248);
+  background-color: rgb(238, 238, 238);
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
   padding-bottom: 50px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   font-size: 14pt;
   font-weight: 600;
   text-align: left;

@@ -1,5 +1,5 @@
 <template>
-  <div class="units">
+  <div class="container-sm units">
     <h1 id="title">Storage Auctions</h1>
 
     <p></p>
@@ -11,32 +11,31 @@
     </h3>
 
     <router-link v-bind:to="{ name: 'add-unit' }">
-      <button class="btnAddUnit" v-if="userRole == 'admin'">Add Unit</button>
+      <button class="btn btn-primary" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
 
     <router-link v-bind:to="{ name: 'all-bids' }">
-      <button class="btnViewBids" v-if="userRole == 'admin'">View All Bids</button>
+      <button class="btn btn-primary" v-if="userRole == 'admin'">View All Bids</button>
     </router-link>
-
-    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+    <button class="btn btn-primary" v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
 
     <p></p>
-    
-    <table class="table-striped" id="tblUnits">
+    <table class="table table-striped table-hover" id="tblUnits">
       <thead>
         <tr>
-          <th>Auction Number</th>
-          <th>Location Name</th>
-          <th>Unit Number</th>
-          <th>Unit Size</th>
-          <th>High Bid</th>
+          <th scope="col">Auction Number</th>
+          <th scope="col">Location Name</th>
+          <th scope="col">Unit Number</th>
+          <th scope="col">Unit Size</th>
+          <th scope="col">High Bid</th>
+          <th scope="col" id="viewDetails">Unit Details</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="text-align: left;">Filter</td>
+          <td >Filter</td>
           <td>
             <input
               type="text"
@@ -69,6 +68,7 @@
               v-model.number="filter.highBid"
             />
           </td>
+          <td></td>
         </tr>
         <tr v-for="unit in filteredList" v-bind:key="unit.id">
           <td>
@@ -83,7 +83,15 @@
           <td>{{ unit.locationName }}</td>
           <td>{{ unit.unitNumber }}</td>
           <td>{{ unit.unitSize }}</td>
-          <td>{{ unit.highBid }}</td>
+          <td>${{ unit.highBid }}.00</td>
+          <td>
+            <!--link to route to specific unit and its details like time left and pictures-->
+            <router-link
+              class="unit-id"
+              v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }">
+            <button type="button" class="btn btn-custom-units">Details</button>
+            </router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -155,47 +163,32 @@ export default {
 };
 </script>
 
-<style>
-
-#tblUnits {
-  margin-left: auto;
-  margin-right: auto;
-  /*border: 1px solid black; */
-}
-/*
-table,
-th,
-td {
-  border: 1px solid black;
-}
- body {
-  font-family: system-ui;
-  background: #ff944d;
-  color: black;
-  text-align: left;
+<style scoped>
+tr {
+  font-size: 18px;
+  font-weight: 500;
 }
 
-table {
-  width: 80%;
-  background-color: white;
-  color: black;
+.btn-custom-units {
+  background: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 4px;
 }
 
-
-
-.unit-id{
-  border-bottom: 1px solid black;
-  text-align: center;
-  padding-left: 75px;
-  padding-right: 75px;
-  padding-bottom: 4px;
+.btn-custom-units:hover {
+  background: linear-gradient(170deg, rgb(248, 103, 6) 0%, rgb(255, 189, 68) 100%);
 }
 
-#title{
-  display: block;
-  width: 50%;
-  margin: auto;
-  text-align: center;
-  background-color: white;
-} */
+.btn-custom-units:active {
+  background: linear-gradient(170deg, rgb(248, 103, 6) 100%, rgb(255, 189, 68) 100%);
+  box-shadow: 0 5px rgb(255, 160, 52);
+  transform: translateY(4px);
+}
+
+.btn-primary {
+  margin: 3px;
+}
+
 </style>

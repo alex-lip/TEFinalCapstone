@@ -73,7 +73,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .form-verification {
   margin-top: 50px;
   background-color: rgb(238, 238, 238);

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <UnitCard v-bind:unit="unitDetails"> </UnitCard>
 
     <!-- TODO: Need to input some boolean check to verify the amount entered is 
@@ -9,11 +9,11 @@
     <router-link
       :to="{ name: 'place-bid', params: { id: this.unitDetails.unitId } }"
     >
-      <button class="btn-custom">Place Bid</button>
+      <button class="btn btn-custom-units-bid">Place Bid</button>
     </router-link>
-
+    <br>
     <router-link v-bind:to="{ name: 'units' }">
-      <button class="btn-custom-outline">
+      <button class="btn btn-light">
         Return to List of Units
       </button>
     </router-link>
@@ -24,18 +24,20 @@
       v-if="userRole == 'admin'"
       :to="{ name: 'edit-unit', params: { id: this.unitDetails.unitId } }"
     >
-      <button class="btnEditUnit">Edit Unit</button>
+      <button class="btn btn-primary">Edit Unit</button>
     </router-link>
 
     <button
-      class="btnDeleteUnit"
+      class="btn btn-primary"
       v-if="userRole == 'admin'"
       v-on:click.prevent="deleteUnit()"
     >
       Delete Unit
     </button>
 
-    <button v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+    <button 
+    class="btn btn-primary"
+    v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
   </div>
@@ -100,6 +102,33 @@ export default {
 </script>
 
 <style>
+
+.btn-primary {
+  margin: 3px;
+}
+.btn-custom-units-bid {
+  background: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 4px;
+  width: 400px;
+  padding: 10px;
+}
+
+.btn-custom-units-bid:hover {
+  transform: translateY(2px);
+}
+
+.btn-custom-units-outline:after {
+  color: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  background-color: white;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 4px;
+}
+
+/*
 .btnPlaceBid {
   background-color: #3366ff;
   border: 3px solid white;
@@ -128,4 +157,6 @@ export default {
   text-align: center;
   display: inline-block;
 }
+*/
+
 </style>

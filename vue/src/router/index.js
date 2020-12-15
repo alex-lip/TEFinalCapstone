@@ -122,7 +122,15 @@ const router = new Router({
         requiresAuth: true,
       },
     },
-
+    {
+      path: "/bids/email/:username",
+      name: "contact-winner",
+      component: () => import("../views/ContactWinner.vue"),
+      // Does the user have to be logged in in order to see the available units?
+      meta: {
+        requiresAuth: true,
+      },
+    },
     {
       path: "*",
       redirect: "/",
