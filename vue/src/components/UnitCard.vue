@@ -70,6 +70,8 @@ export default {
 
 img {
   width: 100%;
+  border-radius: .5rem;
+  margin-top: 1rem;
 }
 
 .unitNumber {
