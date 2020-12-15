@@ -108,17 +108,18 @@ export default {
 .form-signin {
   margin-top: 50px;
   background-color: rgb(238, 238, 238);
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px rgb(209, 209, 209);
+  
 }
 
 .needAccount {
   margin-top: 20px;
   background-color: rgb(238, 238, 238);
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px rgb(209, 209, 209);
 }
 
 .agree {
