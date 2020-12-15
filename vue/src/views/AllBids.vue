@@ -81,7 +81,7 @@
             <!--TODO: Need to see if this link is even needed. Ask about suggested protocal for emailing the winner-->
             <router-link
               class="username"
-              v-bind:to="{ name: 'contact-winner', params: { username: user.username } }"
+              v-bind:to="{ name: 'contact-winner', params: { username: bid.username } }"
             >
               {{ bid.username }}
             </router-link>
@@ -151,7 +151,7 @@ import bidService from "../services/BidService";
  };
 </script>
 
-<style>
+<style scoped>
 #tblUnits {
   margin-left: auto;
   margin-right: auto;

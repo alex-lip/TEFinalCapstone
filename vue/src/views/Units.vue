@@ -1,21 +1,26 @@
 <template>
   <div class="container-sm units">
     <h1 id="title">Storage Auctions</h1>
+
     <p></p>
+
     <h3 id="title">Full Listing of all units available for auction</h3>
     <h3 id="title">
       Click on the individual auction numbers to see further details and/or
       place a bid
     </h3>
+
     <router-link v-bind:to="{ name: 'add-unit' }">
       <button class="btn btn-primary" v-if="userRole == 'admin'">Add Unit</button>
     </router-link>
+
     <router-link v-bind:to="{ name: 'all-bids' }">
       <button class="btn btn-primary" v-if="userRole == 'admin'">View All Bids</button>
     </router-link>
     <button class="btn btn-primary" v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
+
     <p></p>
     <table class="table table-striped table-hover" id="tblUnits">
       <thead>
