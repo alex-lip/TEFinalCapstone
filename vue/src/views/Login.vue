@@ -103,7 +103,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .form-signin {
   margin-top: 50px;

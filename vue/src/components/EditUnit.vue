@@ -114,7 +114,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container-sm {
   border: black;
   box-shadow: 5px 5px 5px rgb(209, 209, 209);

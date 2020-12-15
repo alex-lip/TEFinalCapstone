@@ -132,7 +132,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .btnPlaceBid {
   background-color: #3366ff;
   border: 3px solid white;
