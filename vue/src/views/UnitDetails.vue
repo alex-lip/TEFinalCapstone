@@ -27,6 +27,13 @@
       <button class="btn btn-primary">Edit Unit</button>
     </router-link>
 
+    <router-link
+      v-if="userRole == 'admin'"
+      :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }"
+    >
+      <button class="btn btn-primary">Email Winner</button>
+    </router-link>
+
     <button
       class="btn btn-primary"
       v-if="userRole == 'admin'"

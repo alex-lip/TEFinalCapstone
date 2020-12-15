@@ -140,6 +140,11 @@ const router = new Router({
       name: "terms",
       component: () => import("../views/Terms.vue"),
     },
+    {
+      path: "/contactWinner/:id",
+      name: "contactWinner",
+      component: () => import("../views/ContactWinner.vue"),
+    },
   ],
 });
 
