@@ -55,10 +55,10 @@
           </td>
           <td>
             <input
-              type="text"
-              id="bidPlacedFilter"
-              placeholder="Date of Bid"
-              v-model="filter.bidPlaced"
+          class="form-control"
+          id="bidPlacedFilter"
+          type="datetime-local"
+          v-model="filter.bidPlaced"
             />
           </td>
           <td>
@@ -162,7 +162,7 @@ export default {
       }
       if (this.filter.bidPlaced != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.bidPlaced <= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
         );
       }
       if (this.filter.username != "") {
