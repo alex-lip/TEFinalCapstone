@@ -71,13 +71,13 @@ INSERT INTO users (username, password_hash, salt, user_role, verification_status
 INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('shopper@user.com','$1$vHi14GKN$rQPTqxv98LbsPGVRsK8.Z0', 'vHi14GKN','user', 1);
 
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage South', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 'https://i.imgur.com/dc1PU8j.jpg', 900, '20210319 23:59', 'Clean unit!');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage North', '80773 Lancaster-Kirkersville Rd NW, Baltimore, OH 43105', '162', '10x10', 'https://i.imgur.com/AZoU33k.jpg', 150, '20210404 23:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage North', '80773 Lancaster-Kirkersville Rd NW, Baltimore, OH 43105', '162', '10x10', 'https://i.imgur.com/AZoU33k.jpg', 150, '20210404 23:59', '');
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', 'https://i.imgur.com/u4qSjQL.jpg', 1, '20210225 11:59', 'Minor water damage!');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('204 Self-Storage', '10445 Blacklick-Eastern Rd. NW Pickerington 43147', '25', '10x20', 'https://i.imgur.com/5HKsazo.jpg', 320, '20210128 11:59');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Pickaway Self-Storage', '500 Hill Rd N, Pickerington, OH 43147', '42', '10x30', 'https://i.imgur.com/WhAh9xF.jpg', 640, '20210601 11:59');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '806 E. Findlay St. Carey, OH 43316', '28', '10x10', 'https://i.imgur.com/gQi54t4.jpg', 80, '20210412 11:59');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1815 E. Mansfield St. Bucyrus, OH 44820', '36', '5x10', 'https://i.imgur.com/LVMnCRE.jpg', 100, '20210516 11:59');
-INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1345 N. Main St. Urbana, OH 43078', '62', '10x15', 'https://i.imgur.com/ICoVAmu.jpg', 120, '20210710 11:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('204 Self-Storage', '10445 Blacklick-Eastern Rd. NW Pickerington 43147', '25', '10x20', 'https://i.imgur.com/5HKsazo.jpg', 320, '20210128 11:59', '');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Pickaway Self-Storage', '500 Hill Rd N, Pickerington, OH 43147', '42', '10x30', 'https://i.imgur.com/WhAh9xF.jpg', 640, '20210601 11:59', '');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '806 E. Findlay St. Carey, OH 43316', '28', '10x10', 'https://i.imgur.com/gQi54t4.jpg', 80, '20210412 11:59', '');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1815 E. Mansfield St. Bucyrus, OH 44820', '36', '5x10', 'https://i.imgur.com/LVMnCRE.jpg', 100, '20210516 11:59', '');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1345 N. Main St. Urbana, OH 43078', '62', '10x15', 'https://i.imgur.com/ICoVAmu.jpg', 120, '20210710 11:59', '');
 
 
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (1, 'https://i.imgur.com/epMSRQH.png');
@@ -100,8 +100,8 @@ INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (5, 5, 640, '
 INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 5, 640, '20200214 23:59');
 INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 5, 120, '20200410 23:59');
 INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (6, 6, 80, '20201022 23:59');
-INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (7, 6, 100, '202001113 23:59');
-INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (8, 6, 120, '202001209 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (7, 6, 100, '20201113 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (8, 6, 120, '20201209 23:59');
 
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
