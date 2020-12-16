@@ -76,12 +76,15 @@
           <td>{{ bid.facilityAddress }}</td>
           <td>{{ bid.unitNumber }}</td>
           <td>{{ bid.bidAmount }}</td>
-          <td>{{ bid.bidPlaced }}</td>
+          <td>{{ formattedDate(bid.bidPlaced) }}</td>
           <td>
             <!--TODO: Need to see if this link is even needed. Ask about suggested protocal for emailing the winner-->
             <router-link
               class="username"
-              v-bind:to="{ name: 'contact-winner', params: { username: bid.username } }"
+              v-bind:to="{
+                name: 'contact-winner',
+                params: { username: bid.username },
+              }"
             >
               {{ bid.username }}
             </router-link>
@@ -94,38 +97,46 @@
 
 <script>
 import bidService from "../services/BidService";
+import moment from "moment";
 
- export default {
-   name: "all-bids",
-   data() {
-     return {
-       filter: {
-         id: null,
-         locationName: "",
-         facilityAddress: "",
-         unitNumber: 0,
-         bidAmount: 0,
-         bidPlaced: "",
-         username: "",
-       },
-       userRole: this.$store.state.user.role,
-     };
-   },
-   methods: {
-     // Methods to create, read, update, and delete...
-     getBids() {
-       bidService.getAllBids().then((response) => {
-         this.$store.commit("SET_BIDS", response.data);
-       });
-     },
-   },
-   created() {
-     this.getBids();
-   },
-   computed: {
-     filteredList() {
-       let filteredBids = this.$store.state.bids;
-       if (this.filter.locationName != "") {
+export default {
+  name: "all-bids",
+  data() {
+    return {
+      filter: {
+        id: null,
+        locationName: "",
+        facilityAddress: "",
+        unitNumber: 0,
+        bidAmount: 0,
+        bidPlaced: "",
+        username: "",
+      },
+      userRole: this.$store.state.user.role,
+    };
+  },
+
+  methods: {
+    // Methods to create, read, update, and delete...
+    getBids() {
+      bidService.getAllBids().then((response) => {
+        this.$store.commit("SET_BIDS", response.data);
+      });
+    },
+
+    formattedDate(givenDate) {
+      return moment(givenDate).format("MMMM Do YYYY, h:mm A");
+    },
+  },
+
+  created() {
+    this.getBids();
+  },
+
+  computed: {
+    filteredList() {
+      let filteredBids = this.$store.state.bids;
+      if (this.filter.locationName != "") {
         filteredBids = filteredBids.filter((bid) =>
           bid.locationName
             .toLowerCase()
@@ -140,29 +151,30 @@ import bidService from "../services/BidService";
         );
       }
       if (this.filter.unitNumber != "") {
-         filteredBids = filteredBids.filter((bid) =>
-           bid.unitNumber === this.filter.unitNumber
-         );
+        filteredBids = filteredBids.filter(
+          (bid) => bid.unitNumber === this.filter.unitNumber
+        );
       }
-       if (this.filter.bidAmount != "") {
-         filteredBids = filteredBids.filter((bid) =>
-           bid.bidAmount >= this.filter.bidAmount
-         );
-       }
-       if (this.filter.bidPlaced != "") {
-         filteredBids = filteredBids.filter((bid) =>
-           bid.bidPlaced >= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
-         );
-       }
-       if (this.filter.username != "") {
-         filteredBids = filteredBids.filter((bid) =>
-           bid.username.startsWith(this.filter.username)
-         );
-       }
-       return filteredBids;
-     },
-   },
- };
+      if (this.filter.bidAmount != "") {
+        filteredBids = filteredBids.filter(
+          (bid) => bid.bidAmount >= this.filter.bidAmount
+        );
+      }
+      if (this.filter.bidPlaced != "") {
+        filteredBids = filteredBids.filter(
+          (bid) => bid.bidPlaced <= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+        );
+      }
+      if (this.filter.username != "") {
+        filteredBids = filteredBids.filter((bid) =>
+          bid.username.startsWith(this.filter.username)
+        );
+      }
+      return filteredBids;
+    },
+  },
+};
+
 </script>
 
 <style scoped>
@@ -191,9 +203,7 @@ table {
   color: black;
 }
 
-
-
-.unit-id{
+.unit-id {
   border-bottom: 1px solid black;
   text-align: center;
   padding-left: 75px;
@@ -201,11 +211,11 @@ table {
   padding-bottom: 4px;
 }
 
-#title{
+#title {
   display: block;
   width: 50%;
   margin: auto;
   text-align: center;
   background-color: white;
-} 
+}
 </style>
