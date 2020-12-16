@@ -6,7 +6,7 @@
       Full listing of all bids, filter down by unit and user as needed
     </h3>
     <p></p>
-    <table id="tblUnits">
+    <table id="tblUnits" class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Bid Id Number</th>
