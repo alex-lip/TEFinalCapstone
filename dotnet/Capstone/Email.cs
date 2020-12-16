@@ -45,5 +45,34 @@ namespace Capstone
                 smtp.Send(message);
         }
 
+        public void EmailWinner(string toEmail, int unitId)
+        {
+
+            var fromAddress = new MailAddress("dotnetmike12@gmail.com", "Self Storage Auctions");
+            var toAddress = new MailAddress(toEmail);
+            const string fromPassword = "dotnetmike";
+            const string subject = "Self Storage Auctions";
+            string body = "You won the Auction!";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+                smtp.Send(message);
+        }
+
     }
 }
