@@ -19,7 +19,7 @@ export default {
 
   sendWinnerEmail(id, message) {
     const payload = { id: id, message: message}
-    return axios.post("/sendWinnerEmail/", payload)
+    return axios.post("/units/contactWinner/", payload)
   }
   
 };

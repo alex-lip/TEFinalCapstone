@@ -36,7 +36,7 @@ export default {
   methods: {
   sendEmail() {
       unitService
-        .sendWinnerEmail(this.$route.params.id, this.message.messageBody)
+        .sendWinnerEmail(this.id, this.message.messageBody) // this.$route.params.id
         .then((response) => {
           if (response.status == 200) {
           this.$router.push({name: 'home',});
