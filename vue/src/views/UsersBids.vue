@@ -90,10 +90,9 @@
           <td>{{ bid.facilityAddress }}</td>
           <td>{{ bid.unitNumber }}</td>
           <td>{{ bid.bidAmount }}</td>
-          <td>{{ bid.bidPlaced }}</td>
+          <td>{{ formattedDate(bid.bidPlaced) }}</td>
           <td>{{ bid.highBid }}</td>
-          <td>{{ bid.auctionEnd }}</td>
-          <!--TODO: Need to include the respective unit's high bid amount and date for the end of the auction-->
+          <td>{{ formattedDate(bid.auctionEnd) }}</td>
         </tr>
       </tbody>
     </table>
@@ -102,6 +101,7 @@
 
 <script>
 import bidService from "../services/BidService";
+import moment from "moment";
 
 export default {
   name: "users-bids",
@@ -123,6 +123,7 @@ export default {
         highBid: 0,
         auctionEnd: "",
       },
+
       userRole: this.$store.state.user.role,
     };
   },
@@ -134,8 +135,12 @@ export default {
         this.$store.commit("SET_BIDS", response.data);
       });
     },
+
+    formattedDate(givenDate) {
+      return moment(givenDate).format("MMMM Do YYYY, h:mm A");
+    },
   },
-  
+
   created() {
     this.getBids();
   },
@@ -143,8 +148,8 @@ export default {
   computed: {
     filteredList() {
       let filteredBids = this.$store.state.bids.filter(
-      (b) => b.userId == this.$route.params.userId
-    );
+        (b) => b.userId == this.$route.params.userId
+      );
 
       if (this.filter.unitNumber != "") {
         filteredBids = filteredBids.filter(
