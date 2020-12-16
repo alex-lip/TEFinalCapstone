@@ -125,11 +125,25 @@ import bidService from "../services/BidService";
    computed: {
      filteredList() {
        let filteredBids = this.$store.state.bids;
-       if (this.filter.unitNumber != "") {
+       if (this.filter.locationName != "") {
+        filteredBids = filteredBids.filter((bid) =>
+          bid.locationName
+            .toLowerCase()
+            .includes(this.filter.locationName.toLowerCase())
+        );
+      }
+      if (this.filter.facilityAddress != "") {
+        filteredBids = filteredBids.filter((bid) =>
+          bid.facilityAddress
+            .toLowerCase()
+            .includes(this.filter.facilityAddress.toLowerCase())
+        );
+      }
+      if (this.filter.unitNumber != "") {
          filteredBids = filteredBids.filter((bid) =>
            bid.unitNumber === this.filter.unitNumber
          );
-       }
+      }
        if (this.filter.bidAmount != "") {
          filteredBids = filteredBids.filter((bid) =>
            bid.bidAmount >= this.filter.bidAmount
@@ -137,7 +151,7 @@ import bidService from "../services/BidService";
        }
        if (this.filter.bidPlaced != "") {
          filteredBids = filteredBids.filter((bid) =>
-           bid.bidPlaced <= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+           bid.bidPlaced >= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
          );
        }
        if (this.filter.username != "") {
