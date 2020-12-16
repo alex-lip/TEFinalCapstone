@@ -31,8 +31,9 @@
       v-if="userRole == 'admin'"
       :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }"
     >
-      <button class="btn btn-primary">Email Winner</button>
     </router-link>
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner</button>
 
     <button
       class="btn btn-primary"
@@ -47,6 +48,41 @@
     v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
       User View
     </button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Send Email to Winner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" placeholder="Next steps for pickup"></textarea>
+
+        <div class="col emailContent">
+            
+            <p class="emailBody">Winning Bid: ${{unitDetails.highBid}}</p>
+            <p class="emailBody">Facility Name: {{unitDetails.locationName}}</p>
+            <p class="emailBody">Pickup Address: {{unitDetails.facilityAddress}}</p>
+            <p class="emailBody"> Unit Number: {{unitDetails.unitNumber}}</p>
+            <p class="emailBody">Auction Number: {{unitDetails.unitId}}</p>
+            <p class="emailBody">Unit Size: {{unitDetails.unitSize}}</p>
+            <p class="emailBody">Auction End Time: {{unitDetails.auctionEnd}}</p>
+        </div>
+      </div>
+      <p class="emailCc">*Admin will be cc'd on email</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Send Email</button>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
   </div>
 </template>
 
@@ -133,6 +169,22 @@ export default {
   font-weight: 600;
   font-size: 18px;
   margin: 4px;
+}
+
+.emailCc {
+  font-size: 14px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.emailContent {
+  text-align: left;
+  padding-top: 10px;
+}
+
+.emailBody {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /*
