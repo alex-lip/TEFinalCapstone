@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-1 .ml-md-auto"></div>
       <div class="btnGroup">
-      <router-link :to="{ name: 'user-instruction' }">
+      <router-link :to="{ name: 'users-instruction' }">
       <button class="btn btn-custom-register" type="submit">
         User Website Instructions
       </button>
