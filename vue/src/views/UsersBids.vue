@@ -187,13 +187,6 @@ export default {
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
-}
-
-table,
-th,
-td {
-  border: 1px solid black;
 }
 
 body {
