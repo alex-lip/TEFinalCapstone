@@ -13,6 +13,7 @@
           <th>Bid Placed On</th>
           <th>Unit High Bid</th>
           <th>End Date for Auction</th>
+          <th>Status</th>
           <!-- <th>User Email</th> -->
         </tr>
       </thead>
@@ -75,14 +76,9 @@
               v-model="filter.auctionEnd"
             />
           </td>
-          <!-- <td>
-            <input
-              type="text"
-              id="usernameFilter"
-              placeholder="User Email"
-              v-model.number="filter.username"
-            />
-          </td> -->
+          <td>
+            <!-- Dropdown to check if the auction is ongoing or has ended -->
+          </td>
         </tr>
         <tr v-for="bid in filteredList" v-bind:key="bid.id">
           <td>{{ bid.bidId }}</td>
@@ -93,6 +89,8 @@
           <td>{{ formattedDate(bid.bidPlaced) }}</td>
           <td>{{ bid.highBid }}</td>
           <td>{{ formattedDate(bid.auctionEnd) }}</td>
+          <td v-if="auctionEnded(bid.auctionEnd)">Ended</td>
+          <td v-else>Ongoing</td>
         </tr>
       </tbody>
     </table>
@@ -139,6 +137,15 @@ export default {
     formattedDate(givenDate) {
       return moment(givenDate).format("MMMM Do YYYY, h:mm A");
     },
+
+    auctionEnded(givenDate) {
+      let currentDateTime = Date.now();
+      if (givenDate < currentDateTime) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 
   created() {
