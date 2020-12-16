@@ -152,7 +152,7 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.unitNumber === this.filter.unitNumber
+          (bid) => bid.unitNumber == this.filter.unitNumber
         );
       }
       if (this.filter.bidAmount != "") {
