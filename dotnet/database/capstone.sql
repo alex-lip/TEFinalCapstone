@@ -63,12 +63,12 @@ CREATE TABLE bids(
 )
 
 --populate default data: 'password'
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('user@user.com','$1$EUvs3PSP$/UzuFwVtAw8Jy7LmNLSWg.','EUvs3PSP','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','$1$134yCG9J$G76s/n34SqxR8raAmvalj0', '134yCG9J','admin', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('buyer@user.com','$1$htIdMA6P$Saji4X8qopJLkQfvzgxap/', 'htIdMA6P','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('purchaser@user.com','$1$66Hvgceg$uSSS8VuGXi9224.mCsV8N/', '66Hvgceg','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('auctioneer@user.com','$1$/4JYKhqu$iJ0Gm4h6d/EPbyAK5i54N1', '/4JYKhqu','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('shopper@user.com','$1$vHi14GKN$rQPTqxv98LbsPGVRsK8.Z0', 'vHi14GKN','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('user@user.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','admin', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('buyer@user.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('purchaser@user.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('auctioneer@user.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('shopper@user.com','ijNEomrnLJRrJAaJQZuqxps+e88=','cXC7uzqDlP0=','user', 1);
 
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage South', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 'https://i.imgur.com/dc1PU8j.jpg', 900, '20210319 23:59', 'Clean unit!');
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage North', '80773 Lancaster-Kirkersville Rd NW, Baltimore, OH 43105', '162', '10x10', 'https://i.imgur.com/AZoU33k.jpg', 150, '20210404 23:59', '');
