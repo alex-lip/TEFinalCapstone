@@ -4,48 +4,56 @@
   <div class="unit-card container">
     <div class="row">
       <div class="col-sm">
-    <!--<div>Unit ID: {{ unit.unitId }}</div>-->
-    <div class="unitNumber">Unit Number: {{ unit.unitNumber }}</div>
-    <div class="locationName">{{ unit.locationName }}</div>
-    <img :src="unit.pictures" />
-    </div>
-    <div class="col-sm">
-      
-    <div class="auctionDetails">
-      <div>
-      <span class="icons">
-        <i class="fas fa-clock"></i>
-      </span>
-      End of Auction: {{unit.auctionEnd}}</div>
-    <div>
-      <span class="icons">
-        <i class="fas fa-map"></i>
-      </span>
-      Address: {{unit.facilityAddress}}</div>
-    </div>
-    <div class="auctionDetails">
-    <div>
-      <span class="icons">
-        <i class="fas fa-gavel"></i>
-      </span>
-      Current Bid: </div>
-      <div class="highBid">
-      ${{ unit.highBid }}.00</div>
-    <div>Size: {{ unit.unitSize }}</div>
-    <div>Details: {{ unit.notes }}</div>
-    
-    <div>End of Auction: {{unit.auctionEnd}}</div>
-    </div>
-    </div>
+        <!--<div>Unit ID: {{ unit.unitId }}</div>-->
+        <div class="unitNumber">Unit Number: {{ unit.unitNumber }}</div>
+        <div class="locationName">{{ unit.locationName }}</div>
+        <img :src="unit.pictures" />
+      </div>
+      <div class="col-sm">
+        <div class="auctionDetails">
+          <div>
+            <span class="icons">
+              <i class="fas fa-clock"></i>
+            </span>
+            End of Auction: {{ formattedDate(unit.auctionEnd) }}
+          </div>
+          <div>
+            <span class="icons">
+              <i class="fas fa-map"></i>
+            </span>
+            Address: {{ unit.facilityAddress }}
+          </div>
+        </div>
+        <div class="auctionDetails">
+          <div>
+            <span class="icons">
+              <i class="fas fa-gavel"></i>
+            </span>
+            Current Bid:
+          </div>
+          <div class="highBid">${{ unit.highBid }}.00</div>
+          <div>Size: {{ unit.unitSize }}</div>
+          <div>Details: {{ unit.notes }}</div>
+
+          <div>End of Auction: {{ formattedDate(unit.auctionEnd) }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
 
 export default {
   props: {
     unit: Object, // This prop is hooked to 'u' in 'Units.vue'
+  },
+
+  methods: {
+    formattedDate(givenDate) {
+      return moment(givenDate).format("MMMM Do YYYY, h:mm A");
+    },
   },
 };
 </script>
@@ -70,7 +78,7 @@ export default {
 
 img {
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   margin-top: 1rem;
 }
 
@@ -91,7 +99,7 @@ img {
   background-color: rgb(238, 238, 238);
   box-shadow: 5px 5px 5px rgb(209, 209, 209);
   border-radius: 5px;
-  height:fit-content;
+  height: fit-content;
   padding: 10px;
   font-weight: 500;
 }
@@ -101,6 +109,5 @@ img {
   color: #ff944d;
   font-size: 2.5rem;
   font-weight: 500;
-
 }
 </style>
