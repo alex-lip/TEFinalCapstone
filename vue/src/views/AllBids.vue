@@ -6,7 +6,7 @@
       Full listing of all bids, filter down by unit and user as needed
     </h3>
     <p></p>
-    <table id="tblUnits">
+    <table id="tblUnits" class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Bid Id Number</th>
@@ -55,9 +55,9 @@
           </td>
           <td>
             <input
-              type="text"
+              class="form-control"
               id="bidPlacedFilter"
-              placeholder="Date of Bid"
+              type="datetime-local"
               v-model="filter.bidPlaced"
             />
           </td>
@@ -112,6 +112,7 @@ export default {
         bidPlaced: "",
         username: "",
       },
+
       userRole: this.$store.state.user.role,
     };
   },
@@ -120,7 +121,11 @@ export default {
     // Methods to create, read, update, and delete...
     getBids() {
       bidService.getAllBids().then((response) => {
-        this.$store.commit("SET_BIDS", response.data);
+        if (this.userRole !== "admin") {
+          this.$router.push({ name: "units" });
+        } else {
+          this.$store.commit("SET_BIDS", response.data);
+        }
       });
     },
 
@@ -152,7 +157,7 @@ export default {
       }
       if (this.filter.unitNumber != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.unitNumber === this.filter.unitNumber
+          (bid) => bid.unitNumber == this.filter.unitNumber
         );
       }
       if (this.filter.bidAmount != "") {
@@ -162,7 +167,7 @@ export default {
       }
       if (this.filter.bidPlaced != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.bidPlaced <= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
         );
       }
       if (this.filter.username != "") {
@@ -174,20 +179,12 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped>
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
-}
-
-table,
-th,
-td {
-  border: 1px solid black;
 }
 
 body {
