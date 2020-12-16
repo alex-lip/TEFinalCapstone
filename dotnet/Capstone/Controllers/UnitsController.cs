@@ -54,5 +54,16 @@ namespace Capstone.Controllers
 
         }
 
+        [HttpPost("sendWinnerEmail")]
+        public IActionResult SendWinnerEmail(int unitId, string message)
+        {
+            // sendWinnerEmail(unitId, message)
+
+            Email email = new Email();
+            email.EmailWinner(message, unitId);
+
+            return NoContent();
+        }
+
     }
 }

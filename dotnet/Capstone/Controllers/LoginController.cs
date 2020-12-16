@@ -20,7 +20,7 @@ namespace Capstone.Controllers
 
         System.Random random = new System.Random();
 
-       
+
         public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO)
         {
             tokenGenerator = _tokenGenerator;
@@ -110,7 +110,7 @@ namespace Capstone.Controllers
             int sixDigitNumber = random.Next(100000, 999999);
             Email email = new Email();
             email.EmailSend(userParam.Username, sixDigitNumber);
-            
+
 
 
             User existingUser = userDAO.GetUser(userParam.Username);
@@ -126,7 +126,7 @@ namespace Capstone.Controllers
                 userDAO.AddVerificationCode(user, sixDigitNumber);
 
                 // Get user input of 6 digit number
-                int userInput = sixDigitNumber; 
+                int userInput = sixDigitNumber;
 
 
             }
@@ -165,5 +165,8 @@ namespace Capstone.Controllers
             }
 
         }
+
+        
     }
 }
+

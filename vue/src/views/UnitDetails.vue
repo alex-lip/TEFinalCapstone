@@ -49,20 +49,19 @@
       User View
     </button>
 
+<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <form class="modal-content" @submit="sendEmail">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Send Email to Winner</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      
       <div class="modal-body">
-        <textarea class="form-control" placeholder="Next steps for pickup"></textarea>
-
-        <div class="col emailContent">
-            
+        <div class="col emailContent" >
             <p class="emailBody">Winning Bid: ${{unitDetails.highBid}}</p>
             <p class="emailBody">Facility Name: {{unitDetails.locationName}}</p>
             <p class="emailBody">Pickup Address: {{unitDetails.facilityAddress}}</p>
@@ -70,16 +69,22 @@
             <p class="emailBody">Auction Number: {{unitDetails.unitId}}</p>
             <p class="emailBody">Unit Size: {{unitDetails.unitSize}}</p>
             <p class="emailBody">Auction End Time: {{unitDetails.auctionEnd}}</p>
+            <textarea class="form-control" placeholder="Next steps for pickup"
+            v-model="message.messageBody"></textarea>
+            <p class="emailCc">*Admin will be cc'd on email</p>
         </div>
       </div>
-      <p class="emailCc">*Admin will be cc'd on email</p>
+      
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Send Email</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send Email
+
+          
+        </button>
         
       </div>
       
-    </div>
+    </form>
   </div>
 </div>
 
@@ -89,6 +94,7 @@
 <script>
 import unitService from "../services/UnitService";
 import UnitCard from "../components/UnitCard";
+import UnitService from '../services/UnitService';
 
 export default {
   name: "unit-details",
@@ -106,6 +112,10 @@ export default {
       unitDetails: undefined,
 
       userRole: this.$store.state.user.role,
+
+      message: {
+        messageBody: '',
+      }
     };
   },
 
@@ -140,6 +150,17 @@ export default {
     AddNewBid() {
       //TODO: populate method to add to list of bids
     },
+    sendEmail() {
+      UnitService
+        .sendWinnerEmail(this.unitDetails.unitId, this.message.messageBody)
+        .then((response) => {
+          if (response.status == 200) {
+          this.$router.push({name: 'home',});
+          }})
+        .catch(() => {
+          console.log("ERROR")
+        })
+    }
   },
 };
 </script>
@@ -179,12 +200,16 @@ export default {
 
 .emailContent {
   text-align: left;
-  padding-top: 10px;
+  padding: 10px;
+  background-color: rgb(238, 238, 238);
+  box-shadow: 5px 5px 5px rgb(209, 209, 209);
+  border-radius: 5px;
 }
 
 .emailBody {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
+  margin: 5px;
 }
 
 /*
