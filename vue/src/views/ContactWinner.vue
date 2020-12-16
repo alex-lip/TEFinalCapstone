@@ -2,91 +2,50 @@
 <template>
   <div class="container-sm">
     <h1>Admin View: Send email to auction winner</h1>
-    <form>
+    <form @submit.prevent="sendEmail">
       <div>
         <div class="form-row">
           <div class="col">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Winner email"
-              readonly
-            />
-          </div>
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Winning Bid"
-              readonly
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="End Date"
-              readonly
-            />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Auction ID"
-              readonly
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Facility Name"
-              readonly
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Address"
-              readonly
-            />
-          </div>
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Unit Number"
-              readonly
-            />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="col">
-            <textarea class="form-control" placeholder="Next steps for pickup">
+            <textarea class="form-control" placeholder="Next steps for pickup" v-model="message.messageBody">
             </textarea>
           </div>
         </div>
-        <button type="button" class="btn btn-primary email">Send Email</button>
+        <button type="submit" class="btn btn-primary email">Send Email</button>
       </div>
     </form>
+
   </div>
+
+  
 </template>
 
 <script>
+import unitService from "../services/UnitService";
+
 export default {
   name: "contact-winner",
-  props: ["unitId"],
+  //props: ["id"],
   data() {
     return {
-      unitDetails: undefined,
+      message: {
+        messageBody: '',
+      },
+      id: this.$route.params.id,
     };
   },
+  methods: {
+  sendEmail() {
+      unitService
+        .sendWinnerEmail(this.$route.params.id, this.message.messageBody)
+        .then((response) => {
+          if (response.status == 200) {
+          this.$router.push({name: 'home',});
+          }})
+        .catch(() => {
+          console.log("ERROR")
+        })
+    }
+  }
 };
 </script>
 
