@@ -63,24 +63,45 @@ CREATE TABLE bids(
 )
 
 --populate default data: 'password'
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('user@user.com','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 1);
-INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 1);
-
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('user@user.com','$1$EUvs3PSP$/UzuFwVtAw8Jy7LmNLSWg.','EUvs3PSP','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('admin@admin.com','$1$134yCG9J$G76s/n34SqxR8raAmvalj0', '134yCG9J','admin', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('buyer@user.com','$1$htIdMA6P$Saji4X8qopJLkQfvzgxap/', 'htIdMA6P','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('purchaser@user.com','$1$66Hvgceg$uSSS8VuGXi9224.mCsV8N/', '66Hvgceg','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('auctioneer@user.com','$1$/4JYKhqu$iJ0Gm4h6d/EPbyAK5i54N1', '/4JYKhqu','user', 1);
+INSERT INTO users (username, password_hash, salt, user_role, verification_status) VALUES ('shopper@user.com','$1$vHi14GKN$rQPTqxv98LbsPGVRsK8.Z0', 'vHi14GKN','user', 1);
 
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage South', '1001 S Main St. Baltimore, OH 43105', '106', '5x10', 'https://i.imgur.com/dc1PU8j.jpg', 900, '20210319 23:59', 'Clean unit!');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Village Mini Storage North', '80773 Lancaster-Kirkersville Rd NW, Baltimore, OH 43105', '162', '10x10', 'https://i.imgur.com/AZoU33k.jpg', 150, '20210404 23:59');
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Millersport Storage', '67290 Lancaster St. Millersport, OH 43046', '49', '10x10', 'https://i.imgur.com/u4qSjQL.jpg', 1, '20210225 11:59', 'Minor water damage!');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('204 Self-Storage', '10445 Blacklick-Eastern Rd. NW Pickerington 43147', '25', '10x20', 'https://i.imgur.com/5HKsazo.jpg', 320, '20210128 11:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Pickaway Self-Storage', '500 Hill Rd N, Pickerington, OH 43147', '42', '10x30', 'https://i.imgur.com/WhAh9xF.jpg', 640, '20210601 11:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '806 E. Findlay St. Carey, OH 43316', '28', '10x10', 'https://i.imgur.com/gQi54t4.jpg', 80, '20210412 11:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1815 E. Mansfield St. Bucyrus, OH 44820', '36', '5x10', 'https://i.imgur.com/LVMnCRE.jpg', 100, '20210516 11:59');
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1345 N. Main St. Urbana, OH 43078', '62', '10x15', 'https://i.imgur.com/ICoVAmu.jpg', 120, '20210710 11:59');
+
 
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (1, 'https://i.imgur.com/epMSRQH.png');
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (2, 'https://i.imgur.com/dc1PU8j.jpg');
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (2, 'https://i.imgur.com/u4qSjQL.jpg');
 
-
 ALTER TABLE bids ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE bids ADD FOREIGN KEY (unit_id) REFERENCES units(unit_id);
 
 INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 1, 900, '20200319 23:59');
-INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 1, 1, '20200319 23:59');
-
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 1, 100, '20200319 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (3, 1, 1, '20200319 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 3, 150, '20200610 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 3, 400, '20200211 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (4, 3, 200, '20200211 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (4, 4, 320, '20200502 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 4, 500, '20200212 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (5, 4, 300, '20200615 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (5, 5, 640, '20200718 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (1, 5, 640, '20200214 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (2, 5, 120, '20200410 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (6, 6, 80, '20201022 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (7, 6, 100, '202001113 23:59');
+INSERT INTO bids (unit_id, user_id, bid_amount, bid_placed) VALUES (8, 6, 120, '202001209 23:59');
 
 GO
 --COMMIT TRANSACTION (There is no "BEGIN TRANSACTION")
