@@ -4,17 +4,19 @@ using System.Text;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Policy;
+using Capstone.Models;
+using Capstone.DAO;
 
 namespace Capstone
 {
     public class Email
     {
+        System.Random random = new System.Random();
 
         public Email()
         {
-        }
 
-        
+        }
 
         public void EmailSend(string toEmail, int verificationNumber)
         {
@@ -45,14 +47,16 @@ namespace Capstone
                 smtp.Send(message);
         }
 
-        public void EmailWinner(string toEmail, int unitId)
+        public void EmailWinner(string toEmail, string adminMessage)
         {
 
             var fromAddress = new MailAddress("dotnetmike12@gmail.com", "Self Storage Auctions");
             var toAddress = new MailAddress(toEmail);
             const string fromPassword = "dotnetmike";
             const string subject = "Self Storage Auctions";
-            string body = "You won the Auction!";
+            int verificationCode = random.Next(100000, 999999);
+            string body = "You won the Auction! Show this email to verify pickup " + adminMessage + " " + "Your verification code for pickup is: " + verificationCode;
+            
 
             var smtp = new SmtpClient
             {

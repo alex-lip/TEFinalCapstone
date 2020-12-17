@@ -82,7 +82,7 @@
             <router-link
               class="username"
               v-bind:to="{
-                name: 'contactWinner',
+                name: 'contact-winner',
                 params: { username: bid.username },
               }"
             >

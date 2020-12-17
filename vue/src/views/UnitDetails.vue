@@ -26,19 +26,20 @@
     >
       <button class="btn btn-primary">Edit Unit</button>
     </router-link>
-
+    
+<!--
     <router-link
       v-if="userRole == 'admin'"
-      :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }">
+      :to="{ name: 'contact-winner', params: { username: bid.username } }"> 
     </router-link>
 
     
-        <router-link
+         <router-link
             v-if="userRole == 'admin'"
             :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }">
     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner
       </button>
-    </router-link>
+    </router-link> -->
     
 
     <button

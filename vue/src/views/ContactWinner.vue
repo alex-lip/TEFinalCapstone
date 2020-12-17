@@ -30,15 +30,16 @@ export default {
       message: {
         messageBody: '',
       },
+      username: this.$route.params.username,
       id: this.$route.params.id,
     };
   },
   methods: {
   sendEmail() {
       unitService
-        .sendWinnerEmail(this.id, this.message.messageBody) // this.$route.params.id
+        .sendWinnerEmail(this.username, this.message.messageBody) // this.$route.params.id
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status == 204) {
           this.$router.push({name: 'home',});
           }})
         .catch(() => {
