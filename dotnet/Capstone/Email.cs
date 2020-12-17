@@ -55,8 +55,10 @@ namespace Capstone
             const string fromPassword = "dotnetmike";
             const string subject = "Self Storage Auctions";
             int verificationCode = random.Next(100000, 999999);
-            string body = "You won the Auction! Show this email to verify pickup " + adminMessage + " " + "Your verification code for pickup is: " + verificationCode;
-            
+            string body = "Congratulations! You won the Auction! On pickup, show this email with the verification code: " +
+                verificationCode + "   " + adminMessage + "   Terms and Conditions: " +  "http://localhost:8080/terms";
+
+
 
             var smtp = new SmtpClient
             {
