@@ -12,12 +12,14 @@ namespace Capstone.Controllers
     {
         // PROPERTIES
         private readonly IUnitDAO unitDAO;
+        
 
         // CONSTRUCTORS
         public UnitsController(IUnitDAO unitDAO)
         {
             this.unitDAO = unitDAO;
-        }
+
+    }
 
         // CONTROLLER METHODS
         [HttpGet]
@@ -57,10 +59,19 @@ namespace Capstone.Controllers
         [HttpPost("contactWinner")]
         public IActionResult ContactWinner(EmailRequest request)
         {
-            // sendWinnerEmail(unitId, message)
+           
+            
+
+
+            // SELECT * FROM bids WHERE unit_id = request.Id
+            // What I need:
+            // Email
+            // Bid info - pull in only TOP bid
+            // Unit info - DONE
+
 
             Email email = new Email();
-            email.EmailWinner(request.Message, request.Id);
+            email.EmailWinner(request.Username, request.Message);
 
             return NoContent();
         }

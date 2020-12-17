@@ -14,5 +14,7 @@ namespace Capstone.DAO
         bool AddUnit(Unit unit);
 
         bool EditUnit(int id, Unit unit);
+
+        string GetUnitBidInfo(int unitId);
     }
 }

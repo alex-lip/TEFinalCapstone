@@ -40,6 +40,14 @@ namespace Capstone.DAO
 
         private string sqlDeleteUnit = "DELETE FROM units WHERE unit_id = @unit_id";
 
+        private string sqlGetBidInfo =
+            //"SELECT bids.bid_id, bids.unit_id, bids.user_id, bids.bid_amount, bids.bid_placed, units.location_name, units.facility_address, users.username, units.unit_number, units.high_bid, units.auction_end" +
+            "SELECT username" +
+            "FROM bids" +
+            "JOIN users ON users.user_id = bids.user_id " +
+            "JOIN units ON units.unit_id = bids.unit_id " +
+            "WHERE bids.unit_id = @unit_id AND bids.bid_amount = units.high_bid";
+
         // METHODS
         public List<Unit> GetUnits()
         {
@@ -162,6 +170,33 @@ namespace Capstone.DAO
 
                 return true;
             }
+        }
+
+        public string GetUnitBidInfo(int unitId)
+        {
+            string result = "";
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlGetBidInfo, connection);
+                command.Parameters.AddWithValue("@unit_id", unitId);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string winnerEmail;
+                    {
+                        winnerEmail = Convert.ToString(reader["username"]);
+                    };
+
+                    result = winnerEmail;
+                }
+
+                return result;
+        }
         }
     }
 }
