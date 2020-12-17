@@ -17,7 +17,7 @@
         />
         <br>
         <!-- TODO: LINK TO USER'S BID HISTORY!!!!!! -->
-        <router-link :to="{ name: 'users-bids' }">
+        <!-- <router-link :to="{ name: 'users-bids' }"> -->
           <!-- params: { id: user.userId } -->
           <button
             form="frmAddNewBid"
@@ -27,7 +27,7 @@
           >
             Submit Bid
           </button>
-        </router-link>
+        <!-- </router-link> -->
         <div v-if="bidError">
           Please Enter an amount greater than the current high bid!
         </div><br>

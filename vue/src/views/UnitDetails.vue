@@ -7,11 +7,14 @@
     high bid value on the unit.
     -->
     <router-link
+      v-if="!auctionEnded(unitDetails.auctionEnd)"
       :to="{ name: 'place-bid', params: { id: this.unitDetails.unitId } }"
     >
       <button class="btn btn-custom-units-bid">Place Bid</button>
     </router-link>
-    <br>
+
+    <br />
+    
     <router-link v-bind:to="{ name: 'units' }">
       <button class="btn btn-light">
         Return to List of Units
@@ -26,8 +29,8 @@
     >
       <button class="btn btn-primary">Edit Unit</button>
     </router-link>
-    
-<!--
+
+    <!--
     <router-link
       v-if="userRole == 'admin'"
       :to="{ name: 'contact-winner', params: { username: bid.username } }"> 
@@ -40,7 +43,6 @@
     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner
       </button>
     </router-link> -->
-    
 
     <button
       class="btn btn-primary"
@@ -50,14 +52,13 @@
       Delete Unit
     </button>
 
-    <button 
-    class="btn btn-primary"
-    v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+    <button
+      class="btn btn-primary"
+      v-if="userRole == 'admin'"
+      v-on:click="userRole = !userRole"
+    >
       User View
     </button>
-
-
-
   </div>
 </template>
 
@@ -83,8 +84,8 @@ export default {
       userRole: this.$store.state.user.role,
 
       message: {
-        messageBody: '',
-      }
+        messageBody: "",
+      },
     };
   },
 
@@ -116,21 +117,34 @@ export default {
         });
       }
     },
+
     AddNewBid() {
       //TODO: populate method to add to list of bids
     },
-    
+
+    auctionEnded(givenDate) {
+      let currentDateTime = new Date(Date.now());
+      let convertedGivenDate = new Date(givenDate);
+      if (convertedGivenDate < currentDateTime) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 </script>
 
 <style>
-
 .btn-primary {
   margin: 3px;
 }
 .btn-custom-units-bid {
-  background: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  background: linear-gradient(
+    110deg,
+    rgb(248, 103, 6) 28%,
+    rgb(255, 189, 68) 100%
+  );
   color: white;
   font-weight: 600;
   font-size: 18px;
@@ -201,5 +215,4 @@ export default {
   display: inline-block;
 }
 */
-
 </style>

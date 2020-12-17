@@ -146,13 +146,14 @@ export default {
     },
 
     auctionEnded(givenDate) {
-      let currentDateTime = Date.now();
-      if (givenDate < currentDateTime) {
+      let currentDateTime = new Date(Date.now());
+      let convertedGivenDate = new Date(givenDate);
+      if (convertedGivenDate < currentDateTime) {
         return true;
       } else {
         return false;
       }
-    }
+    },
   },
 
   created() {
@@ -176,24 +177,24 @@ export default {
         );
       }
       if (this.filter.bidPlaced != "") {
-        filteredBids = filteredBids.filter(
-          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) 
+        filteredBids = filteredBids.filter((bid) =>
+          moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced)
         );
       }
       if (this.filter.highBid != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.highBid >= this.filter.highBid 
+          (bid) => bid.highBid >= this.filter.highBid
         );
       }
       if (this.filter.auctionEnd != "") {
-        filteredBids = filteredBids.filter(
-          (bid) => moment(bid.auctionEnd).isSameOrAfter(this.filter.auctionEnd)
+        filteredBids = filteredBids.filter((bid) =>
+          moment(bid.auctionEnd).isSameOrAfter(this.filter.auctionEnd)
         );
       }
       //if (this.filter.status != "") {
-        //filteredBids = filteredBids.filter(
-          //(bid) => bid.status == this.filter.status
-        //);
+      //filteredBids = filteredBids.filter(
+      //(bid) => bid.status == this.filter.status
+      //);
       //}
       return filteredBids;
     },
