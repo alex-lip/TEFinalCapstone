@@ -78,7 +78,6 @@
           <td>{{ bid.bidAmount }}</td>
           <td>{{ formattedDate(bid.bidPlaced) }}</td>
           <td>
-            <!--TODO: Need to see if this link is even needed. Ask about suggested protocal for emailing the winner-->
             <router-link
               class="username"
               v-bind:to="{
@@ -167,7 +166,7 @@ export default {
       }
       if (this.filter.bidPlaced != "") {
         filteredBids = filteredBids.filter(
-          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) 
         );
       }
       if (this.filter.username != "") {
