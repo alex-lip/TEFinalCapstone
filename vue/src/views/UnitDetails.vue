@@ -103,6 +103,21 @@ export default {
     this.highBidDetails = this.$store.state.bids.find(
       (bid) => bid.bidAmount === this.unitDetails.highBid
     );
+    if (this.highBidDetails == undefined) {
+      this.highBidDetails = {
+        auctionEnd: "",
+        bidAmount: 0,
+        bidId: 0,
+        bidPlaced: "",
+        facilityAddress: "1001 S Main St. Baltimore, OH 43105",
+        highBid: 0,
+        locationName: "Village Mini Storage North",
+        unitId: 0,
+        unitNumber: 0,
+        userId: 2,
+        username: "admin@admin.com",
+      };
+    }
   },
 
   computed: {},
