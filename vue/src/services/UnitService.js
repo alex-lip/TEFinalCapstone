@@ -17,9 +17,9 @@ export default {
     return axios.delete(`/units/${unitId}`, unitId);
   },
 
-  sendWinnerEmail(unitId, message) {
-    const payload = { unitId: unitId, message: message}
-    return axios.post("/sendWinnerEmail/", payload)
+  sendWinnerEmail(id, message) {
+    const payload = { id: id, message: message}
+    return axios.post("/units/contactWinner/", payload)
   }
   
 };

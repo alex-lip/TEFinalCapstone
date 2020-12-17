@@ -29,11 +29,17 @@
 
     <router-link
       v-if="userRole == 'admin'"
-      :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }"
-    >
+      :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }">
     </router-link>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner</button>
+    
+        <router-link
+            v-if="userRole == 'admin'"
+            :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner
+      </button>
+    </router-link>
+    
 
     <button
       class="btn btn-primary"
@@ -49,44 +55,7 @@
       User View
     </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form class="modal-content" @submit="sendEmail">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Send Email to Winner</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-      <div class="modal-body">
-        <div class="col emailContent" >
-            <p class="emailBody">Winning Bid: ${{unitDetails.highBid}}</p>
-            <p class="emailBody">Facility Name: {{unitDetails.locationName}}</p>
-            <p class="emailBody">Pickup Address: {{unitDetails.facilityAddress}}</p>
-            <p class="emailBody"> Unit Number: {{unitDetails.unitNumber}}</p>
-            <p class="emailBody">Auction Number: {{unitDetails.unitId}}</p>
-            <p class="emailBody">Unit Size: {{unitDetails.unitSize}}</p>
-            <p class="emailBody">Auction End Time: {{unitDetails.auctionEnd}}</p>
-            <textarea class="form-control" placeholder="Next steps for pickup"
-            v-model="message.messageBody"></textarea>
-            <p class="emailCc">*Admin will be cc'd on email</p>
-        </div>
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send Email
 
-          
-        </button>
-        
-      </div>
-      
-    </form>
-  </div>
-</div>
 
   </div>
 </template>
@@ -94,7 +63,6 @@
 <script>
 import unitService from "../services/UnitService";
 import UnitCard from "../components/UnitCard";
-import UnitService from '../services/UnitService';
 
 export default {
   name: "unit-details",
@@ -150,17 +118,7 @@ export default {
     AddNewBid() {
       //TODO: populate method to add to list of bids
     },
-    sendEmail() {
-      UnitService
-        .sendWinnerEmail(this.unitDetails.unitId, this.message.messageBody)
-        .then((response) => {
-          if (response.status == 200) {
-          this.$router.push({name: 'home',});
-          }})
-        .catch(() => {
-          console.log("ERROR")
-        })
-    }
+    
   },
 };
 </script>

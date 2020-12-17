@@ -55,10 +55,10 @@
           </td>
           <td>
             <input
-          class="form-control"
-          id="bidPlacedFilter"
-          type="datetime-local"
-          v-model="filter.bidPlaced"
+              class="form-control"
+              id="bidPlacedFilter"
+              type="datetime-local"
+              v-model="filter.bidPlaced"
             />
           </td>
           <td>
@@ -81,7 +81,7 @@
             <router-link
               class="username"
               v-bind:to="{
-                name: 'contact-winner',
+                name: 'contactWinner',
                 params: { username: bid.username },
               }"
             >
@@ -111,6 +111,7 @@ export default {
         bidPlaced: "",
         username: "",
       },
+
       userRole: this.$store.state.user.role,
     };
   },
@@ -119,7 +120,11 @@ export default {
     // Methods to create, read, update, and delete...
     getBids() {
       bidService.getAllBids().then((response) => {
-        this.$store.commit("SET_BIDS", response.data);
+        if (this.userRole !== "admin") {
+          this.$router.push({ name: "units" });
+        } else {
+          this.$store.commit("SET_BIDS", response.data);
+        }
       });
     },
 
@@ -173,20 +178,12 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped>
 #tblUnits {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
-}
-
-table,
-th,
-td {
-  border: 1px solid black;
 }
 
 body {
