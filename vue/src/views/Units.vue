@@ -11,13 +11,21 @@
     </h3>
 
     <router-link v-bind:to="{ name: 'add-unit' }">
-      <button class="btn btn-primary" v-if="userRole == 'admin'">Add Unit</button>
+      <button class="btn btn-primary" v-if="userRole == 'admin'">
+        Add Unit
+      </button>
     </router-link>
 
     <router-link v-bind:to="{ name: 'all-bids' }">
-      <button class="btn btn-primary" v-if="userRole == 'admin'">View All Bids</button>
+      <button class="btn btn-primary" v-if="userRole == 'admin'">
+        View All Bids
+      </button>
     </router-link>
-    <button class="btn btn-primary" v-if="userRole == 'admin'" v-on:click="userRole = !userRole">
+    <button
+      class="btn btn-primary"
+      v-if="userRole == 'admin'"
+      v-on:click="userRole = !userRole"
+    >
       User View
     </button>
 
@@ -35,7 +43,7 @@
       </thead>
       <tbody>
         <tr>
-          <td >Filter</td>
+          <td>Filter</td>
           <td>
             <input
               type="text"
@@ -88,8 +96,11 @@
             <!--link to route to specific unit and its details like time left and pictures-->
             <router-link
               class="unit-id"
-              v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }">
-            <button type="button" class="btn btn-custom-units">Details</button>
+              v-bind:to="{ name: 'unit-details', params: { id: unit.unitId } }"
+            >
+              <button type="button" class="btn btn-custom-units">
+                Details
+              </button>
             </router-link>
           </td>
         </tr>
@@ -100,6 +111,7 @@
 
 <script>
 import unitService from "../services/UnitService";
+import bidService from "../services/BidService";
 
 export default {
   name: "Units",
@@ -125,11 +137,24 @@ export default {
         this.$store.commit("SET_UNITS", response.data);
       });
     },
+
+    getBids() {
+      bidService.getAllBids().then((response) => {
+        if (this.userRole !== "admin") {
+          this.$router.push({ name: "units" });
+        } else {
+          this.$store.commit("SET_BIDS", response.data);
+        }
+      });
+    },
   },
 
   created() {
     // Populate the $store with all Available Units
     this.getUnits();
+
+    // Populate the $store with all Available Bids
+    this.getBids();
   },
 
   computed: {
@@ -170,7 +195,11 @@ tr {
 }
 
 .btn-custom-units {
-  background: linear-gradient(110deg, rgb(248, 103, 6) 28%, rgb(255, 189, 68) 100%);
+  background: linear-gradient(
+    110deg,
+    rgb(248, 103, 6) 28%,
+    rgb(255, 189, 68) 100%
+  );
   color: white;
   font-weight: 600;
   font-size: 18px;
@@ -178,11 +207,19 @@ tr {
 }
 
 .btn-custom-units:hover {
-  background: linear-gradient(170deg, rgb(248, 103, 6) 0%, rgb(255, 189, 68) 100%);
+  background: linear-gradient(
+    170deg,
+    rgb(248, 103, 6) 0%,
+    rgb(255, 189, 68) 100%
+  );
 }
 
 .btn-custom-units:active {
-  background: linear-gradient(170deg, rgb(248, 103, 6) 100%, rgb(255, 189, 68) 100%);
+  background: linear-gradient(
+    170deg,
+    rgb(248, 103, 6) 100%,
+    rgb(255, 189, 68) 100%
+  );
   box-shadow: 0 5px rgb(255, 160, 52);
   transform: translateY(4px);
 }
@@ -190,5 +227,4 @@ tr {
 .btn-primary {
   margin: 3px;
 }
-
 </style>

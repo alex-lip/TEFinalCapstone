@@ -14,7 +14,7 @@
     </router-link>
 
     <br />
-    
+
     <router-link v-bind:to="{ name: 'units' }">
       <button class="btn btn-light">
         Return to List of Units
@@ -30,19 +30,21 @@
       <button class="btn btn-primary">Edit Unit</button>
     </router-link>
 
-    <!--
     <router-link
       v-if="userRole == 'admin'"
-      :to="{ name: 'contact-winner', params: { username: bid.username } }"> 
-    </router-link>
-
-    
-         <router-link
-            v-if="userRole == 'admin'"
-            :to="{ name: 'contactWinner', params: { id: this.unitDetails.unitId } }">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Email Winner
+      :to="{
+        name: 'contact-winner',
+        params: { username: highBidDetails.username },
+      }"
+    >
+      <button
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Email Winner
       </button>
-    </router-link> -->
+    </router-link>
 
     <button
       class="btn btn-primary"
@@ -83,9 +85,11 @@ export default {
 
       userRole: this.$store.state.user.role,
 
-      message: {
-        messageBody: "",
-      },
+      // message: {
+      //   messageBody: "",
+      // },
+
+      highBidDetails: undefined,
     };
   },
 
@@ -93,6 +97,11 @@ export default {
     // Populate 'unitDetails' data
     this.unitDetails = this.$store.state.units.find(
       (u) => u.unitId == this.$route.params.id
+    );
+
+    // Populate 'HighBidDetails'
+    this.highBidDetails = this.$store.state.bids.find(
+      (bid) => bid.bidAmount === this.unitDetails.highBid
     );
   },
 
