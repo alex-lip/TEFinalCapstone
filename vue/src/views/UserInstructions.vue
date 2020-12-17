@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container-sm">
     <h1>Welcome to Self Storage Auctions</h1>
     <h2>Please review the directions below on how view units and place bids</h2>
     <p />
@@ -47,10 +47,15 @@ export default {
   }
 
 };
-</script>
+</script scoped>
 
 <style scoped>
 *{
   text-align: left;
+}
+
+h3 {
+  font-size: 20px;
+  padding: 10px;
 }
 </style>
