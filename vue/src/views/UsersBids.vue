@@ -165,10 +165,23 @@ export default {
       let filteredBids = this.$store.state.bids.filter(
         (b) => b.userId == this.$route.params.userId
       );
-
+      if (this.filter.locationName != "") {
+        filteredBids = filteredBids.filter((bid) =>
+          bid.locationName
+            .toLowerCase()
+            .includes(this.filter.locationName.toLowerCase())
+        );
+      }
+      if (this.filter.facilityAddress != "") {
+        filteredBids = filteredBids.filter((bid) =>
+          bid.facilityAddress
+            .toLowerCase()
+            .includes(this.filter.facilityAddress.toLowerCase())
+        );
+      }
       if (this.filter.unitNumber != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.unitNumber === this.filter.unitNumber
+          (bid) => bid.unitNumber == this.filter.unitNumber
         );
       }
       if (this.filter.bidAmount != "") {
