@@ -7,7 +7,7 @@
       <p class="headerCopy">Click on the button to the right to learn how to navigate the website, or click on the header tabs to get started.</p>
     </div>
     <div class="col-md-1 .ml-md-auto"></div>
-      <div class="btnGroup">
+      <div class="btnGroup instructions">
       <router-link :to="{ name: 'users-instruction' }">
       <button class="btn btn-custom-register" type="submit">
         User Website Instructions
@@ -150,6 +150,10 @@ h1 {
   background: linear-gradient(170deg, rgb(248, 103, 6) 100%, rgb(255, 189, 68) 100%);
   box-shadow: 0 5px rgb(255, 160, 52);
   transform: translateY(4px);
+}
+
+.instructions {
+  margin-top: 120px;
 }
 
 </style>

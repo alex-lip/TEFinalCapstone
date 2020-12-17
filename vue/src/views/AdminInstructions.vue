@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container-sm">
     <h1>Welcome to Self Storage Auctions</h1>
     <p />
     <p />
@@ -16,12 +16,12 @@
             When adding a unit fill out the the form as needed, to fill in the picture of the unit:
         </h4>
             <ol>
-                <li>1. Login to Imgur, create an account if you do not have one https://imgur.com/</li>
-                <li>2. Click on the top left button marked New Post</li>
-                <li>3. Click choose photo or video to upload the picture from your computer</li>
-                <li>4. When the next screen with the image shows up, right click on the image and click Open In New Tab</li>
-                <li>5. The newly opened tab will show on the image, copy the hyperlink from the address bar, or URL bar at the top of the screen</li>
-                <li>6. Once the hyperlink is copied, paste it into the inventory bar in the add unit form</li>
+                <li>Login to Imgur, create an account if you do not have one https://imgur.com/</li>
+                <li>Click on the top left button marked New Post</li>
+                <li>Click choose photo or video to upload the picture from your computer</li>
+                <li>When the next screen with the image shows up, right click on the image and click Open In New Tab</li>
+                <li>The newly opened tab will show on the image, copy the hyperlink from the address bar, or URL bar at the top of the screen</li>
+                <li>Once the hyperlink is copied, paste it into the inventory bar in the add unit form</li>
             </ol>
     <h3 v-show="userRole == 'admin'">
       You can click on specific units to view their details, and if needed edit
@@ -65,4 +65,10 @@ export default {
   *{
     text-align: left;
   }
+
+  h3 {
+  font-size: 20px;
+  padding: 10px;
+}
+
 </style>
