@@ -14,7 +14,6 @@
           <th>Unit High Bid</th>
           <th>End Date for Auction</th>
           <th>Status</th>
-          <!-- <th>User Email</th> -->
         </tr>
       </thead>
       <tbody>
@@ -54,9 +53,9 @@
           </td>
           <td>
             <input
-              type="text"
+              class="form-control"
               id="bidPlacedFilter"
-              placeholder="Date of Bid"
+              type="datetime-local"
               v-model="filter.bidPlaced"
             />
           </td>
@@ -70,15 +69,23 @@
           </td>
           <td>
             <input
-              type="text"
+              class="form-control"
               id="auctionEndFilter"
-              placeholder="Auction End"
+              type="datetime-local"
               v-model="filter.auctionEnd"
             />
           </td>
-          <td>
-            <!-- Dropdown to check if the auction is ongoing or has ended -->
-          </td>
+          <!--TODO: add filter for status of unit <td>
+            <select
+          class="form-control"
+          id="status"
+          v-model.trim="filter.status"
+          required
+        >
+          <option>Ongoing</option>
+          <option>Ended</option>
+        </select>
+          </td>-->
         </tr>
         <tr v-for="bid in filteredList" v-bind:key="bid.id">
           <td>{{ bid.bidId }}</td>
@@ -170,20 +177,24 @@ export default {
       }
       if (this.filter.bidPlaced != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.bidPlaced <= this.filter.bidPlaced //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+          (bid) => moment(bid.bidPlaced).isSameOrAfter(this.filter.bidPlaced) 
         );
       }
       if (this.filter.highBid != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.highBid >= this.filter.highBid //TODO: Not sure which direction to set up the filter here, all amounts higher or lower than the input value?
+          (bid) => bid.highBid >= this.filter.highBid 
         );
       }
       if (this.filter.auctionEnd != "") {
         filteredBids = filteredBids.filter(
-          (bid) => bid.auctionEnd <= this.filter.auctionEnd //TODO: Not sure how to code a filter to take a datetime, or how to code for filters out date before the entered value
+          (bid) => moment(bid.auctionEnd).isSameOrAfter(this.filter.auctionEnd)
         );
       }
-      //TODO:Will need to add filters for unit high bids and auction end dates once data is added to table
+      //if (this.filter.status != "") {
+        //filteredBids = filteredBids.filter(
+          //(bid) => bid.status == this.filter.status
+        //);
+      //}
       return filteredBids;
     },
   },
