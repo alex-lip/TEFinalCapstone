@@ -78,7 +78,7 @@ INSERT INTO units (location_name, facility_address, unit_number, unit_size, pict
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '806 E. Findlay St. Carey, OH 43316', '28', '10x10', 'https://i.imgur.com/gQi54t4.jpg', 80, '20210412 11:59', '');
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1815 E. Mansfield St. Bucyrus, OH 44820', '36', '5x10', 'https://i.imgur.com/LVMnCRE.jpg', 100, '20210516 11:59', '');
 INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1345 N. Main St. Urbana, OH 43078', '62', '10x15', 'https://i.imgur.com/ICoVAmu.jpg', 120, '20210710 11:59', '');
-
+INSERT INTO units (location_name, facility_address, unit_number, unit_size, pictures, high_bid, auction_end, unit_notes) VALUES ('Stow-Away', '1345 N. Main St. Urbana, OH 43078', '44', '10x10', 'https://i.imgur.com/2Pw1iG8.jpg', 1400, '20201112 11:59', 'AUCTION CLOSED');
 
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (1, 'https://i.imgur.com/epMSRQH.png');
 --INSERT INTO pictures(unit_id, picture_srclink) VALUES (2, 'https://i.imgur.com/dc1PU8j.jpg');
